@@ -5,8 +5,9 @@ package org.mikejones.coriolis.om;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike </a>
@@ -21,13 +22,12 @@ public class Post {
 
     private String text;
 
-    private Set comments;
+    private SortedSet comments;
 
     private Date date;
 
     public Post() {
-        comments = new HashSet();
-        
+        comments = new TreeSet();        
     }
 
     public String formatedDateTime() {
@@ -60,7 +60,7 @@ public class Post {
      * @param comments
      *            The comments to set.
      */
-    public void setComments(Set comments) {
+    public void setComments(SortedSet comments) {
         this.comments = comments;
     }
     

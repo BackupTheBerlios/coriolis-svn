@@ -17,7 +17,7 @@
             <generator class="native" />
         </id>
 		
-		<set name="comments" inverse="true" lazy="true" cascade="all">
+		<set name="comments" inverse="true" lazy="true" cascade="all" sort="org.mikejones.coriolis.om.comparators.CommentComparator">
 			<key column="parent_id" />			
 			<one-to-many class="org.mikejones.coriolis.om.Comment"/>			
 		</set>
