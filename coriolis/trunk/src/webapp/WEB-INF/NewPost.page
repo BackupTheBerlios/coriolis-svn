@@ -20,12 +20,13 @@
     
     <component id="inputTitle" type="ValidField">
     	<static-binding name="displayName" value="Post Title"/>
-        <binding name="beans" expression="beans.required"/>
+        <binding name="validator" expression="beans.required"/>
         <binding name="value" expression="post.text" />
 	</component>
+    
     <component id="inputText" type="ValidField">
         <static-binding name="displayName" value="Post Text"/>
-        <binding name="beans" expression="beans.required"/>
+        <binding name="validator" expression="beans.required"/>
         <binding name="value" expression="post.text" />
     </component>
     

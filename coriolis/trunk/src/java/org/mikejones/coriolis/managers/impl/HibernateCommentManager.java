@@ -4,7 +4,6 @@
 package org.mikejones.coriolis.managers.impl;
 
 import net.sf.hibernate.HibernateException;
-import net.sf.hibernate.Session;
 
 import org.apache.commons.lang.exception.NestableRuntimeException;
 import org.mikejones.coriolis.hibernate.services.api.ISessionManager;
@@ -24,8 +23,7 @@ public class HibernateCommentManager implements ICommentManager {
         saveOrUpdate(comment);
     }   
     
-    public void removePost(Comment comment) {
-        Session session = iSessionManager.getSession();
+    public void removePost(Comment comment) {        
         try {
             iSessionManager.beginTransaction();
             iSessionManager.getSession().delete(comment);
