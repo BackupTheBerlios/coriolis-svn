@@ -25,9 +25,8 @@
         <binding name="value" expression="post.title" />
 	</component>
     
-    <component id="inputText" type="ValidField">
-        <static-binding name="displayName" value="Post Text"/>
-        <binding name="validator" expression="beans.required"/>
+    <component id="inputText" type="TextArea">
+        <!--static-binding name="displayName" value="Post Text"/-->        
         <binding name="value" expression="post.text" />
     </component>
     

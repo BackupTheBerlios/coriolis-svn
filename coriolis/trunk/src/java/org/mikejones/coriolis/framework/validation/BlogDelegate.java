@@ -49,10 +49,10 @@ public class BlogDelegate extends ValidationDelegate {
      * @param component
      */
     public void writeSuffix(IMarkupWriter writer, IRequestCycle cycle, IFormComponent component, IValidator validator) {
-        if (validator != null && validator.isRequired()) {
-            writer.print("*");
-
-        }
+//        if (validator != null && validator.isRequired()) {
+//            writer.print("*");
+//
+//        }
     }
 
     /**

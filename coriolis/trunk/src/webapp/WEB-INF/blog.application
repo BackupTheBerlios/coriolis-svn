@@ -7,7 +7,9 @@
 <application name="blog" engine-class="org.mikejones.coriolis.framework.BlogEngine">    
     <description>description</description>
     <property name="org.apache.tapestry.visit-class" value="org.mikejones.coriolis.framework.Visit"/>    
-    <!--property name="org.apache.tapestry.engine-class" value=""/-->
-   
-     <page name="Home" specification-path="Blog.page"/>    
+	
+    <!-- this is a dev property and should be removed for production -->
+    <property name="org.apache.tapestry.disable-caching" value="true"/>
+    
+    <page name="Home" specification-path="Blog.page"/>    
 </application>
