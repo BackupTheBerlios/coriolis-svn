@@ -35,8 +35,7 @@ public class ThreadlocalSessionManager implements ISessionManager {
                 sessionFactory = configuration.configure()
                         .buildSessionFactory();
             } catch (HibernateException e) {
-                throw new NestableRuntimeException(e);
-                // TODO add logging here
+                throw new NestableRuntimeException(e);                
             }
         }
 
@@ -86,6 +85,7 @@ public class ThreadlocalSessionManager implements ISessionManager {
         try {
             if (tx != null && !tx.wasCommitted() && !tx.wasRolledBack()) {
                 tx.commit();
+                threadTransaction.set(null);
             }
         } catch (HibernateException e) {
             rollbackTransaction();
@@ -96,6 +96,7 @@ public class ThreadlocalSessionManager implements ISessionManager {
     public void rollbackTransaction() {
         Transaction tx = (Transaction) threadTransaction.get();
         try {
+            threadTransaction.set(null);
             if (tx != null && !tx.wasCommitted() && !tx.wasRolledBack()) {
                 tx.rollback();
             }
