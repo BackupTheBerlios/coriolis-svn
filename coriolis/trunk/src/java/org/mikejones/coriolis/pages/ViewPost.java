@@ -3,14 +3,11 @@
  */
 package org.mikejones.coriolis.pages;
 
-import net.sf.hibernate.HibernateException;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.hivemind.Registry;
 import org.apache.hivemind.servlet.HiveMindFilter;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.html.BasePage;
-import org.mikejones.coriolis.hibernate.services.api.ISessionManager;
 import org.mikejones.coriolis.managers.api.ICommentManager;
 import org.mikejones.coriolis.managers.api.IPostManager;
 import org.mikejones.coriolis.om.Comment;
@@ -63,34 +60,22 @@ public abstract class ViewPost extends BasePage {
         ICommentManager commentManager = (ICommentManager) registry
                 .getService(ICommentManager.class);
 
-        ISessionManager sessionManager = (ISessionManager) registry
-                .getService(ISessionManager.class);
-
-        
-
         if (StringUtils.isEmpty(getAuthor())
                 || StringUtils.isEmpty(getAuthorComment())) {
             setMessage("The author and comment fields must not be empty!");
         } else {
-            sessionManager.beginTransaction();
+            
             Post post = postManager.getPost(getPostId());
             
             Comment comment = new Comment();
             comment.setAuthor(getAuthor());
             comment.setComment(getAuthorComment());
-            comment.setPost(post);            
-            
+            comment.setPost(post);                
             post.addComment(comment);
             
-            try {
-                sessionManager.getSession().saveOrUpdate(post);
-                sessionManager.getSession().saveOrUpdate(comment);
-            } catch (HibernateException e) {
-                throw new RuntimeException(e);
-            }     
-
-            sessionManager.commitTransaction();
-
+            postManager.saveOrUpdate(post);
+            commentManager.saveOrUpdate(comment);
+        
             // reset the field values
             setAuthor("");
             setAuthorWebsite("");

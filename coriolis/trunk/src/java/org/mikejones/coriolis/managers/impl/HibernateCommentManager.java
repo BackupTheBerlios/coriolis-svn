@@ -27,17 +27,18 @@ public class HibernateCommentManager implements ICommentManager {
     public void removePost(Comment comment) {
         Session session = iSessionManager.getSession();
         try {
-            session.delete(comment);
+            iSessionManager.beginTransaction();
+            iSessionManager.getSession().delete(comment);
+            iSessionManager.commitTransaction();
         } catch (HibernateException e) {
             throw new NestableRuntimeException(e);
         }
     }
 
     public void saveOrUpdate(Object object) {
-        Session session = iSessionManager.getSession();
-        try {
+       try {
             iSessionManager.beginTransaction();
-            session.saveOrUpdate(object);
+            iSessionManager.getSession().saveOrUpdate(object);
             iSessionManager.commitTransaction();
         } catch (HibernateException e) {
             throw new NestableRuntimeException(e);
