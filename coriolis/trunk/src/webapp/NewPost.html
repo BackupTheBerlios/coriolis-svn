@@ -1,5 +1,5 @@
 <span jwcid="@Layout">
-    <form jwcid="@Form" listener="ognl:listeners.addPost" >
+    <form jwcid="@Form" listener="ognl:listeners.addPost" delegate="ognl:beans.delegate" >
     	<label for="title">
         	<span jwcid="@FieldLabel" field="ognl:components.inputTitle"  >Title:</span> 
             <input type="text" class="textbox" jwcid="inputTitle" />

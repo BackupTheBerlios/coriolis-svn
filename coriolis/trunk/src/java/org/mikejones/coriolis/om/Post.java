@@ -23,9 +23,9 @@ public class Post {
 
     private Integer id;
 
-    private String title;
+    private String title = "";
 
-    private String text;
+    private String text= "";
 
     private SortedSet comments;
 

@@ -8,20 +8,21 @@
 
     <description>Add a new post</description>
     
+    <bean name="delegate" class="org.mikejones.coriolis.framework.validation.BlogDelegate"/>
+    
     <bean name="required" 
     	class="org.apache.tapestry.valid.StringValidator"
     	lifecycle="page"
     >
         <set-property name="required" expression="true"/>
     </bean>
-    
-    
+       
     <property-specification name="post" type="org.mikejones.coriolis.om.Post" />    
     
     <component id="inputTitle" type="ValidField">
     	<static-binding name="displayName" value="Post Title"/>
         <binding name="validator" expression="beans.required"/>
-        <binding name="value" expression="post.text" />
+        <binding name="value" expression="post.title" />
 	</component>
     
     <component id="inputText" type="ValidField">
