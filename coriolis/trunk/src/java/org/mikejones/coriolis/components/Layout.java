@@ -21,7 +21,7 @@ public abstract class Layout extends BaseComponent {
     
     public void logout(IRequestCycle cycle) {
         Visit visit = (Visit) cycle.getEngine().getVisit();
-        visit.setPerson(null);        
+        visit.setUser(null);        
         cycle.activate("Blog");
     }  
         

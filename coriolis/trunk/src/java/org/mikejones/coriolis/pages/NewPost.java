@@ -3,6 +3,8 @@
  */
 package org.mikejones.coriolis.pages;
 
+import java.util.Calendar;
+
 import org.apache.hivemind.Registry;
 import org.apache.hivemind.servlet.HiveMindFilter;
 import org.apache.tapestry.IRequestCycle;
@@ -18,7 +20,8 @@ public abstract class NewPost extends SecurePage {
     public void addPost(IRequestCycle cycle) {
         Post post = new Post();
         post.setTitle(getPostTitle());
-        post.setText(getPostText());
+        post.setText(getPostText());        
+        post.setDate(Calendar.getInstance().getTime());
                 
         Registry registry = HiveMindFilter.getRegistry(cycle.getRequestContext().getRequest());        
         IPostManager postManager = (IPostManager) registry.getService(IPostManager.class);

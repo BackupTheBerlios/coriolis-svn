@@ -25,7 +25,7 @@ public abstract class Login extends BasePage {
                 getPassword());
         if (person != null) {
             Visit visit = (Visit) cycle.getEngine().getVisit();
-            visit.setPerson(person);
+            visit.setUser(person);
             cycle.activate("Blog");
         } else {
             setMessage("Incorrect username/passowrd!!");

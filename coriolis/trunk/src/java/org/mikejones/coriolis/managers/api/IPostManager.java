@@ -16,6 +16,10 @@ public interface IPostManager {
     
     public Post getPost(Integer id);
     
+    /**
+     * Get the list of post in the db sorted by date posted
+     * @return list of posts
+     */
     public List getPosts();
     
     public void addPost(Post post);

@@ -21,7 +21,7 @@
 	<siteDirectory>/var/www/docs/coriolis</siteDirectory>
 	<distributionDirectory>/var/www/repo</distributionDirectory>
 	<repository>
-		<connection>http://svn.berlios.de/viewcvs/coriolis/</connection>		
+		<connection></connection>		
 	</repository>
 	<!--mailingLists>
 		<mailingList>

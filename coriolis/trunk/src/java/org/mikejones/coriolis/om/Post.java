@@ -4,10 +4,9 @@
 package org.mikejones.coriolis.om;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike </a>
@@ -22,13 +21,13 @@ public class Post {
 
     private String text;
 
-    private List comments;
+    private Set comments;
 
     private Date date;
 
     public Post() {
-        comments = new ArrayList();
-        date = Calendar.getInstance().getTime();
+        comments = new HashSet();
+        
     }
 
     public String formatedDateTime() {
@@ -53,7 +52,7 @@ public class Post {
     /**
      * @return Returns the comments.
      */
-    public List getComments() {
+    public Set getComments() {
         return comments;
     }
 
@@ -61,7 +60,7 @@ public class Post {
      * @param comments
      *            The comments to set.
      */
-    public void setComments(List comments) {
+    public void setComments(Set comments) {
         this.comments = comments;
     }
     
@@ -70,7 +69,7 @@ public class Post {
      *          A comment to add to the List
      */
     public void addComment(Comment comment) {
-        comments.add(comment);
+        getComments().add(comment);
     }
 
     /**

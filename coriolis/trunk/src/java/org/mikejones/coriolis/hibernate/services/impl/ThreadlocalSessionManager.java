@@ -13,9 +13,10 @@ import org.apache.commons.lang.exception.NestableRuntimeException;
 import org.mikejones.coriolis.hibernate.services.api.ISessionManager;
 
 /**
- * This should be implemented as a singleton service
+ * This service is based on the thread local implementation of a
+ * hibernate utility class.
  * 
- * TODO: need to add logging here because we loose the exceptions inside tapestry
+ * This should be implemented as a singleton service and  
  * 
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike</a>
  */
@@ -34,12 +35,13 @@ public class ThreadlocalSessionManager implements ISessionManager {
                 sessionFactory = configuration.configure()
                         .buildSessionFactory();
             } catch (HibernateException e) {
-                throw new NestableRuntimeException();
+                throw new NestableRuntimeException(e);
                 // TODO add logging here
             }
         }
 
     }
+
 
     public Session getSession() {
         Session s = (Session) threadSession.get();
@@ -47,7 +49,7 @@ public class ThreadlocalSessionManager implements ISessionManager {
             try {
                 s = sessionFactory.openSession();
             } catch (HibernateException e) {
-                throw new RuntimeException();
+                throw new RuntimeException(e);
             }
             threadSession.set(s);
         }
@@ -56,11 +58,12 @@ public class ThreadlocalSessionManager implements ISessionManager {
 
     public void closeSession() {
         Session s = (Session) threadSession.get();
+        threadSession.set(null);
         if (s != null && s.isOpen()) {
             try {
                 s.close();
             } catch (HibernateException e) {
-                throw new RuntimeException();
+                throw new RuntimeException(e);
             }
         }
 
@@ -68,11 +71,12 @@ public class ThreadlocalSessionManager implements ISessionManager {
 
     public void beginTransaction() {
         Transaction tx = (Transaction) threadTransaction.get();
-        if (tx != null) {
+        if (tx == null) {
             try {
                 tx = getSession().beginTransaction();
+                threadTransaction.set(tx);  
             } catch (HibernateException e) {
-                throw new RuntimeException();
+                throw new RuntimeException(e);
             }
         }
     }
@@ -85,7 +89,7 @@ public class ThreadlocalSessionManager implements ISessionManager {
             }
         } catch (HibernateException e) {
             rollbackTransaction();
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
     }
 
@@ -97,7 +101,7 @@ public class ThreadlocalSessionManager implements ISessionManager {
             }
         } catch (HibernateException e) {
             rollbackTransaction();
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         } finally {
             closeSession();
         }

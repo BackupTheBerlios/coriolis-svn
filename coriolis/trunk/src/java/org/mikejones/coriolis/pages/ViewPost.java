@@ -3,11 +3,15 @@
  */
 package org.mikejones.coriolis.pages;
 
+import net.sf.hibernate.HibernateException;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.hivemind.Registry;
 import org.apache.hivemind.servlet.HiveMindFilter;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.html.BasePage;
+import org.mikejones.coriolis.hibernate.services.api.ISessionManager;
+import org.mikejones.coriolis.managers.api.ICommentManager;
 import org.mikejones.coriolis.managers.api.IPostManager;
 import org.mikejones.coriolis.om.Comment;
 import org.mikejones.coriolis.om.Post;
@@ -21,9 +25,9 @@ public abstract class ViewPost extends BasePage {
 
     public abstract void setPost(Post post);
 
-    public abstract String getPostId();
+    public abstract Integer getPostId();
 
-    public abstract void setPostId(String post);
+    public abstract void setPostId(Integer post);
 
     public abstract String getAuthor();
 
@@ -44,7 +48,7 @@ public abstract class ViewPost extends BasePage {
                 .getRequestContext().getRequest());
         IPostManager postManager = (IPostManager) registry
                 .getService(IPostManager.class);
-        setPostId(postId.toString());
+        setPostId(postId);
         setPost(postManager.getPost(postId));
         cycle.activate(this);
     }
@@ -52,20 +56,40 @@ public abstract class ViewPost extends BasePage {
     public void addComment(IRequestCycle cycle) {
         Registry registry = HiveMindFilter.getRegistry(cycle
                 .getRequestContext().getRequest());
+
         IPostManager postManager = (IPostManager) registry
                 .getService(IPostManager.class);
 
-        Post post = postManager.getPost(Integer.valueOf(getPostId()));
+        ICommentManager commentManager = (ICommentManager) registry
+                .getService(ICommentManager.class);
+
+        ISessionManager sessionManager = (ISessionManager) registry
+                .getService(ISessionManager.class);
+
+        
 
         if (StringUtils.isEmpty(getAuthor())
                 || StringUtils.isEmpty(getAuthorComment())) {
             setMessage("The author and comment fields must not be empty!");
         } else {
+            sessionManager.beginTransaction();
+            Post post = postManager.getPost(getPostId());
+            
             Comment comment = new Comment();
             comment.setAuthor(getAuthor());
             comment.setComment(getAuthorComment());
+            comment.setPost(post);            
+            
             post.addComment(comment);
-            postManager.saveOrUpdate(post);
+            
+            try {
+                sessionManager.getSession().saveOrUpdate(post);
+                sessionManager.getSession().saveOrUpdate(comment);
+            } catch (HibernateException e) {
+                throw new RuntimeException(e);
+            }     
+
+            sessionManager.commitTransaction();
 
             // reset the field values
             setAuthor("");
@@ -73,6 +97,6 @@ public abstract class ViewPost extends BasePage {
             setAuthorComment("");
 
         }
-        viewPost(cycle, post.getId());
+        viewPost(cycle, getPostId());
     }
 }

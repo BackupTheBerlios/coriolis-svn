@@ -11,29 +11,17 @@ import org.mikejones.coriolis.om.Person;
 
 public class TestPersonManager implements IPersonManager {
     
-    //private static TestPersonManager instance;
-    
     private static List users;
-    
-    /*public static TestPersonManager getInstance() {
-        if (instance == null) {
-            instance = new TestPersonManager();            
-        }
-        return instance;
-    }*/
     
     public TestPersonManager() {
         users = new ArrayList();
         Person person = new Person();
         person.setId(new Integer(1));
         person.setUsername("mik3jon3s");
-        person.setPassword("test");
-        System.out.println("hellllllllllllo hivemind");
-        
+        person.setPassword("test");        
         users.add(person);        
     }
     
-
     public Person getUser(Integer id) {
         for(int i =0; i < users.size(); i++) {
             Person person= (Person)users.get(i);

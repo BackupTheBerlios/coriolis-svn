@@ -6,26 +6,21 @@
 
 <hibernate-mapping>
     <class
-        name="org.mikejones.coriolis.om.Post"
-        dynamic-update="false"
-        dynamic-insert="false"
-    >
+        name="org.mikejones.coriolis.om.Post" 
+	>
 
         <id
             name="id"
             column="id"
             type="java.lang.Integer"
         >
-            <generator class="native">
-            </generator>
+            <generator class="native" />
         </id>
 		
-		<list name="comments" table="post_comments">
-			<key column="id" />
-			<index column="date" />
-			<one-to-many class="org.mikejones.coriolis.om.Comment"/>
-			
-		</list>
+		<set name="comments" inverse="true" lazy="true">
+			<key column="parent_id" />			
+			<one-to-many class="org.mikejones.coriolis.om.Comment"/>			
+		</set>
 
         <property
             name="date"
@@ -50,13 +45,6 @@
             insert="true"
             column="text"
         />
-		
-        <!--
-            To add non XDoclet property mappings, create a file named
-                hibernate-properties-FrequentlyAskedQuestion.xml
-            containing the additional properties and place it in your merge dir.
-        -->
-
-    </class>
+	</class>
 
 </hibernate-mapping>

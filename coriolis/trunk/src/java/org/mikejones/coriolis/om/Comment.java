@@ -16,11 +16,13 @@ public class Comment {
     
     private Integer id;
     
+    private Post post;
+    
     private Date date;
     
     private String author;
     
-    private String comment;  
+    private String comment;
     
     public Comment() {
         date = Calendar.getInstance().getTime();
@@ -42,6 +44,23 @@ public class Comment {
     public void setId(Integer id) {
         this.id = id;
     }
+    
+    /**
+     * @return Returns the post.
+     */
+    public Post getPost() {
+        return post;
+    }
+    
+
+    /**
+     * @param post The post to set.
+     */
+    public void setPost(Post post) {
+        this.post = post;
+    }
+    
+
     /**
      * @return Returns the author.
      */

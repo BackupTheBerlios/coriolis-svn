@@ -7,8 +7,6 @@
 <hibernate-mapping>
     <class
         name="org.mikejones.coriolis.om.Comment"
-        dynamic-update="false"
-        dynamic-insert="false"
     >
 
         <id
@@ -20,7 +18,14 @@
             </generator>
         </id>
 		
-        <property
+		<many-to-one 
+			name="post"
+			column="parent_id"
+			class="org.mikejones.coriolis.om.Post"
+			not-null="true" 
+		/>	
+		
+	    <property
             name="date"
             type="java.util.Date"
             update="true"

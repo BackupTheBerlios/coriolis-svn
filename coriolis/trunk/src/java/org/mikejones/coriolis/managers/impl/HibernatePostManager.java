@@ -7,6 +7,7 @@ import java.util.List;
 
 import net.sf.hibernate.HibernateException;
 import net.sf.hibernate.Session;
+import net.sf.hibernate.expression.Order;
 
 import org.apache.commons.lang.exception.NestableRuntimeException;
 import org.mikejones.coriolis.hibernate.services.api.ISessionManager;
@@ -38,7 +39,7 @@ public class HibernatePostManager implements IPostManager {
     public List getPosts() {
         Session session = iSessionManager.getSession();
         try {
-            return session.find("from " + Post.class.getName());
+            return session.createCriteria(Post.class).addOrder(Order.desc("date")).list();
         } catch (HibernateException e) {
             throw new NestableRuntimeException(e);
         }
@@ -64,7 +65,9 @@ public class HibernatePostManager implements IPostManager {
     public void saveOrUpdate(Post post) {
         Session session = iSessionManager.getSession();
         try {
+            iSessionManager.beginTransaction();
             session.saveOrUpdate(post);
+            iSessionManager.commitTransaction();            
         } catch (HibernateException e) {
             throw new NestableRuntimeException(e);
         }

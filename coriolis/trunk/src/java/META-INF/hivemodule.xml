@@ -18,4 +18,11 @@
     </invoke-factory>
     <!--interceptor service-id="hivemind.LoggingInterceptor"/-->
   </service-point>    
+  
+  <service-point id="CommentManager" interface="org.mikejones.coriolis.managers.api.ICommentManager">
+     <invoke-factory >
+        <construct class="org.mikejones.coriolis.managers.impl.HibernateCommentManager" />
+    </invoke-factory>
+    <!--interceptor service-id="hivemind.LoggingInterceptor"/-->
+  </service-point>    
 </module>
