@@ -20,15 +20,12 @@
     <property-specification name="post" type="org.mikejones.coriolis.om.Post" />    
     
     <component id="inputTitle" type="ValidField">
-    	<static-binding name="displayName" value="Post Title"/>
+    	<static-binding name="displayName" value="Title"/>
         <binding name="validator" expression="beans.required"/>
         <binding name="value" expression="post.title" />
 	</component>
     
     <component id="inputText" type="TextArea">
-        <!--static-binding name="displayName" value="Post Text"/-->        
         <binding name="value" expression="post.text" />
-    </component>
-    
-    
+    </component>    
 </page-specification>

@@ -8,10 +8,10 @@
         </p>
     </span>
     <form jwcid="@Form" listener="ognl:listeners.addPost" delegate="ognl:beans.delegate" >
-    	<span jwcid="@FieldLabel" field="ognl:components.inputTitle"  >Title:</span> 
+    	<span jwcid="@FieldLabel" field="ognl:components.inputTitle"  >Title</span> 
         <input type="text" class="textbox" jwcid="inputTitle" />
-        <span jwcid="@FieldLabel" field="ognl:components.inputText" displayName="Text" >Text:</span>
         
+        <span jwcid="@FieldLabel" field="ognl:components.inputText" displayName="Text" >Text</span>        
        	<textarea jwcid="inputText"></textarea>
         
         <input type="submit" name="addPost" value="Add Post" />

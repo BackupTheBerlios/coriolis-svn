@@ -8,10 +8,10 @@
 
     <description>Edit the post that you have written</description>
     
-     <property-specification name="message" type="java.lang.String" />
+    <bean name="delegate" class="org.mikejones.coriolis.framework.validation.BlogDelegate"/>
     
-    <property-specification name="postId" type="java.lang.Integer" />    
- 	<property-specification name="postTitle" type="java.lang.String" />    
-    <property-specification name="postText" type="java.lang.String" />    
+    <property-specification name="message" type="java.lang.String" />
+    
+    <property-specification name="post" type="org.mikejones.coriolis.om.Post" />    
     
 </page-specification>
