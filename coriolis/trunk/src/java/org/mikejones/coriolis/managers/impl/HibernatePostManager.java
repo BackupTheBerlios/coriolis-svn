@@ -50,9 +50,11 @@ public class HibernatePostManager implements IPostManager {
     }
 
     public void removePost(Post post) {
-        Session session = iSessionManager.getSession();
+       
         try {
-            session.delete(post);
+            iSessionManager.beginTransaction();
+            iSessionManager.getSession().delete(post);
+            iSessionManager.commitTransaction();
         } catch (HibernateException e) {
             throw new NestableRuntimeException(e);
         }
