@@ -398,7 +398,18 @@
 			- Standard JAXP API
 			- runtime, some SAX parser is required
 		-->		
-		<!-- END OF HIBERNATE DEPENDANCIES -->		
+		<!-- END OF HIBERNATE DEPENDANCIES -->
+		<!-- START OF Unit testing dependancies -->
+		<dependency>
+			<groupId>easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>1.1</version>
+			<properties>
+				<war.bundle>false</war.bundle>
+			</properties>
+		</dependency>	
+		<!-- END OF Unit testing dependancies -->
+				
 	</dependencies>
 	<build>
 		<nagEmailAddress>michael.daniel.jones@gmail.com</nagEmailAddress>
