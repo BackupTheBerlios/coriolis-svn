@@ -1,13 +1,10 @@
 <span jwcid="@Layout">
     <form jwcid="@Form" listener="ognl:listeners.addPost" delegate="ognl:beans.delegate" >
-    	<label for="title">
-        	<span jwcid="@FieldLabel" field="ognl:components.inputTitle"  >Title:</span> 
-            <input type="text" class="textbox" jwcid="inputTitle" />
-        </label>
-		<label for="text">
-			<span jwcid="@FieldLabel" field="ognl:components.inputText" >Text:</span>
-       		<textarea jwcid="inputText"></textarea>
-        </label>
+    	<span jwcid="@FieldLabel" field="ognl:components.inputTitle"  >Title:</span> 
+        <input type="text" class="textbox" jwcid="inputTitle" />
+        <span jwcid="@FieldLabel" field="ognl:components.inputText" >Text:</span>
+       	<textarea jwcid="inputText"></textarea>
+        
         <input type="submit" name="addPost" value="Add Post" />
 	</form>
 </span>
