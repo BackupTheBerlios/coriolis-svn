@@ -15,13 +15,13 @@
 	<logo>/i/coriolis.gif</logo>
 	<description>coriolis - sample tapestry app</description>
 	<shortDescription>coriolis</shortDescription>
-	<url>http://www.morrisedgar.com/coriolis</url>
-	<issueTrackingUrl>http://itzoo.no-ip.com/bugzilla</issueTrackingUrl>
+	<url>http://coriolis.berlios.de</url>
+	<issueTrackingUrl>http://developer.berlios.de/bugs/?group_id=3250</issueTrackingUrl>
 	<siteAddress>http://itzoo.no-ip.com/coriolis</siteAddress>
 	<siteDirectory>/var/www/docs/coriolis</siteDirectory>
 	<distributionDirectory>/var/www/repo</distributionDirectory>
-	<repository>s
-		<connection>scm:cvs:ext:mjones@itzoo.no-ip.com:/var/lib/cvsroot:projects/src/java/krait</connection>		
+	<repository>
+		<connection>http://svn.berlios.de/viewcvs/coriolis/</connection>		
 	</repository>
 	<!--mailingLists>
 		<mailingList>
@@ -171,7 +171,7 @@
 			<version>2.3</version>
 			<url>http://java.sun.com/products/servlet/</url>
 			<properties>
-				<war.bundle>true</war.bundle>
+				<war.bundle>false</war.bundle>
 			</properties>
 		</dependency>		
 		<!-- end of tapestry dependancies -->
@@ -181,7 +181,7 @@
 			<artifactId>hivemind</artifactId>
 			<version>1.0</version>
 			<properties>
-				<war.bundle>false</war.bundle>
+				<war.bundle>true</war.bundle>
 			</properties>
 		</dependency>		
 		<dependency>
@@ -189,7 +189,7 @@
 			<artifactId>hivemind-lib</artifactId>
 			<version>1.0</version>
 			<properties>
-				<war.bundle>false</war.bundle>
+				<war.bundle>true</war.bundle>
 			</properties>
 		</dependency>		
 		<!-- end of hivemind dependancies -->

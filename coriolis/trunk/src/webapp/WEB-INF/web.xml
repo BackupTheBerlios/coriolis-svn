@@ -15,11 +15,6 @@
 		<filter-class>org.apache.hivemind.servlet.HiveMindFilter</filter-class>
 	</filter>
 	
-	<!--filter>
-		<filter-name>HibernateSessionFilter</filter-name>
-		<filter-class>org.mikejones.coriolis.hibernate.services.ThreadlocalFilter</filter-class>
-	</filter-->
-	
 	<filter-mapping>
 		<filter-name>redirect</filter-name>
 		<url-pattern>/</url-pattern>
@@ -29,11 +24,6 @@
 		<filter-name>HiveMindFilter</filter-name>
 		<servlet-name>blog</servlet-name>
 	</filter-mapping>
-
-	<!--filter-mapping>
-		<filter-name>HibernateSessionFilter</filter-name>
-		<servlet-name>blog</servlet-name>
-	</filter-mapping-->
 	
 	<!-- SERVLETS -->
 	<servlet>
