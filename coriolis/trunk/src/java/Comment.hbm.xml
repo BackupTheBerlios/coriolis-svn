@@ -47,8 +47,6 @@
             update="true"
             insert="true"
             column="comment"
-        />
-		
+        />		
     </class>
-
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 /*
- * this file is the property of morrisedgar
+ * 
  */
 package org.mikejones.coriolis.om.comparators;
 
@@ -9,6 +9,9 @@ import org.mikejones.coriolis.om.Comment;
 
 
 /**
+ * A comparator for the Comment domain object.
+ * Basicaly hibernate uses this class to sort the return comments into date
+ * order.
  *
  * @author <a href="mailTo:michael.jones@anite.com">Mike</a>
  */

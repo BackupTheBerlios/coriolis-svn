@@ -10,6 +10,11 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
+ * A class to respresent a post.
+ * This is a POJO and is part of the domain model.
+ * 
+ * TODO: convert to use xdoclet
+ * 
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike </a>
  */
 public class Post {
@@ -30,6 +35,10 @@ public class Post {
         comments = new TreeSet();        
     }
 
+    /**
+     * Helper method to retrun the date in a pretty fashion
+     * @return
+     */
     public String formatedDateTime() {
         return DATE_TIME_FORMAT.format(date);
     }
@@ -116,6 +125,4 @@ public class Post {
     public void setDate(Date date) {
         this.date = date;
     }
-    
-
 }
