@@ -1,0 +1,13 @@
+<span jwcid="@Layout">
+    <form jwcid="@Form" listener="ognl:listeners.addPost" >
+         <label for="title">
+             Title:
+             <input type="text" class="textbox" jwcid="@TextField" value="ognl:postTitle" />
+         </label>
+         <label for="text">
+             Text:
+       		<textarea jwcid="@TextArea" value="ognl:postText" ></textarea>
+         </label>
+         <input type="submit" name="addPost" value="Add Post" />
+    </form>
+</span>

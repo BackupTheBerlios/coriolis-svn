@@ -1,0 +1,17 @@
+ <span jwcid="@Layout" >   
+ 	<div id="login">
+	    <span jwcid="@Conditional" condition="ognl:message" >
+	        <p><span jwcid="@Insert" value="ognl:message">Error Message</span></p>
+	    </span>
+	    <form jwcid="@Form" listener="ognl:listeners.login" >
+	        <label for="username">Username
+            	<input type="text" jwcid="username@TextField" value="ognl:username" />
+          	</label>
+            <label for="username">Password
+	            <input type="password" jwcid="@TextField" value="ognl:password" hidden="ognl:true" />  
+        	</label>
+	        <input type="submit" name="login" value="login" />
+	    </form>	    	    
+	</div>       
+ </span>
+

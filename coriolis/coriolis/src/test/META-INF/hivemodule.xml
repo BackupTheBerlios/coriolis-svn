@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<module id="test" version="1.0.0">
+	
+  <service-point id="A" interface="org.A">
+	  <create-instance class="org.impl.AImpl" />
+  </service-point>		
+  
+  <service-point id="B" interface="org.B">
+	 <create-instance class="org.impl.BImpl" />
+  </service-point>  
+  
+  <service-point id="C" interface="org.C">
+     <invoke-factory >
+       	<construct class="org.impl.CImpl" >
+		</construct>
+    </invoke-factory>
+  </service-point>   
+</module>

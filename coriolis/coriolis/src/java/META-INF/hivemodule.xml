@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<module id="org.mikejones.coriolis.managers" version="1.0.0">
+	
+  <service-point id="ISessionManager" interface="org.mikejones.coriolis.hibernate.services.api.ISessionManager">
+	  <create-instance class="org.mikejones.coriolis.hibernate.services.impl.ThreadlocalSessionManager" />
+	  <!--interceptor service-id="hivemind.LoggingInterceptor"/-->
+  </service-point>		
+  
+  <service-point id="PersonManager" interface="org.mikejones.coriolis.managers.api.IPersonManager">
+	 <invoke-factory>
+      <construct class="org.mikejones.coriolis.managers.impl.TestPersonManager" />
+    </invoke-factory>
+  </service-point>  
+  
+  <service-point id="PostManager" interface="org.mikejones.coriolis.managers.api.IPostManager">
+     <invoke-factory >
+        <construct class="org.mikejones.coriolis.managers.impl.HibernatePostManager" />
+    </invoke-factory>
+    <!--interceptor service-id="hivemind.LoggingInterceptor"/-->
+  </service-point>    
+</module>
