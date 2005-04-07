@@ -3,15 +3,9 @@
  */
 package org.mikejones.coriolis.components.menu;
 
-import org.apache.tapestry.AbstractComponent;
-import org.apache.tapestry.IMarkupWriter;
-import org.apache.tapestry.IRequestCycle;
+import org.apache.tapestry.BaseComponent;
 
-public class MenuComponent extends AbstractComponent {
+public abstract class MenuComponent extends BaseComponent {
 
-    protected void renderComponent(IMarkupWriter markupWriter, IRequestCycle cycle) {
-        
-
-    }
-
+    
 }

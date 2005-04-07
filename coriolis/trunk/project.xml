@@ -409,7 +409,15 @@
 			</properties>
 		</dependency>	
 		<!-- END OF Unit testing dependancies -->
-				
+		<!-- tapestry libraries -->
+		<dependency>
+			<groupId>morrisedgar</groupId>
+			<artifactId>ghavial</artifactId>
+			<version>SNAPSHOT</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>	
 	</dependencies>
 	<build>
 		<nagEmailAddress>michael.daniel.jones@gmail.com</nagEmailAddress>

@@ -12,4 +12,7 @@
     <property name="org.apache.tapestry.disable-caching" value="true"/>
     
     <page name="Home" specification-path="Blog.page"/>    
+    
+    <library id="ghavial" specification-path="/org/mikejones/ghavial/Ghavial.library"/>
+    
 </application>
