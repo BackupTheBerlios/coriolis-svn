@@ -8,6 +8,7 @@
 <library-specification>
 
     <description><![CDATA[   This is a super dooper standards based menu  ]]></description>
-    <component-type type="MenuContainer" specification-path="/org/mikejones/ghavial/MenuContainer.jwc"/>
+    <component-type type="Menu" specification-path="/org/mikejones/ghavial/Menu.jwc"/>
+    <component-type type="MenuItem" specification-path="MenuItem.jwc"/>
 
 </library-specification>
