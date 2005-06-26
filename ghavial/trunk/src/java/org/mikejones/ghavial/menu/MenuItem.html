@@ -1,0 +1,14 @@
+<span jwcid="@Conditional" condition="ognl:getContainsChildItems()"  > 
+	<li class="submenu">
+		<span jwcid="@Insert" value="ognl:title" />
+	    <ul class="level2">	        
+			<span jwcid="@RenderBody"/>  
+	    </ul>
+	</li>
+</span>
+<span jwcid="@Conditional" condition="ognl:!getContainsChildItems()"  > 
+    <li>
+        <span jwcid="@Insert" value="ognl:title" />
+	</li>
+</span>
+    
