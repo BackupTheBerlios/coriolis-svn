@@ -56,7 +56,7 @@
 		<dependency>
 			<groupId>tapestry</groupId>
 			<artifactId>tapestry</artifactId>
-			<version>3.0.2</version>
+			<version>3.0.3</version>
 			<properties>
 				<war.bundle>true</war.bundle>
 			</properties>
@@ -331,14 +331,14 @@
 			- Standard JTA API
 			- runtime, required for standalone operation (outside application server)
 		-->		
-		<dependency>
+		<!--dependency>
 			<groupId>jta</groupId>
 			<artifactId>jta</artifactId>
 			<version>hibernate-2.1.8</version>
 			<properties>
 				<war.bundle>true</war.bundle>
 			</properties>
-		</dependency>	
+		</dependency-->	
 		<!--
 			odmg.jar (3.0)
 			- ODMG API 3.0
@@ -402,14 +402,14 @@
 		</dependency>	
 		<!-- END OF Unit testing dependancies -->
 		<!-- tapestry libraries -->
-		<dependency>
+		<!--dependency>
 			<groupId>morrisedgar</groupId>
 			<artifactId>ghavial</artifactId>
 			<version>SNAPSHOT</version>
 			<properties>
 				<war.bundle>true</war.bundle>
 			</properties>
-		</dependency>	
+		</dependency-->	
 	</dependencies>
 	<build>
 		<nagEmailAddress>michael.daniel.jones@gmail.com</nagEmailAddress>

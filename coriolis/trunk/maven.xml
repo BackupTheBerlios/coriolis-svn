@@ -1,5 +1,12 @@
 <project default="coriolis:setup" xmlns:j="jelly:core" xmlns:deploy="deploy"
     xmlns:ant="jelly:ant" xmlns:maven="jelly:maven">
+    
+    <goal name="coriolis:luntbuild" description="Goal for luntbuld to call to compile and run tests">
+        <attainGoal name="clean"/>
+        <attainGoal name="java"/>
+        <attainGoal name="test"/>
+    </goal>
+    
 
     <goal name="coriolis:setup" description="Set up the CTMS environment for Eclipse">
         <attainGoal name="clean"/>
