@@ -3,7 +3,7 @@
     
     <goal name="coriolis:luntbuild" description="Goal for luntbuld to call to compile and run tests">
         <attainGoal name="clean"/>
-        <attainGoal name="java"/>
+        <attainGoal name="java:compile"/>
         <attainGoal name="test"/>
     </goal>
     
