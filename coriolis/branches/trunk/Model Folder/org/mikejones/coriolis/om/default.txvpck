@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<nodeSet  version="1.1">
+	<view uin="V574ng9e753fzc6-fh5mre">
+		<property name="$defaultDiagram" value="true"/>
+		<property name="$metaclass" value="Package Diagram"/>
+		<reference referencedUin="jdt:e_class:src:org.mikejones.coriolis.om.Comment">
+			<property name="bounds" value="290,16,200,176"/>
+			<reference referencedUin="jdt:l_ast:src:org.mikejones.coriolis.om.Comment:post">
+				<property name="sourceAnchor" value="290,104"/>
+				<property name="targetAnchor" value="210,104"/>
+			</reference>
+		</reference>
+		<reference referencedUin="design:view:::V574ng9e753g04e-o2xf7y">
+			<property name="bounds" value="141,230,123,70"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:org.mikejones.coriolis.om.Person">
+			<property name="bounds" value="10,230,111,105"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:org.mikejones.coriolis.om.Post">
+			<property name="bounds" value="10,10,200,189"/>
+		</reference>
+	</view>
+</nodeSet>
