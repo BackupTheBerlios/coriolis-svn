@@ -1,0 +1,135 @@
+body {
+	margin: 0 20px 20px 25px;
+	padding: 0;
+	
+	color: #369;
+	background: #f9f9f9 url(../i/bg-body.gif) left top repeat-y;
+}
+
+body, table, input, textarea {
+	font-family: verdana, helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 1.75;
+}
+
+img { border: 0; }
+
+p {
+	margin: 5px 0 10px 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 10px 0 5px 0;
+	padding: 0;
+	color: #9cf;
+	border-bottom: 1px solid #eee;
+	font-family: "Lucida Grande", Geneva, Arial, sans-serif;
+	letter-spacing: 2px;
+}
+
+h1 { font-size: 140%; }
+h2 { font-size: 130%; }
+h3 { font-size: 120%; }
+h4 { font-size: 110%; }
+
+a {
+	margin: 0;
+	padding: 0;
+	color: #9cf;
+	text-decoration: none;
+}
+
+a:hover {
+	margin: 0;
+	padding: 0;
+	text-decoration: underline;
+}
+
+a.arrow {
+	background: url(../i/icon-arrow-down.gif) left center no-repeat;
+}
+
+a.inactive, a.inactive:hover { text-decoration: line-through; }
+
+a.arrow, a.arrow:hover { padding-left: 20px; }
+
+dl {
+	margin: 0;
+	padding: 0;
+}
+
+dt {
+	margin: 10px 0 0 0;
+	padding: 0;
+	font-weight: bold;
+	text-decoration: underline;
+	color: #900;
+}
+
+dd {
+	margin: 0 0 0 10px;
+	padding: 0 0 0 5px;
+	border-left: 1px solid #ccc;
+}
+
+table {
+	margin: 0;
+	padding: 0;
+	
+	font: verdana, helvetica, sans-serif;
+	font-size: 10px;
+	color: #036;
+}
+
+th {
+	text-align: left;
+	font-weight: bold;
+	color: #000;
+}
+
+input, textarea { padding: 3px; line-height: 1; }
+
+input.textbox {
+	border-left: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	display: block;
+	width: 200px;
+	color: #369;
+}
+
+textarea {
+	border-left: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	display: block;
+	width: 300px;
+	height: 150px;
+}
+
+label {
+	margin: 10px 0 2px 0;
+	padding: 0;
+	display: block;
+	font-weight: bold;
+}
+
+label input { font-weight: normal; }
+
+input.button {
+	margin: 10px 0 5px 0;
+	padding: 2px 5px;
+	display: block;
+	background: #eee;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
+	color: #666;
+	text-transform: uppercase;
+	font-weight: bold;
+	line-height: 1;
+}

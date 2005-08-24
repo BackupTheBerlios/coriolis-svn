@@ -1,0 +1,40 @@
+ <span jwcid="@Layout" >   
+     <style>
+     div#nav {
+         border:1px solid red;
+         
+         }
+         </style>
+                                         
+     <span jwcid="@men" type="test">body</span>
+     <span jwcid="@"
+    <div class="post" jwcid="@Foreach" element="div" source="ognl:postList" value="ognl:post">
+        <div class="heading">	                        
+            <h3>
+                <span jwcid="@Insert" value="ognl:post.title" >Post Title</span>	 
+                <span class="options" jwcid="@Conditional" condition="ognl:visit.isUserLoggedIn()"  >
+                    <a href="#" jwcid="@DirectLink" listener="ognl:listeners.editPost" parameters="ognl:post.id" title="Edit Post">
+            			<img jwcid="@Image" alt="Edit post." image="ognl:getAsset('edit')" class="post"/>
+                    </a>
+                    <a href="#" jwcid="@DirectLink" listener="ognl:listeners.deletePost" parameters="ognl:post.id" title="Delete Post">
+                		<img jwcid="@Image" alt="Delete Post" image="ognl:getAsset('delete')" class="post"/>                                
+                    </a>
+            	</span>                           
+            </h3>                           
+        </div>
+        <p><span jwcid="@InsertText" value="ognl:post.text">Post text</span></p>
+        <p class="postFooter">
+            <img jwcid="@Image" alt="Comments" image="ognl:getAsset('mail')" class="post"/>
+            Posted at 
+            <span jwcid="@Insert" value="ognl:post.formatedDateTime()">[TIME] on [DATE]</span>
+            <img jwcid="@Image" alt="Mame Comment" image="ognl:getAsset('page')" />
+			<a href="#" jwcid="@DirectLink" listener="ognl:listeners.viewPost" parameters="ognl:post.id">
+                <span jwcid="@Insert" value="ognl:post.comments.size">10</span> comment(s) left so far. 
+            </a>
+        </p>
+	</div>
+    <span jwcid="@ghavial:MenuContainer" type="test">body</span>
+    <span jwcid="@ghavial:MenuContainer" type="test">body</span>
+</span>
+               
+            

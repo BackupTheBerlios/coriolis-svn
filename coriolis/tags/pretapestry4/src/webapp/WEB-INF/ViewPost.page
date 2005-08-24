@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+<page-specification class="org.mikejones.coriolis.pages.ViewPost">
+    
+    <property-specification name="message" type="java.lang.String" />
+    
+	<property-specification name="post" type="org.mikejones.coriolis.om.Post" />
+    <property-specification name="comments" type="java.util.List" />
+    <property-specification name="comment" type="org.mikejones.coriolis.om.Comment" />
+    
+    <property-specification name="postId" type="java.lang.Integer" />
+    <property-specification name="author" type="java.lang.String" />
+    <property-specification name="authorWebsite" type="java.lang.String" />
+    <property-specification name="authorComment" type="java.lang.String" />
+    
+    <context-asset name="mail" path="i/icon-mail.gif" />
+    <context-asset name="page" path="i/icon-page.gif" />
+    
+</page-specification>

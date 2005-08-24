@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="org.mikejones.coriolis.om.Comment"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Integer"
+        >
+            <generator class="native">
+            </generator>
+        </id>
+		
+		<many-to-one 
+			name="post"
+			column="parent_id"
+			class="org.mikejones.coriolis.om.Post"
+			not-null="true" 
+		/>	
+		
+	    <property
+            name="date"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            column="date"
+        />
+		
+		<property
+            name="author"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="author"
+        />
+
+		<property
+            name="comment"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="comment"
+        />		
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<nodeSet  version="1.1">
+	<view uin="V574ng9e753bzty4usec9">
+		<property name="$defaultDiagram" value="true"/>
+		<property name="$metaclass" value="Package Diagram"/>
+		<property name="bounds" value="-5,-5,751,554"/>
+		<reference referencedUin="jdt:e_class:src:org.mikejones.coriolis.managers.impl.HibernatePostManager">
+			<property name="bounds" value="10,10,189,186"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:org.mikejones.coriolis.managers.impl.HibernatePersonManager">
+			<property name="bounds" value="10,230,189,134"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:org.mikejones.coriolis.managers.impl.HibernatePostManagerTest">
+			<property name="bounds" value="279,10,200,186"/>
+			<reference referencedUin="jdt:l_ast:src:org.mikejones.coriolis.managers.impl.HibernatePostManagerTest:postManager">
+				<property name="sourceAnchor" value="279,103"/>
+				<property name="targetAnchor" value="199,103"/>
+			</reference>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:org.mikejones.coriolis.managers.impl.HibernateCommentManager">
+			<property name="bounds" value="219,230,189,134"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:org.mikejones.coriolis.managers.impl.TestPersonManager">
+			<property name="bounds" value="10,410,127,134"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:org.mikejones.coriolis.managers.impl.TestPostManager">
+			<property name="bounds" value="499,10,121,173"/>
+		</reference>
+	</view>
+</nodeSet>
