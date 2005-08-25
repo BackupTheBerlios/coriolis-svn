@@ -1,17 +1,24 @@
- <span jwcid="@Layout" >   
- 	<div id="login">
-	    <span jwcid="@Conditional" condition="ognl:message" >
-	        <p><span jwcid="@Insert" value="ognl:message">Error Message</span></p>
-	    </span>
+<span jwcid="@Layout">   
+    <span jwcid="@Conditional" condition="ognl:message" >
+    <div class="contentBox error">
+		<p><span jwcid="@Insert" value="ognl:message">Error Message</span></p>		
+    </div>
+    </span>
+ 	<div class="contentBox login">	            
+    	<h2>Login</h2>
+        <p>
+            Enter your login credentials.
+        </p>
 	    <form jwcid="@Form" listener="ognl:listeners.login" >
 	        <label for="username">Username
             	<input type="text" jwcid="username@TextField" value="ognl:username" />
           	</label>
+            <br />
             <label for="username">Password
-	            <input type="password" jwcid="@TextField" value="ognl:password" hidden="ognl:true" />  
+	            <input type="password" jwcid="passwrd@TextField" value="ognl:password" hidden="ognl:true" />  
         	</label>
 	        <input type="submit" name="login" value="login" />
 	    </form>	    	    
 	</div>       
- </span>
+</span>
 

@@ -3,24 +3,26 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-Strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>Mikes Tapestry Blog</title>
+		<title></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<style type="text/css">
-			@import url(/blog/s/default.css);
-			@import url(/blog/s/layout.css);
-			@import url(/blog/s/post.css);
-            @import url(/blog/s/forms.css);
+			@import url(s/base.css);
+            @import url(s/layout.css);
+            @import url(s/menu.css);
+            @import url(s/calendar.css);
+            @import url(s/post.css);
 		</style>
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	</head>
-    <body jwcid="@Body">
-	    <div id="wrapper">
-			<div id="header">
-		           	
-		    </div>
-	        <div id="navbar">
+	<body jwcid="@Body">   
+        <div id="wrapper">        
+            <div id="head">
+                
+            </div>            
+            <div id="navbar">
 				<ul id="internals">
-	            	<li><a jwcid="@PageLink" page="Blog" title="Return to the homepage" href="#">Home</a></li>                                           
+	            	<li>
+                        <a jwcid="@PageLink" page="Blog" title="Return to the homepage" href="#">Home</a>
+					</li>                                           
 	                <span jwcid="@Conditional" condition="ognl:isUserLoggedIn()" >
 	                <li>
 	                    <a jwcid="@PageLink" page="NewPost" href="#" >Add Post</a>
@@ -28,7 +30,7 @@
 	                <li >
 	                    <a title="Change the look of the blog." href="#" class="inactive">Change Skin</a>
 	                </li>
-	                 <li>
+	                <li>
 	                    <a jwcid="@DirectLink" listener="ognl:listeners.logout" title="Logout." href="#" >[Logout]</a>
 	                </li>
 	                </span>
@@ -37,52 +39,41 @@
                     </span>
 				</ul>	            	
 	        </div>
-	        <div id="sidebar">
-	            
-	            <ul id="externals">                    
-	                <li>Programming
-	                    <ul>                            
-	                        <li><a title="King of the nerds." href="http://www.martinfowler.com">Martin Fowler</a></li>
-	                    </ul>
-					</li>
-	            	<li>Tools
-	                    <ul>
-	                        <li><a title="Open source IDE" href="http://www.eclipse.org">Eclipse</a></li>
-	                        <li><a title="Component based web dev." href="http://jakarta.apache.org/tapestry/">Tapestry</a></li>
-	                        <li><a title="Dependency injection service microkernel." href="http://jakarta.apache.org/hivemind/">Hivemind</a></li>
-	                        <li><a title="Unit testing platform Java" href="http://www.junit.org">JUnit</a></li>
-	                        <li><a title="Build tool for Java" href="http://maven.apache.org">Maven</a></li>
-	                        <li><a class="last" title="Continuous integration tool" href="http://cruisecontrol.sourceforge.net/">CruiseControl</a></li>
-	                        <li><a class="last" title="Browser Based testing" href="http://selenium.thoughtworks.com/index.html">Selenium</a></li>
-	                    </ul>
-					</li>
-	                <li>Web Design
-	                    <ul>
-	                        <li><a title="King of the designers." href="http://www.zeldman.com">Zeldman</a></li>
-	                        <li><a title="Useful site." href="http://www.simplebits.com">SimpleBits</a></li>
-	                        <li><a class="last" title="Overly serious but still useful." href="http://www.mezzoblue.com">MezzoBlue</a></li>
-	                    </ul>
-	                </li>
-				</ul>
-	            <ul id="iconLinks">
-	                <li>
-	                    <ul>
-	                    	<li><a id="firefoxIcon" title="Get FireFox!" href="http://www.mozilla.org"></a></li>
-	                    </ul>
-	                </li>
-	            </ul>                                	
-	        </div>
-	        <div id="contentContainer">
-	            <div id="content">
-					<span jwcid="@RenderBody">
-				    Content goes here
-					</span>
-	        	</div>
-	        </div>	        
-	        <div id="footer">
-                <span jwcid="@Menu" type="this" >asfasfd</span>
-	        	<p>Nothing is ever valid.</p>
-			</div>
-		</div>
-	</body>
+            
+            <div id="contentWrapper">
+                
+                <div id="subContent">                    
+                    <span jwcid="@Calendar" />
+                    <h2>People</h2>
+                    <ul class="subMenu">                            
+	                	<li><a title="King of the nerds." href="http://www.martinfowler.com">Martin Fowler</a></li>
+	                </ul>
+                    <h2>Tools</h2>
+                    <ul class="subMenu">
+                        <li><a title="Open source IDE" href="http://www.eclipse.org">Eclipse</a></li>
+                        <li><a title="Component based web dev." href="http://jakarta.apache.org/tapestry/">Tapestry</a></li>
+                        <li><a title="Dependency injection service microkernel." href="http://jakarta.apache.org/hivemind/">Hivemind</a></li>
+                        <li><a title="Unit testing platform Java" href="http://www.junit.org">JUnit</a></li>
+                        <li><a title="Build tool for Java" href="http://maven.apache.org">Maven</a></li>
+                        <li><a title="Continuous integration tool" href="http://cruisecontrol.sourceforge.net/">CruiseControl</a></li>
+                        <li><a class="last" title="Browser Based testing" href="http://selenium.thoughtworks.com/index.html">Selenium</a></li>
+                    </ul>                    
+                    <h2>Web Design</h2>
+                    <ul class="subMenu">
+	                    <li><a title="King of the designers." href="http://www.zeldman.com">Zeldman</a></li>
+	                    <li><a title="Useful site." href="http://www.simplebits.com">SimpleBits</a></li>
+	                    <li><a class="last" title="Overly serious but still useful." href="http://www.mezzoblue.com">MezzoBlue</a></li>
+	                </ul>                    
+                </div>
+            
+                <div id="mainContent">                    
+                	<span jwcid="@RenderBody" />           
+                </div>                
+                <div style="clear: both">&nbsp;</div>            
+            </div>            
+            <div id="footer">
+                <p>This website may or may not be Xhtml Strict 1.0 using Css 2.0</p>
+            </div>                  
+        </div>    
+    </body>
 </html>

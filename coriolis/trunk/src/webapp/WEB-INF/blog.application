@@ -13,6 +13,9 @@
     
     <page name="Home" specification-path="Blog.page"/>    
     
+    <component-type type="Post" specification-path="components/Post.jwc"/>
+    <component-type type="Calendar" specification-path="components/Calendar.jwc"/>
+    
     <library id="ghavial" specification-path="/org/mikejones/ghavial/Ghavial.library"/>
     
 </application>

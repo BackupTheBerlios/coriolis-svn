@@ -1,7 +1,7 @@
 <span jwcid="@Layout">
 	<span jwcid="@Conditional" condition="ognl:beans.delegate.hasErrors" >
         <p class="error">
-            <img style="vertical-align:text-bottom" src="/blog/i/icon-alert.gif" alt="There are errors on the page!" />
+            <img style="vertical-align:text-bottom" src="i/icon-alert.gif" alt="There are errors on the page!" />
 	        <span jwcid="@Delegator" delegate="ognl:beans.delegate.firstError">
 	            Error Message
 	    	</span>
