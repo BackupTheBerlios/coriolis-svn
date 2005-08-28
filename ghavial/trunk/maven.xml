@@ -4,6 +4,6 @@
     <goal name="ghavial:luntbuild" description="Goal for luntbuld to call to compile and run tests">
         <attainGoal name="clean"/>        
         <attainGoal name="test"/>
-		<attainGoal name="war:install-snapshot"/>		
+		<attainGoal name="jar:install-snapshot"/>		
     </goal>
 </project>
