@@ -1,0 +1,9 @@
+<project default="" xmlns:j="jelly:core" xmlns:deploy="deploy"
+    xmlns:ant="jelly:ant" xmlns:maven="jelly:maven">
+
+    <goal name="ghavial:luntbuild" description="Goal for luntbuld to call to compile and run tests">
+        <attainGoal name="clean"/>        
+        <attainGoal name="test"/>
+		<attainGoal name="war:install-snapshot"/>		
+    </goal>
+</project>
