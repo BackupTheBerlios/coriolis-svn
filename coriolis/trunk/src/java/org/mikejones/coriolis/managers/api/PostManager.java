@@ -10,7 +10,7 @@ import org.mikejones.coriolis.om.Post;
 /**
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike</a>
  */
-public interface IPostManager {
+public interface PostManager {
     
     public Post getPost(int index);
     

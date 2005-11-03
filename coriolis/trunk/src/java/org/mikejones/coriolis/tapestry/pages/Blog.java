@@ -1,7 +1,7 @@
 /*
  * Created on 21-Feb-2005
  */
-package org.mikejones.coriolis.pages;
+package org.mikejones.coriolis.tapestry.pages;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.event.PageEvent;
 import org.apache.tapestry.event.PageRenderListener;
 import org.apache.tapestry.html.BasePage;
-import org.mikejones.coriolis.managers.api.IPostManager;
+import org.mikejones.coriolis.managers.api.PostManager;
 
 /**
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike</a>
@@ -29,7 +29,7 @@ public abstract class Blog extends BasePage implements PageRenderListener {
      */
     public void pageBeginRender(PageEvent pageEvent) {
         Registry registry = HiveMindFilter.getRegistry(pageEvent.getRequestCycle().getRequestContext().getRequest());
-        IPostManager postManager = (IPostManager) registry.getService(IPostManager.class);
+        PostManager postManager = (PostManager) registry.getService(PostManager.class);
         setPostList(postManager.getPosts());
     }
 
@@ -51,7 +51,7 @@ public abstract class Blog extends BasePage implements PageRenderListener {
         Object[] parameters = cycle.getServiceParameters();
         Integer postId = (Integer) parameters[0];
         Registry registry = HiveMindFilter.getRegistry(cycle.getRequestContext().getRequest());
-        ((IPostManager) registry.getService(IPostManager.class)).removePost(postId);
+        ((PostManager) registry.getService(PostManager.class)).removePost(postId);
         
     }
 

@@ -6,13 +6,13 @@ package org.mikejones.coriolis.managers.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.mikejones.coriolis.managers.api.IPostManager;
+import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
 
 /**
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike </a>
  */
-public class TestPostManager implements IPostManager {
+public class TestPostManager implements PostManager {
 
     private List posts;
 

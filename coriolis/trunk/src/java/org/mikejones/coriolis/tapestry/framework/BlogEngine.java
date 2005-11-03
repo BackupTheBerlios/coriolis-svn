@@ -1,7 +1,7 @@
 /*
  * Created on 07-Mar-2005
  */
-package org.mikejones.coriolis.framework;
+package org.mikejones.coriolis.tapestry.framework;
 
 import org.apache.hivemind.Registry;
 import org.apache.hivemind.servlet.HiveMindFilter;

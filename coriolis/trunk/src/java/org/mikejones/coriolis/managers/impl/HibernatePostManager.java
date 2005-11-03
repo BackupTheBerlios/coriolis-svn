@@ -11,10 +11,10 @@ import net.sf.hibernate.expression.Order;
 
 import org.apache.commons.lang.exception.NestableRuntimeException;
 import org.mikejones.coriolis.hibernate.services.api.ISessionManager;
-import org.mikejones.coriolis.managers.api.IPostManager;
+import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
 
-public class HibernatePostManager implements IPostManager {
+public class HibernatePostManager implements PostManager {
 
     private ISessionManager iSessionManager;
 

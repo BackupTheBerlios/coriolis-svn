@@ -1,7 +1,7 @@
 /*
  * Created on 26-Feb-2005
  */
-package org.mikejones.coriolis.pages;
+package org.mikejones.coriolis.tapestry.pages;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -15,9 +15,9 @@ import org.apache.tapestry.event.PageRenderListener;
 import org.apache.tapestry.form.IFormComponent;
 import org.apache.tapestry.valid.IValidationDelegate;
 import org.apache.tapestry.valid.ValidationConstraint;
-import org.mikejones.coriolis.framework.SecurePage;
-import org.mikejones.coriolis.managers.api.IPostManager;
+import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
+import org.mikejones.coriolis.tapestry.framework.SecurePage;
 
 public abstract class NewPost extends SecurePage implements PageRenderListener {
 
@@ -55,7 +55,7 @@ public abstract class NewPost extends SecurePage implements PageRenderListener {
         }
 
         Registry registry = HiveMindFilter.getRegistry(cycle.getRequestContext().getRequest());
-        IPostManager postManager = (IPostManager) registry.getService(IPostManager.class);
+        PostManager postManager = (PostManager) registry.getService(PostManager.class);
         Post post = getPost();
         post.setDate(new Date(Calendar.getInstance().getTimeInMillis()));
 

@@ -1,7 +1,7 @@
 /*
  * Created on 06-Mar-2005
  */
-package org.mikejones.coriolis.pages;
+package org.mikejones.coriolis.tapestry.pages;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.hivemind.Registry;
@@ -9,9 +9,9 @@ import org.apache.hivemind.servlet.HiveMindFilter;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.event.PageEvent;
 import org.apache.tapestry.event.PageRenderListener;
-import org.mikejones.coriolis.framework.SecurePage;
-import org.mikejones.coriolis.managers.api.IPostManager;
+import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
+import org.mikejones.coriolis.tapestry.framework.SecurePage;
 
 public abstract class EditPost extends SecurePage implements PageRenderListener {
 
@@ -32,7 +32,7 @@ public abstract class EditPost extends SecurePage implements PageRenderListener 
 
     public void editPost(IRequestCycle cycle, Integer postId) {
         Registry registry = HiveMindFilter.getRegistry(cycle.getRequestContext().getRequest());        
-        IPostManager postManager = (IPostManager) registry.getService(IPostManager.class); 
+        PostManager postManager = (PostManager) registry.getService(PostManager.class); 
         setPost(postManager.getPost(postId));
         cycle.activate(this);
     }
@@ -42,7 +42,7 @@ public abstract class EditPost extends SecurePage implements PageRenderListener 
             setMessage("The text field is required!");
         } else {
             Registry registry = HiveMindFilter.getRegistry(cycle.getRequestContext().getRequest());        
-            IPostManager postManager = (IPostManager) registry.getService(IPostManager.class);            
+            PostManager postManager = (PostManager) registry.getService(PostManager.class);            
             postManager.saveOrUpdate(getPost());
             cycle.activate("Blog");
         }

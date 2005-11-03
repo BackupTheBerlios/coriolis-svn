@@ -1,7 +1,7 @@
 /*
  * Created on 21-Feb-2005
  */
-package org.mikejones.coriolis.pages;
+package org.mikejones.coriolis.tapestry.pages;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.hivemind.Registry;
@@ -9,7 +9,7 @@ import org.apache.hivemind.servlet.HiveMindFilter;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.html.BasePage;
 import org.mikejones.coriolis.managers.api.ICommentManager;
-import org.mikejones.coriolis.managers.api.IPostManager;
+import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Comment;
 import org.mikejones.coriolis.om.Post;
 
@@ -43,8 +43,8 @@ public abstract class ViewPost extends BasePage {
     public void viewPost(IRequestCycle cycle, Integer postId) {
         Registry registry = HiveMindFilter.getRegistry(cycle
                 .getRequestContext().getRequest());
-        IPostManager postManager = (IPostManager) registry
-                .getService(IPostManager.class);
+        PostManager postManager = (PostManager) registry
+                .getService(PostManager.class);
         setPostId(postId);
         setPost(postManager.getPost(postId));
         cycle.activate(this);
@@ -54,8 +54,8 @@ public abstract class ViewPost extends BasePage {
         Registry registry = HiveMindFilter.getRegistry(cycle
                 .getRequestContext().getRequest());
 
-        IPostManager postManager = (IPostManager) registry
-                .getService(IPostManager.class);
+        PostManager postManager = (PostManager) registry
+                .getService(PostManager.class);
 
         ICommentManager commentManager = (ICommentManager) registry
                 .getService(ICommentManager.class);

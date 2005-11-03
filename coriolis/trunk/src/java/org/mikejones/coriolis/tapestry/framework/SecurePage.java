@@ -1,7 +1,7 @@
 /*
  * Created on 27-Feb-2005
  */
-package org.mikejones.coriolis.framework;
+package org.mikejones.coriolis.tapestry.framework;
 
 import org.apache.tapestry.PageRedirectException;
 import org.apache.tapestry.event.PageEvent;

@@ -1,7 +1,7 @@
 /*
  * 
  */
-package org.mikejones.coriolis.framework.validation;
+package org.mikejones.coriolis.tapestry.framework.validation;
 
 import org.apache.tapestry.IMarkupWriter;
 import org.apache.tapestry.IRequestCycle;

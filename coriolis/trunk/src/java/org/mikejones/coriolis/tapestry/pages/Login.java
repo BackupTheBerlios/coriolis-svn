@@ -1,15 +1,15 @@
 /*
  * Created on 05-Mar-2005
  */
-package org.mikejones.coriolis.pages;
+package org.mikejones.coriolis.tapestry.pages;
 
 import org.apache.hivemind.Registry;
 import org.apache.hivemind.servlet.HiveMindFilter;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.html.BasePage;
-import org.mikejones.coriolis.framework.Visit;
 import org.mikejones.coriolis.managers.api.IPersonManager;
 import org.mikejones.coriolis.om.Person;
+import org.mikejones.coriolis.tapestry.framework.Visit;
 
 public abstract class Login extends BasePage {
     

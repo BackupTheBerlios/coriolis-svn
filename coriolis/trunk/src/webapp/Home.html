@@ -1,4 +1,5 @@
-<span jwcid="@Layout" >
-	<h1>hello everyone</h1>
-    <a href="#" jwcid="@DirectLink" listener="ognl:listeners.linkClicked">move on</a>
+<span jwcid="@Layout">
+	<span class="post" jwcid="@Foreach" source="ognl:postList" value="ognl:post">
+        <span jwcid="@Post" post="ognl:post" />        
+	</span> 
 </span>
