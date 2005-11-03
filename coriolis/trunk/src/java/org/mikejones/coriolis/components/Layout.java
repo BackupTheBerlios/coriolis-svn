@@ -5,7 +5,7 @@ package org.mikejones.coriolis.components;
 
 import org.apache.tapestry.BaseComponent;
 import org.apache.tapestry.IRequestCycle;
-import org.mikejones.coriolis.framework.Visit;
+import org.mikejones.coriolis.tapestry.framework.Visit;
 
 public abstract class Layout extends BaseComponent {
     
