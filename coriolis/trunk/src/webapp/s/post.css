@@ -1,0 +1,45 @@
+/* post layout */
+
+div.post {
+	margin-bottom: 10px;
+}
+
+div.postHeader {
+	padding: 5px;
+	background: #fff;
+	border-bottom: 1px dotted #cde;
+}
+
+div.postHeader p {
+	margin: 0 0 0 20px;
+	color: #69c;
+}
+
+div.postHeader h2 {
+	margin: 2px 0 0 0;
+	padding: 2px 0 0 20px;
+	font-size: 12px;
+	line-height: 16px;
+	background: url(../img/icon-page.gif) left center no-repeat;
+}
+
+div.postBody {
+	padding: 0 5px;
+	background: #fff;
+	border: 1px solid #fff;
+}
+
+div.postFooter {
+	padding: 5px;
+	border-top: 1px dotted #ccc;
+	color: #999;
+}
+
+div.postFooter p {
+	margin: 0;
+}
+
+
+.error {
+    color: red;
+}
