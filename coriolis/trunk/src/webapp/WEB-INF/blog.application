@@ -9,6 +9,6 @@
     <meta key="org.apache.tapestry.component-class-packages" value="org.mikejones.coriolis.tapestry.components"/>
     
 	<component-type type="PostCalendar" specification-path="components/PostCalendar.jwc"/>
-    <component-type type="Post" specification-path="components/Post.jwc"/>
+    <!--component-type type="Post" specification-path="components/Post.jwc"/-->
     <component-type type="Layout" specification-path="components/Layout.jwc"/>
 </application>

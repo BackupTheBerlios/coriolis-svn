@@ -18,23 +18,23 @@ import org.mikejones.coriolis.om.Post;
  */
 public abstract class Home extends BasePage implements PageBeginRenderListener {
     
-    public abstract void setPostList(List postList);
-//    
-    public abstract PostManager getPostManager();
-//
+//    public abstract void setPostList(List postList);
+    
+//    public abstract PostManager getPostManager();
+
     /*
      *  (non-Javadoc)
      * @see org.apache.tapestry.event.PageBeginRenderListener#pageBeginRender(org.apache.tapestry.event.PageEvent)
      */
     public void pageBeginRender(PageEvent event) {
-        getPostManager().getPosts();
-        List posts = new ArrayList();
-        Post post = new Post();
-        post.setText("text");
-        post.setTitle("title");
-        post.setDate(new Date());
-        posts.add(post);
-        setPostList(posts);        
+//        getPostManager().getPosts();
+//        List posts = new ArrayList();
+//        Post post = new Post();
+//        post.setText("text");
+//        post.setTitle("title");
+//        post.setDate(new Date());
+//        posts.add(post);
+//        setPostList(posts);        
     }    
     
 

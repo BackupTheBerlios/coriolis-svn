@@ -12,6 +12,6 @@
     <property name="postList" />
     <property name="post" />           
     
-    <inject property="postManager" object="service:blog.PostManager"/>
+    <!--inject property="postManager" object="service:blog.PostManager"/-->
     
 </page-specification>
