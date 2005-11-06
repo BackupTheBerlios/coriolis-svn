@@ -12,7 +12,7 @@
     <page name="Login" specification-path="pages/Login.page"/>
     
 	<component-type type="PostCalendar" specification-path="components/PostCalendar.jwc"/>
-    <!--component-type type="Post" specification-path="components/Post.jwc"/-->
+    <component-type type="Post" specification-path="components/Post.jwc"/>
     <component-type type="Layout" specification-path="components/Layout.jwc"/>
     <component-type type="FormErrors" specification-path="components/FormErrors.jwc"/>
     

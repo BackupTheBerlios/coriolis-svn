@@ -1,0 +1,22 @@
+<div class="post">
+    <div class="postHeader">
+        <h2>
+            <span jwcid="@Insert" value="ognl:post.title" >Post Title</span>
+		</h2>
+        <p>
+            <span jwcid="@Insert" value="ognl:post.date" format="ognl:dateFormat">[TIME] on [DATE]</span>
+        </p>
+    </div>
+    <div class="postBody">
+        <p>
+            <span jwcid="@InsertText" value="ognl:post.text">Post text</span>
+        </p>
+    </div>
+    <div class="postFooter">
+        <p>
+            <a href="#" jwcid="@DirectLink" listener="ognl:listeners.viewPost" parameters="ognl:post.id">
+                <span jwcid="@Insert" value="ognl:post.comments.size">10</span> comment(s) left so far. 
+            </a>
+        </p>
+    </div>
+</div>

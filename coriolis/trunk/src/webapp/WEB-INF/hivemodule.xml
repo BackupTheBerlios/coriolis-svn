@@ -5,7 +5,8 @@
       <create-instance class="org.mikejones.coriolis.tapestry.framework.aso.BlogVisit"/>
     </state-object>
   </contribution>
-  <service-point id="ISessionManager" interface="org.mikejones.coriolis.hibernate.services.api.ISessionManager">
+  <service-point id="ISessionManager"
+    interface="org.mikejones.coriolis.hibernate.services.api.ISessionManager">
     <create-instance
       class="org.mikejones.coriolis.hibernate.services.impl.ThreadlocalSessionManager"/>
     <!--interceptor service-id="hivemind.LoggingInterceptor"/-->
@@ -17,7 +18,7 @@
   </service-point>
   <service-point id="PostManager" interface="org.mikejones.coriolis.managers.api.PostManager">
     <invoke-factory>
-      <construct class="org.mikejones.coriolis.managers.impl.HibernatePostManager"/>
+      <construct class="org.mikejones.coriolis.managers.impl.MockPostManager"/>
     </invoke-factory>
   </service-point>
   <service-point id="CommentManager" interface="org.mikejones.coriolis.managers.api.CommentManager">

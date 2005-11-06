@@ -12,14 +12,14 @@ import org.mikejones.coriolis.om.Post;
 /**
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike </a>
  */
-public class TestPostManager implements PostManager {
+public class MockPostManager implements PostManager {
 
-    private List posts;
+    private List<Post> posts;
 
     //private static IPostManager instance;
 
-    public TestPostManager() {
-        posts = new ArrayList();
+    public MockPostManager() {
+        posts = new ArrayList<Post>();
         Post post = new Post();
         post.setId(new Integer(1));
         post.setTitle("This is an examplte Title");
@@ -35,13 +35,6 @@ public class TestPostManager implements PostManager {
         posts.add(post);
 
     }
-
-//    public static IPostManager getInstance() {
-//        if (instance == null) {
-//            instance = new TestPostManager();
-//        }
-//        return instance;
-//    }
 
     /*
      * (non-Javadoc)

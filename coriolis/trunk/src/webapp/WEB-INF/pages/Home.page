@@ -9,10 +9,7 @@
     <asset name="edit" path="i/icon-edit.gif" />
     <asset name="delete" path="i/icon-delete.gif" />
     
-    <property name="postList" />
-    <property name="post" />           
-    
-    <inject property="postManager" object="service:blog.PostManager"/>
-    <inject property="user" type="state" object="state:user"/>
+    <property name="posts" />
+    <property name="post" />               
     
 </page-specification>

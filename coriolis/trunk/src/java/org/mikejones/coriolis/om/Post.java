@@ -3,9 +3,7 @@
  */
 package org.mikejones.coriolis.om;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -13,13 +11,11 @@ import java.util.TreeSet;
  * A class to respresent a post.
  * This is a POJO and is part of the domain model.
  * 
- * TODO: convert to use xdoclet
+ * TODO: convert to use annotations
  * 
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike </a>
  */
-public class Post {
-
-    private SimpleDateFormat DATE_TIME_FORMAT = new SimpleDateFormat("kk':'mm 'on' dd MMMM yyyy");    
+public class Post {    
 
     private Integer id;
 
@@ -27,22 +23,14 @@ public class Post {
 
     private String text= "";
 
-    private SortedSet comments;
+    private SortedSet<Comment> comments;
 
     private Date date;
 
     public Post() {
-        comments = new TreeSet();        
+        comments = new TreeSet<Comment>();        
     }
-
-    /**
-     * Helper method to retrun the date in a pretty fashion
-     * @return
-     */
-    public String formatedDateTime() {
-        return DATE_TIME_FORMAT.format(date);
-    }
-
+    
     /**
      * @return Returns the id.
      */
@@ -61,7 +49,7 @@ public class Post {
     /**
      * @return Returns the comments.
      */
-    public Set getComments() {
+    public SortedSet<Comment> getComments() {
         return comments;
     }
 
@@ -69,7 +57,7 @@ public class Post {
      * @param comments
      *            The comments to set.
      */
-    public void setComments(SortedSet comments) {
+    public void setComments(SortedSet<Comment> comments) {
         this.comments = comments;
     }
     
