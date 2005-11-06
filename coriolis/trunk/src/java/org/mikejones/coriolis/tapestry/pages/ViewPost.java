@@ -8,7 +8,7 @@ import org.apache.hivemind.Registry;
 import org.apache.hivemind.servlet.HiveMindFilter;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.html.BasePage;
-import org.mikejones.coriolis.managers.api.ICommentManager;
+import org.mikejones.coriolis.managers.api.CommentManager;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Comment;
 import org.mikejones.coriolis.om.Post;
@@ -57,8 +57,8 @@ public abstract class ViewPost extends BasePage {
         PostManager postManager = (PostManager) registry
                 .getService(PostManager.class);
 
-        ICommentManager commentManager = (ICommentManager) registry
-                .getService(ICommentManager.class);
+        CommentManager commentManager = (CommentManager) registry
+                .getService(CommentManager.class);
 
         if (StringUtils.isEmpty(getAuthor())
                 || StringUtils.isEmpty(getAuthorComment())) {

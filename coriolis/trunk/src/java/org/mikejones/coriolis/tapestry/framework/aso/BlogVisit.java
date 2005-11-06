@@ -6,14 +6,16 @@ package org.mikejones.coriolis.tapestry.framework.aso;
 import java.io.Serializable;
 
 import org.apache.tapestry.IRequestCycle;
-import org.apache.tapestry.SessionStoreOptimized;
 import org.mikejones.coriolis.managers.api.PersonManager;
 import org.mikejones.coriolis.om.Person;
 import org.mikejones.coriolis.tapestry.framework.BlogEngine;
 
-public class Visit implements Serializable, SessionStoreOptimized {
+public class BlogVisit implements Serializable {    
 
-    private static final long serialVersionUID = 3258407314062259257L;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
     private transient Person user = null;
 
@@ -52,12 +54,6 @@ public class Visit implements Serializable, SessionStoreOptimized {
         return userId != null;
     }
 
-    /*
-     *  (non-Javadoc)
-     * @see org.apache.tapestry.SessionStoreOptimized#isStoreToSessionNeeded()
-     */
-    public boolean isStoreToSessionNeeded() {
-        return isUserLoggedIn();
-    }
+   
 
 }

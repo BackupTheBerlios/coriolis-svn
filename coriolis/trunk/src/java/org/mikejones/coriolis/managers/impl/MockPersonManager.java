@@ -9,11 +9,11 @@ import java.util.List;
 import org.mikejones.coriolis.managers.api.PersonManager;
 import org.mikejones.coriolis.om.Person;
 
-public class TestPersonManager implements PersonManager {
+public class MockPersonManager implements PersonManager {
     
     private static List users;
     
-    public TestPersonManager() {
+    public MockPersonManager() {
         users = new ArrayList();
         Person person = new Person();
         person.setId(new Integer(1));

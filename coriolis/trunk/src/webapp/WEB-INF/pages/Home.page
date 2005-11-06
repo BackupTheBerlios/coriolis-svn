@@ -13,5 +13,6 @@
     <property name="post" />           
     
     <inject property="postManager" object="service:blog.PostManager"/>
+    <inject property="user" type="state" object="state:user"/>
     
 </page-specification>

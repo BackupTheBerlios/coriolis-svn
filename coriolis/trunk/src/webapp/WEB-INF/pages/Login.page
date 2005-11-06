@@ -11,7 +11,5 @@
     
     <property name="username" />
     <property name="password" />
-    
-    <inject property="postManager" object="service:blog.PersonManager"/>
-
+    	
 </page-specification>

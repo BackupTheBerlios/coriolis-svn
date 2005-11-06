@@ -10,12 +10,12 @@ import org.apache.tapestry.form.IFormComponent;
 import org.apache.tapestry.html.BasePage;
 import org.apache.tapestry.valid.IValidationDelegate;
 import org.apache.tapestry.valid.ValidationConstraint;
-import org.mikejones.coriolis.tapestry.framework.aso.Visit;
+import org.mikejones.coriolis.tapestry.framework.aso.BlogVisit;
 
 public class SecurePage extends BasePage implements PageValidateListener {
 
     public void pageValidate(PageEvent pageEvent) {
-        Visit visit = (Visit) getVisit();
+        BlogVisit visit = (BlogVisit) getVisit();
         if (!visit.isUserLoggedIn()) {
             throw new PageRedirectException("Home");
         }

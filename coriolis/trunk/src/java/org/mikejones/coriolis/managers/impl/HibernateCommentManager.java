@@ -7,11 +7,11 @@ import net.sf.hibernate.HibernateException;
 
 import org.apache.commons.lang.exception.NestableRuntimeException;
 import org.mikejones.coriolis.hibernate.services.api.ISessionManager;
-import org.mikejones.coriolis.managers.api.ICommentManager;
+import org.mikejones.coriolis.managers.api.CommentManager;
 import org.mikejones.coriolis.om.Comment;
 import org.mikejones.coriolis.om.Post;
 
-public class HibernateCommentManager implements ICommentManager {
+public class HibernateCommentManager implements CommentManager {
 
     private ISessionManager iSessionManager;
 

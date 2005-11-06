@@ -140,7 +140,15 @@
 			<properties>
 				<war.bundle>true</war.bundle>
 			</properties>
-		</dependency>			
+		</dependency>		
+		<dependency>
+			<groupId>tapestry</groupId>
+			<artifactId>tapestry</artifactId>
+			<version>4.0-beta-12</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
 		<dependency>
 			<groupId>tapestry</groupId>
 			<artifactId>tapestry-contrib</artifactId>
@@ -151,7 +159,15 @@
 		</dependency>	
 		<dependency>
 			<groupId>tapestry</groupId>
-			<artifactId>tapestry</artifactId>
+			<artifactId>tapestry-annotations</artifactId>
+			<version>4.0-beta-12</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>	
+		<dependency>
+			<groupId>tapestry</groupId>
+			<artifactId>tapestry-portlet</artifactId>
 			<version>4.0-beta-12</version>
 			<properties>
 				<war.bundle>true</war.bundle>
