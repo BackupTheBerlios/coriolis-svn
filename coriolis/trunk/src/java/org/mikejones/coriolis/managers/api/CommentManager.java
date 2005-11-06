@@ -6,7 +6,7 @@ package org.mikejones.coriolis.managers.api;
 import org.mikejones.coriolis.om.Comment;
 import org.mikejones.coriolis.om.Post;
 
-public interface ICommentManager {
+public interface CommentManager {
     
     /**
      * Add a newly created comment to the post
