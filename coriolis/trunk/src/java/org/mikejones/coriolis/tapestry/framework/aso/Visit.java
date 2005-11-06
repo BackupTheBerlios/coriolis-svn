@@ -1,15 +1,17 @@
 /*
  * Created on 27-Feb-2005
  */
-package org.mikejones.coriolis.tapestry.framework;
+package org.mikejones.coriolis.tapestry.framework.aso;
 
 import java.io.Serializable;
 
 import org.apache.tapestry.IRequestCycle;
-import org.mikejones.coriolis.managers.api.IPersonManager;
+import org.apache.tapestry.SessionStoreOptimized;
+import org.mikejones.coriolis.managers.api.PersonManager;
 import org.mikejones.coriolis.om.Person;
+import org.mikejones.coriolis.tapestry.framework.BlogEngine;
 
-public class Visit implements Serializable {
+public class Visit implements Serializable, SessionStoreOptimized {
 
     private static final long serialVersionUID = 3258407314062259257L;
 
@@ -28,8 +30,8 @@ public class Visit implements Serializable {
             return null;
         }
         BlogEngine engine = (BlogEngine) cycle.getEngine();
-        IPersonManager personManager = (IPersonManager) engine.getRegistry(cycle).getService(
-                IPersonManager.class);
+        PersonManager personManager = (PersonManager) engine.getRegistry(cycle).getService(
+                PersonManager.class);
         return personManager.getUser(userId);        
     }
 
@@ -48,6 +50,14 @@ public class Visit implements Serializable {
 
     public boolean isUserLoggedIn() {
         return userId != null;
+    }
+
+    /*
+     *  (non-Javadoc)
+     * @see org.apache.tapestry.SessionStoreOptimized#isStoreToSessionNeeded()
+     */
+    public boolean isStoreToSessionNeeded() {
+        return isUserLoggedIn();
     }
 
 }

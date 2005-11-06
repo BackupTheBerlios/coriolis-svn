@@ -15,14 +15,19 @@ import org.apache.tapestry.valid.ValidationDelegate;
  */
 public class BlogDelegate extends ValidationDelegate {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
     /* (non-Javadoc)
      * @see org.apache.tapestry.valid.ValidationDelegate#writeLabelPrefix(org.apache.tapestry.form.IFormComponent, org.apache.tapestry.IMarkupWriter, org.apache.tapestry.IRequestCycle)
      */
     public void writeLabelPrefix(IFormComponent component, IMarkupWriter writer, IRequestCycle cycle) {
         //Called BEFORE the FieldLabel renders
-        writer.begin("label");
 
         if (isInError(component)) {
+            writer.begin("span");
             writer.attribute("class", "error");
         }
     }
@@ -31,8 +36,9 @@ public class BlogDelegate extends ValidationDelegate {
      * @see org.apache.tapestry.valid.ValidationDelegate#writeLabelSuffix(org.apache.tapestry.form.IFormComponent, org.apache.tapestry.IMarkupWriter, org.apache.tapestry.IRequestCycle)
      */
     public void writeLabelSuffix(IFormComponent component, IMarkupWriter writer, IRequestCycle cycle) {
-        writer.print(" *");
-        writer.end();
+        if (isInError(component)) {
+            writer.end();
+        }
     }
 
     /* (non-Javadoc)
@@ -49,10 +55,9 @@ public class BlogDelegate extends ValidationDelegate {
      * @param component
      */
     public void writeSuffix(IMarkupWriter writer, IRequestCycle cycle, IFormComponent component, IValidator validator) {
-//        if (validator != null && validator.isRequired()) {
-//            writer.print("*");
-//
-//        }
+        if (validator != null && validator.isRequired()) {
+            writer.print("*");
+        }
     }
 
     /**
@@ -69,4 +74,5 @@ public class BlogDelegate extends ValidationDelegate {
         }
 
     }
+
 }

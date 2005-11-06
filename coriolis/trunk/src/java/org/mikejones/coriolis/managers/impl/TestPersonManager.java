@@ -6,10 +6,10 @@ package org.mikejones.coriolis.managers.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.mikejones.coriolis.managers.api.IPersonManager;
+import org.mikejones.coriolis.managers.api.PersonManager;
 import org.mikejones.coriolis.om.Person;
 
-public class TestPersonManager implements IPersonManager {
+public class TestPersonManager implements PersonManager {
     
     private static List users;
     

@@ -8,6 +8,6 @@
     
     <description>This is the layout component for my application</description>
     
-    <!--property-specification name="userLoggedIn" type="boolean" /-->    
+    <!--inject name="blogVisit" type="state" object="visit"/-->
     
 </component-specification>

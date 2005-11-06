@@ -1,12 +1,17 @@
 <?xml version="1.0"?>
 <module id="blog" version="1.0.0">
-	
+  <contribution configuration-id="tapestry.state.ApplicationObjects">
+    <state-object name="visit" scope="session">
+      <create-instance class="org.mikejones.coriolis.tapestry.framework.aso.Visit"/>
+    </state-object>  
+  </contribution>
+  	
   <service-point id="ISessionManager" interface="org.mikejones.coriolis.hibernate.services.api.ISessionManager">
 	  <create-instance class="org.mikejones.coriolis.hibernate.services.impl.ThreadlocalSessionManager" />
 	  <!--interceptor service-id="hivemind.LoggingInterceptor"/-->
   </service-point>		
   
-  <service-point id="PersonManager" interface="org.mikejones.coriolis.managers.api.IPersonManager">
+  <service-point id="PersonManager" interface="org.mikejones.coriolis.managers.api.PersonManager">
 	 <invoke-factory>
       <construct class="org.mikejones.coriolis.managers.impl.TestPersonManager" />
     </invoke-factory>

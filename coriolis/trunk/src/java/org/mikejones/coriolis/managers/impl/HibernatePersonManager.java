@@ -4,10 +4,10 @@
 package org.mikejones.coriolis.managers.impl;
 
 import org.mikejones.coriolis.hibernate.services.api.ISessionManager;
-import org.mikejones.coriolis.managers.api.IPersonManager;
+import org.mikejones.coriolis.managers.api.PersonManager;
 import org.mikejones.coriolis.om.Person;
 
-public class HibernatePersonManager implements IPersonManager {
+public class HibernatePersonManager implements PersonManager {
     
     private ISessionManager iSessionManager;
     

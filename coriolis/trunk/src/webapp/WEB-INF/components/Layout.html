@@ -21,22 +21,22 @@
             <div id="navbar">
 				<ul id="internals">
 	            	<li>
-                        <a jwcid="@PageLink" page="Blog" title="Return to the homepage" href="#">Home</a>
+                        <a jwcid="@PageLink" page="Home" title="Return to the homepage" href="#">Home</a>
 					</li>                                           
-	                <!--span jwcid="@Conditional" condition="ognl:isUserLoggedIn()" -->
-	                <li>
-	                    <a jwcid="@PageLink" page="NewPost" href="#" >Add Post</a>
-	                </li>
-	                <li >
-	                    <a title="Change the look of the blog." href="#" class="inactive">Change Skin</a>
-	                </li>
-	                <li>
-	                    <a jwcid="@DirectLink" listener="ognl:listeners.logout" title="Logout." href="#" >[Logout]</a>
-	                </li>
-	                <!--/span-->
-                     <!--span jwcid="@Conditional" condition="ognl:!userLoggedIn" >
-                    <li><a jwcid="@PageLink" page="Login" title="Return to the homepage" href="#">[Login]</a></li>
-                    </span-->
+	                <span jwcid="@If" condition="state:visit" >
+		                <li>
+		                    <a jwcid="@PageLink" page="NewPost" href="#" >Add Post</a>
+		                </li>
+		                <li >
+		                    <a title="Change the look of the blog." href="#" class="inactive">Change Skin</a>
+		                </li>
+		                <li>
+		                    <a jwcid="@DirectLink" listener="ognl:listeners.logout" title="Logout." href="#" >[Logout]</a>
+		                </li>
+	                </span>
+                    <span jwcid="@Else" >
+	                    <li><a jwcid="@PageLink" page="Login" title="Return to the homepage" href="#">[Login]</a></li>
+                    </span>
 				</ul>	            	
 	        </div>
             

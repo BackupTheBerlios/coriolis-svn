@@ -1,23 +1,19 @@
-<span jwcid="@Layout">   
-    <span jwcid="@Conditional" condition="ognl:message" >
-    <div class="contentBox error">
-		<p><span jwcid="@Insert" value="ognl:message">Error Message</span></p>		
-    </div>
-    </span>
+<span jwcid="@Layout">       
  	<div class="contentBox login">	            
     	<h2>Login</h2>
         <p>
             Enter your login credentials.
         </p>
-	    <form jwcid="@Form" listener="ognl:listeners.login" >
-	        <label for="username">Username
-            	<input type="text" jwcid="username@TextField" value="ognl:username" />
-          	</label>
+        <span jwcid="@FormErrors" delegate="bean:delegate" />
+	    <form jwcid="@Form" success="ognl:listeners.login" delegate="bean:delegate"  >
+	        <label jwcid="@FieldLabel" field="component:username" >Username</label>
+            <input type="text" jwcid="username@ValidField" value="ognl:username" validator="validator:string,required" displayName="Username" />
+          	
             <br />
-            <label for="username">Password
-	            <input type="password" jwcid="passwrd@TextField" value="ognl:password" hidden="ognl:true" />  
-        	</label>
-	        <input type="submit" name="login" value="login" />
+            <label jwcid="@FieldLabel" field="component:password" for="username" >Password</label>
+	        <input type="password" jwcid="password@ValidField" value="ognl:password" hidden="ognl:true" validator="validator:string,required" displayName="Password" />  
+        	
+	        <input type="subming" jwcid="@Submit" value="login" />
 	    </form>	    	    
 	</div>       
 </span>

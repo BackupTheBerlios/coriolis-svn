@@ -5,7 +5,7 @@ package org.mikejones.coriolis.managers.api;
 
 import org.mikejones.coriolis.om.Person;
 
-public interface IPersonManager { 
+public interface PersonManager { 
     
     public Person getUser(Integer id);
     

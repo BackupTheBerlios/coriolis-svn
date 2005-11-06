@@ -7,19 +7,18 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.hivemind.Registry;
-import org.apache.hivemind.servlet.HiveMindFilter;
 import org.apache.tapestry.IRequestCycle;
+import org.apache.tapestry.event.PageBeginRenderListener;
 import org.apache.tapestry.event.PageEvent;
-import org.apache.tapestry.event.PageRenderListener;
-import org.apache.tapestry.form.IFormComponent;
 import org.apache.tapestry.valid.IValidationDelegate;
 import org.apache.tapestry.valid.ValidationConstraint;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
 import org.mikejones.coriolis.tapestry.framework.SecurePage;
 
-public abstract class NewPost extends SecurePage implements PageRenderListener {
+public abstract class NewPost extends SecurePage implements PageBeginRenderListener {
+    
+    public abstract PostManager getPostManager();
 
     public abstract Post getPost();
 
@@ -36,13 +35,6 @@ public abstract class NewPost extends SecurePage implements PageRenderListener {
         }
     }
 
-    private void error(IValidationDelegate delegate, String componentId, 
-            String message, ValidationConstraint constraint) {
-        IFormComponent component = (IFormComponent) getComponent(componentId);
-        delegate.setFormComponent(component);
-        delegate.record(message, constraint);
-    }
-
     public void addPost(IRequestCycle cycle) {
         IValidationDelegate delegate = (IValidationDelegate) getBeans().getBean("delegate");
 
@@ -52,14 +44,12 @@ public abstract class NewPost extends SecurePage implements PageRenderListener {
 
         if (delegate.getHasErrors()) {
             return;
-        }
-
-        Registry registry = HiveMindFilter.getRegistry(cycle.getRequestContext().getRequest());
-        PostManager postManager = (PostManager) registry.getService(PostManager.class);
+        }        
+        
         Post post = getPost();
         post.setDate(new Date(Calendar.getInstance().getTimeInMillis()));
 
-        postManager.addPost(getPost());
+        getPostManager().addPost(getPost());
         cycle.activate("Blog");
     }
 
