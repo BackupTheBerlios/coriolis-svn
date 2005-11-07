@@ -1,15 +1,8 @@
 <span jwcid="@Layout">
-	<span jwcid="@Conditional" condition="ognl:beans.delegate.hasErrors" >
-        <p class="error">
-            <img style="vertical-align:text-bottom" src="i/icon-alert.gif" alt="There are errors on the page!" />
-	        <span jwcid="@Delegator" delegate="ognl:beans.delegate.firstError">
-	            Error Message
-	    	</span>
-        </p>
-    </span>
+	<span jwcid="@FormErrors" delegate="ognl:beans.delegate" />
     <form jwcid="@Form" listener="ognl:listeners.addPost" delegate="ognl:beans.delegate" >
     	<span jwcid="@FieldLabel" field="ognl:components.inputTitle"  >Title</span> 
-        <input type="text" class="textbox" jwcid="inputTitle" />
+        <input jwcid="inputTitle" type="text" class="textbox"  />
         
         <span jwcid="@FieldLabel" field="ognl:components.inputText" displayName="Text" >Text</span>        
        	<textarea jwcid="inputText"></textarea>

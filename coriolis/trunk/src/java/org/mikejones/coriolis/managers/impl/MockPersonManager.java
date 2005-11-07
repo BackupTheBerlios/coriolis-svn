@@ -11,10 +11,10 @@ import org.mikejones.coriolis.om.Person;
 
 public class MockPersonManager implements PersonManager {
     
-    private static List users;
+    private static List<Person> users;
     
     public MockPersonManager() {
-        users = new ArrayList();
+        users = new ArrayList<Person>();
         Person person = new Person();
         person.setId(new Integer(1));
         person.setUsername("mik3jon3s");

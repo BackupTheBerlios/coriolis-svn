@@ -9,17 +9,16 @@ import org.apache.tapestry.annotations.InjectState;
 import org.mikejones.coriolis.tapestry.framework.aso.BlogVisit;
 
 public abstract class Layout extends BaseComponent {
-    
+
     @InjectState("blogVisit")
     public abstract BlogVisit getBlogVisit();
-    
+
+    public abstract void setIsLoggedIn(boolean isLoggedIn);
+
     protected void prepareForRender(IRequestCycle cycle) {
-        super.prepareForRender(cycle);
-        //getPage().getEngine().getInfrastructure().getApplicationStateManager().exists("blogVisit");        
-    }   
+        setIsLoggedIn(getPage().getEngine().getInfrastructure().getApplicationStateManager().exists("blogVisit"));        
+    }
     
-    public void logout() {
-        
-    }  
-        
+
+
 }

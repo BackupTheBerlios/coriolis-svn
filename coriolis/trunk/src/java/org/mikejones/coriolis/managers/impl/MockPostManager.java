@@ -69,7 +69,7 @@ public class MockPostManager implements PostManager {
      * 
      * @see org.mikejones.coriolis.managers.api.IPostManager#getPosts()
      */
-    public List getPosts() {
+    public List<Post> getPosts() {
         return posts;
     }
 

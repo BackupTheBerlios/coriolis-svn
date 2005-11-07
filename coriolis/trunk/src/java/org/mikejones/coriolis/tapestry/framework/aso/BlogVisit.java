@@ -5,10 +5,9 @@ package org.mikejones.coriolis.tapestry.framework.aso;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang.exception.NestableRuntimeException;
 import org.apache.tapestry.IRequestCycle;
-import org.mikejones.coriolis.managers.api.PersonManager;
 import org.mikejones.coriolis.om.Person;
-import org.mikejones.coriolis.tapestry.framework.BlogEngine;
 
 public class BlogVisit implements Serializable {    
 
@@ -31,10 +30,11 @@ public class BlogVisit implements Serializable {
         if (userId == null) {
             return null;
         }
-        BlogEngine engine = (BlogEngine) cycle.getEngine();
-        PersonManager personManager = (PersonManager) engine.getRegistry(cycle).getService(
-                PersonManager.class);
-        return personManager.getUser(userId);        
+        throw new NestableRuntimeException("userid is null; need to set up reteival from services");
+//        BlogEngine engine = (BlogEngine) cycle.getEngine();
+//        PersonManager personManager = (PersonManager) engine.getRegistry(cycle).getService(
+//                PersonManager.class);
+//        return personManager.getUser(userId);        
     }
 
     /**
