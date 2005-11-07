@@ -20,7 +20,7 @@ public interface PostManager {
      * Get the list of post in the db sorted by date posted
      * @return list of posts
      */
-    public List getPosts();
+    public List<Post> getPosts();
     
     public void addPost(Post post);
     
