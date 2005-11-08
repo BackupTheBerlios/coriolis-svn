@@ -21,8 +21,8 @@
     </div>
     <div class="postFooter">
         <p>
-            <img jwcid="@Image" alt="Mame Comment" image="ognl:getAsset('mail')" />
-			<a href="#" jwcid="@DirectLink" listener="ognl:listeners.viewPost" parameters="ognl:post.id">
+            <img jwcid="@Image" alt="Make Comment" image="ognl:getAsset('mail')" />
+			<a href="#" jwcid="@DirectLink" listener="listener:viewPost" parameters="ognl:{post.id}">
                 <span jwcid="@Insert" value="ognl:post.comments.size">10</span> comment(s) left so far. 
             </a>
         </p>

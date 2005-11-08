@@ -33,7 +33,5 @@ public abstract class Home extends BasePage implements PageBeginRenderListener {
     public void pageBeginRender(PageEvent event) {
         setPosts(getPostManager().getPosts());       
     }    
-    
-
 
 }
