@@ -17,8 +17,6 @@ public class MockPostManager implements PostManager {
 
     private List<Post> posts;
 
-    //private static IPostManager instance;
-
     public MockPostManager() {
         posts = new ArrayList<Post>();
         Post post = new Post();
