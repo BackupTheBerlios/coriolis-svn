@@ -47,7 +47,7 @@ public abstract class NewPost extends SecurePage implements PageBeginRenderListe
         }        
         
         Post post = getPost();
-        post.setDate(new Date(Calendar.getInstance().getTimeInMillis()));
+        post.setPostDate(new Date(Calendar.getInstance().getTimeInMillis()));
 
         getPostManager().addPost(getPost());
         cycle.activate("Blog");

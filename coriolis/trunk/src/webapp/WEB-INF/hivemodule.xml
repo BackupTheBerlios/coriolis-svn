@@ -5,12 +5,6 @@
       <create-instance class="org.mikejones.coriolis.tapestry.framework.aso.BlogVisit"/>
     </state-object>
   </contribution>
-  <service-point id="ISessionManager"
-    interface="org.mikejones.coriolis.hibernate.services.api.ISessionManager">
-    <create-instance
-      class="org.mikejones.coriolis.hibernate.services.impl.ThreadlocalSessionManager"/>
-    <!--interceptor service-id="hivemind.LoggingInterceptor"/-->
-  </service-point>
   <service-point id="PersonManager" interface="org.mikejones.coriolis.managers.api.PersonManager">
     <invoke-factory>
       <construct class="org.mikejones.coriolis.managers.impl.MockPersonManager"/>
@@ -21,9 +15,9 @@
       <construct class="org.mikejones.coriolis.managers.impl.MockPostManager"/>
     </invoke-factory>
   </service-point>
-  <service-point id="CommentManager" interface="org.mikejones.coriolis.managers.api.CommentManager">
+  <!--<service-point id="CommentManager" interface="org.mikejones.coriolis.managers.api.CommentManager">
     <invoke-factory>
       <construct class="org.mikejones.coriolis.managers.impl.HibernateCommentManager"/>
     </invoke-factory>
-  </service-point>
+  </service-point>-->
 </module>

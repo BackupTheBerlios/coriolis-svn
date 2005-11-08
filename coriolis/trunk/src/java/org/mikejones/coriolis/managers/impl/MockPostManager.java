@@ -25,7 +25,7 @@ public class MockPostManager implements PostManager {
         post
                 .setText("here is some really long text for a message.It will be much longer that this, I really should be able to put html"
                         + "in here too... but how am I going to deal with that.. it will be CRAZY.");
-        post.setDate(new Date());
+        post.setPostDate(new Date());
         posts.add(post);
         
 
@@ -33,7 +33,7 @@ public class MockPostManager implements PostManager {
         post.setId(new Integer(2));
         post.setTitle("created prog title");
         post.setText("post text taht is a little longs");
-        post.setDate(new Date());
+        post.setPostDate(new Date());
         posts.add(post);
 
     }

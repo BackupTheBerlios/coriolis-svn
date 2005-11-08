@@ -3,9 +3,16 @@
  */
 package org.mikejones.coriolis.om;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.List;
+
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+import javax.persistence.TemporalType;
 
 /**
  * A class to respresent a post.
@@ -15,25 +22,27 @@ import java.util.TreeSet;
  * 
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike </a>
  */
+@Entity
 public class Post {    
-
+    
     private Integer id;
 
     private String title = "";
 
     private String text= "";
 
-    private SortedSet<Comment> comments;
+    private List<Comment> comments;
 
-    private Date date;
+    private Date postDate;
 
     public Post() {
-        comments = new TreeSet<Comment>();        
+        comments = new ArrayList<Comment>();        
     }
     
     /**
      * @return Returns the id.
      */
+    @Id
     public Integer getId() {
         return id;
     }
@@ -49,7 +58,9 @@ public class Post {
     /**
      * @return Returns the comments.
      */
-    public SortedSet<Comment> getComments() {
+    @OneToMany (mappedBy="post")
+    @OrderBy("postDate")
+    public List<Comment> getComments() {
         return comments;
     }
 
@@ -57,7 +68,7 @@ public class Post {
      * @param comments
      *            The comments to set.
      */
-    public void setComments(SortedSet<Comment> comments) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
     
@@ -102,15 +113,16 @@ public class Post {
     /**
      * @return Returns the date.
      */
-    public Date getDate() {
-        return date;
+    @Basic (temporalType = TemporalType.TIME)
+    public Date getPostDate() {
+        return postDate;
     }
     
 
     /**
      * @param date The date to set.
      */
-    public void setDate(Date date) {
-        this.date = date;
+    public void setPostDate(Date date) {
+        this.postDate = date;
     }
 }

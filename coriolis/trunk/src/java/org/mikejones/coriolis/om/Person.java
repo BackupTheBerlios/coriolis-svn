@@ -5,6 +5,16 @@ package org.mikejones.coriolis.om;
 
 import java.util.Date;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.TemporalType;
+/**
+ * 
+ * 
+ * @author <a href="mailto:michael.daniel.jones@gmail.com">michael.jones</a>
+ */
+@Entity
 public class Person {
 
     private Integer id;
@@ -20,6 +30,7 @@ public class Person {
     /**
      * @return Returns the id.
      */
+    @Id
     public Integer getId() {
         return id;
     }
@@ -72,6 +83,7 @@ public class Person {
      * @param lastLoggedIn
      *            The lastLoggedIn to set.
      */
+    @Basic (temporalType = TemporalType.TIME)
     public void setLastLoggedIn(Date lastLoggedIn) {
         this.lastLoggedIn = lastLoggedIn;
     }
