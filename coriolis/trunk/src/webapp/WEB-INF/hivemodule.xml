@@ -15,9 +15,4 @@
       <construct class="org.mikejones.coriolis.managers.impl.MockPostManager"/>
     </invoke-factory>
   </service-point>
-  <!--<service-point id="CommentManager" interface="org.mikejones.coriolis.managers.api.CommentManager">
-    <invoke-factory>
-      <construct class="org.mikejones.coriolis.managers.impl.HibernateCommentManager"/>
-    </invoke-factory>
-  </service-point>-->
 </module>

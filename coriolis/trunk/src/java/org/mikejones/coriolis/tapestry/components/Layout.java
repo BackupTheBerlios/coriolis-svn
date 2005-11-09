@@ -16,9 +16,7 @@ public abstract class Layout extends BaseComponent {
     public abstract void setIsLoggedIn(boolean isLoggedIn);
 
     protected void prepareForRender(IRequestCycle cycle) {
-        setIsLoggedIn(getPage().getEngine().getInfrastructure().getApplicationStateManager().exists("blogVisit"));        
+        setIsLoggedIn(getPage().getEngine().getInfrastructure().getApplicationStateManager().exists("blogVisit"));
     }
-    
-
 
 }

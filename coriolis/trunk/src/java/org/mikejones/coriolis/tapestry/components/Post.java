@@ -7,7 +7,6 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 
 import org.apache.tapestry.BaseComponent;
-import org.apache.tapestry.IRequestCycle;
 import org.mikejones.coriolis.tapestry.pages.ViewPost;
 
 public class Post extends BaseComponent {

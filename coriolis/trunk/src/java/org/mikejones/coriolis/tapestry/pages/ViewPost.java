@@ -3,25 +3,21 @@
  */
 package org.mikejones.coriolis.tapestry.pages;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.tapestry.IPage;
-import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.annotations.InjectObject;
 import org.apache.tapestry.html.BasePage;
 import org.mikejones.coriolis.managers.api.PostManager;
-import org.mikejones.coriolis.om.Comment;
 import org.mikejones.coriolis.om.Post;
 
 /**
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike</a>
  */
 public abstract class ViewPost extends BasePage {
-    
+
     @InjectObject("service:blog.PostManager")
     public abstract PostManager getPostManager();
 
-//  public abstract CommentManager getCommentManager();
-    
+    //  public abstract CommentManager getCommentManager();
+
     public abstract Post getPost();
 
     public abstract void setPost(Post post);
@@ -44,37 +40,11 @@ public abstract class ViewPost extends BasePage {
 
     public abstract void setMessage(String message);
 
-    public void viewPost(Integer postId) {        
+    public void viewPost(Integer postId) {
         PostManager postManager = getPostManager();
         setPostId(postId);
         setPost(postManager.getPost(postId));
         getRequestCycle().activate(this);
     }
 
-    public void addComment(IRequestCycle cycle) {
-
-        if (StringUtils.isEmpty(getAuthor())
-                || StringUtils.isEmpty(getAuthorComment())) {
-            setMessage("The author and comment fields must not be empty!");
-        } else {
-            
-            Post post = getPostManager().getPost(getPostId());
-            
-            Comment comment = new Comment();
-            comment.setAuthor(getAuthor());
-            comment.setComment(getAuthorComment());
-            comment.setPost(post);                
-            post.addComment(comment);
-            
-            getPostManager().saveOrUpdate(post);
-            //getCommentManager().saveOrUpdate(comment);
-        
-            // reset the field values
-            setAuthor("");
-            setAuthorWebsite("");
-            setAuthorComment("");
-
-        }
-        viewPost(getPostId());
-    }
 }
