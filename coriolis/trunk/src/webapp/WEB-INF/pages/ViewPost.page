@@ -15,9 +15,9 @@
     <property name="authorWebsite"  />
     <property name="authorComment"  />
     
-    <asset name="mail" path="/i/icon-mail.gif" />
-    <asset name="page" path="/i/icon-page.gif" />
-    <asset name="edit" path="/i/icon-edit.gif" />
+    <asset name="mail" path="i/icon-mail.gif" />
+    <asset name="page" path="i/icon-page.gif" />
+    <asset name="edit" path="i/icon-edit.gif" />
     <asset name="delete" path="i/icon-delete.gif" />
     
 </page-specification>

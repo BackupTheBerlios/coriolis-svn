@@ -10,6 +10,7 @@
     
     <page name="NewPost" specification-path="pages/NewPost.page"/>
     <page name="Login" specification-path="pages/Login.page"/>
+    <page name="ViewPost" specification-path="pages/ViewPost.page"/>
     
 	<component-type type="PostCalendar" specification-path="components/PostCalendar.jwc"/>
     <component-type type="Post" specification-path="components/Post.jwc"/>
