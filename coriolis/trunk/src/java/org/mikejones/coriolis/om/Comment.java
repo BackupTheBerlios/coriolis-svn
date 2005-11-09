@@ -27,8 +27,18 @@ public class Comment {
     private Date date;
 
     private String author;
+    
+    private String authorWebsite;
 
     private String comment;
+
+    public String getAuthorWebsite() {
+        return authorWebsite;
+    }
+
+    public void setAuthorWebsite(String authorWebsite) {
+        this.authorWebsite = authorWebsite;
+    }
 
     public Comment() {
         date = Calendar.getInstance().getTime();

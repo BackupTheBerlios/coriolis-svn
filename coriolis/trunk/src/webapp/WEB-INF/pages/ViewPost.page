@@ -4,16 +4,16 @@
   "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
 <page-specification >
     
+    
+    <bean name="delegate" class="org.mikejones.coriolis.tapestry.framework.validation.BlogDelegate"/>
+    
     <property name="message" />
     
 	<property name="post" />
-    <property name="comments"  />
     <property name="comment" />
+    <property name="loopComment" />
     
     <property name="postId" />
-    <property name="author"  />
-    <property name="authorWebsite"  />
-    <property name="authorComment"  />
     
     <asset name="mail" path="i/icon-mail.gif" />
     <asset name="page" path="i/icon-page.gif" />
