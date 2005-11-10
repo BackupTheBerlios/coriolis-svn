@@ -1,11 +1,11 @@
 <span jwcid="@Layout">
     <form jwcid="@Form" listener="ognl:listeners.addPost" delegate="bean:delegate" >
-    	<span jwcid="@FieldLabel" field="component:title"  >Title</span> 
-        <input jwcid="title@TextField" validators="validators:required" displayName="Title" value="ognl:post.title" type="text" class="textbox"  />
+    	<span jwcid="@FieldLabel" field="component:title" />
+        <input jwcid="title@TextField" validators="validators:required" displayName="Title" value="ognl:post.title" type="text" class="textbox" />
         
-        <span jwcid="@FieldLabel" field="component:text" displayName="Text" >Text</span>        
+        <span jwcid="@FieldLabel" field="component:text" displayName="Text" />
        	<textarea jwcid="text@TextArea" validators="validators:required" displayName="Text" value="ognl:post.text"></textarea>
         
-        <input type="submit" name="addPost" value="Add Post" />
+        <input jwcid="@Submit" type="submit" value="Add Post" class="button" />
 	</form>   
 </span>

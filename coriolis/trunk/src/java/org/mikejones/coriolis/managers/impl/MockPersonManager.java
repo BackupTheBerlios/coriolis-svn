@@ -16,7 +16,7 @@ public class MockPersonManager implements PersonManager {
     public MockPersonManager() {
         users = new ArrayList<Person>();
         Person person = new Person();
-        person.setId(new Integer(1));
+        person.setId(new Integer(0));
         person.setUsername("mik3jon3s");
         person.setPassword("test");        
         users.add(person);        
@@ -24,7 +24,7 @@ public class MockPersonManager implements PersonManager {
     
     public Person getUser(Integer id) {
         for(int i =0; i < users.size(); i++) {
-            Person person= (Person)users.get(i);
+            Person person= users.get(i);
             if(person.getId().equals(id)) {
                 return person;
             }            
@@ -39,7 +39,7 @@ public class MockPersonManager implements PersonManager {
 
     public Person getUser(String username, String password) {
         for(int i =0; i < users.size(); i++) {
-            Person person= (Person)users.get(i);
+            Person person= users.get(i);
             if(person.getUsername().equals(username) && person.getPassword().equals(password)) {
                 return person;
             }            

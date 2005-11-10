@@ -7,8 +7,6 @@
         Add a new post
     </description>
     
-    <bean name="delegate" class="org.mikejones.coriolis.tapestry.framework.validation.BlogDelegate"/>
-    
     <property name="post" />
  
 </page-specification>

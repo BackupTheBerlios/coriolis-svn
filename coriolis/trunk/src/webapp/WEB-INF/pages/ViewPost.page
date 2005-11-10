@@ -4,9 +4,6 @@
   "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
 <page-specification >
     
-    
-    <bean name="delegate" class="org.mikejones.coriolis.tapestry.framework.validation.BlogDelegate"/>
-    
     <property name="message" />
     
 	<property name="post" />

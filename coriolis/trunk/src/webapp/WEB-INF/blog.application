@@ -8,6 +8,7 @@
 	<meta key="org.apache.tapestry.page-class-packages" value="org.mikejones.coriolis.tapestry.pages"/>
     <meta key="org.apache.tapestry.component-class-packages" value="org.mikejones.coriolis.tapestry.components"/>
     
+    <page name="Home" specification-path="pages/Home.page"/>
     <page name="NewPost" specification-path="pages/NewPost.page"/>
     <page name="Login" specification-path="pages/Login.page"/>
     <page name="ViewPost" specification-path="pages/ViewPost.page"/>

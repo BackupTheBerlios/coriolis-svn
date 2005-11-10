@@ -20,17 +20,16 @@ public class MockPostManager implements PostManager {
     public MockPostManager() {
         posts = new ArrayList<Post>();
         Post post = new Post();
-        post.setId(new Integer(1));
+        post.setId(new Integer(0));
         post.setTitle("This is an examplte Title");
         post
                 .setText("here is some really long text for a message.It will be much longer that this, I really should be able to put html"
                         + "in here too... but how am I going to deal with that.. it will be CRAZY.");
         post.setPostDate(new Date());
-        posts.add(post);
-        
+        posts.add(post);        
 
         post = new Post();
-        post.setId(new Integer(2));
+        post.setId(new Integer(1));
         post.setTitle("created prog title");
         post.setText("post text taht is a little longs");
         post.setPostDate(new Date());
@@ -77,6 +76,7 @@ public class MockPostManager implements PostManager {
      * @see org.mikejones.coriolis.managers.api.IPostManager#addPost(org.mikejones.coriolis.om.Post)
      */
     public void addPost(Post post) {
+        post.setId(posts.size());
         posts.add(post);
     }
 

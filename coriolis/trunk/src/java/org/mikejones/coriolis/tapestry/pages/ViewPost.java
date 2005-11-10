@@ -3,18 +3,24 @@
  */
 package org.mikejones.coriolis.tapestry.pages;
 
+import org.apache.tapestry.annotations.Bean;
 import org.apache.tapestry.annotations.InjectObject;
 import org.apache.tapestry.event.PageBeginRenderListener;
 import org.apache.tapestry.event.PageEvent;
 import org.apache.tapestry.html.BasePage;
+import org.apache.tapestry.valid.IValidationDelegate;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Comment;
 import org.mikejones.coriolis.om.Post;
+import org.mikejones.coriolis.tapestry.framework.validation.BlogDelegate;
 
 /**
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike</a>
  */
 public abstract class ViewPost extends BasePage implements PageBeginRenderListener {
+    
+    @Bean(BlogDelegate.class)
+    public abstract IValidationDelegate getDelegate();
 
     @InjectObject("service:blog.PostManager")
     public abstract PostManager getPostManager();
@@ -51,11 +57,14 @@ public abstract class ViewPost extends BasePage implements PageBeginRenderListen
     }
 
     public void addComment() {
+        if(getDelegate().isInError())
+            return;
+        
         PostManager postManager = getPostManager();
         Post post = postManager.getPost(getPostId());
         post.addComment(getComment());
         setPost(post);
-        //setComment(new Comment());
+        setComment(new Comment());
     }
 
 }
