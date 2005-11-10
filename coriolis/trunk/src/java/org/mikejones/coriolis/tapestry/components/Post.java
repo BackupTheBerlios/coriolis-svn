@@ -7,9 +7,14 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 
 import org.apache.tapestry.BaseComponent;
+import org.apache.tapestry.annotations.InjectObject;
+import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.tapestry.pages.ViewPost;
 
-public class Post extends BaseComponent {
+public abstract class Post extends BaseComponent {
+    
+    @InjectObject("service:blog.PostManager")
+    public abstract PostManager getPostManager();
     
     private Format dateFormat;
 
@@ -26,4 +31,7 @@ public class Post extends BaseComponent {
         page.viewPost(new Integer(id));
     }
 
+    public void editPost(Integer id) {
+      getPostManager().editPost(getPage().getRequestCycle(), id);  
+    }
 }

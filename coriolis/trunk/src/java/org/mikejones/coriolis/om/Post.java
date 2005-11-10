@@ -125,4 +125,5 @@ public class Post {
     public void setPostDate(Date date) {
         this.postDate = date;
     }
+ 
 }
