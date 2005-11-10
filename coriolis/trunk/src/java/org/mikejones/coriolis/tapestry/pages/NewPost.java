@@ -37,7 +37,7 @@ public abstract class NewPost extends BasePage implements PageBeginRenderListene
     }
     
     public String addPost() {
-        if(getDelegate().isInError())
+        if(getDelegate().getHasErrors())
             return null;
     	getPostManager().addPost(getPost());
     	return "Home";

@@ -57,7 +57,7 @@ public abstract class ViewPost extends BasePage implements PageBeginRenderListen
     }
 
     public void addComment() {
-        if(getDelegate().isInError())
+        if(getDelegate().getHasErrors())
             return;
         
         PostManager postManager = getPostManager();
