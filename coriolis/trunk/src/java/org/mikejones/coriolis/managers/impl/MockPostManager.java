@@ -7,14 +7,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.tapestry.IRequestCycle;
+import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
-import org.mikejones.coriolis.tapestry.pages.EditPost;
 
 /**
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike </a>
  */
-public class MockPostManager extends AbstractPostManager {
+public class MockPostManager implements PostManager {
     
     private List<Post> posts;
 
@@ -114,15 +113,6 @@ public class MockPostManager extends AbstractPostManager {
                 localPost.setText(post.getText());
             }
         }   
-    }
-    
-    public void editPost(IRequestCycle cycle, Integer postId){
-        EditPost page = getEditPostPage();
-        page.setPost(getPost(postId));
-        page.editPost(cycle);
-    }
-    
-    public EditPost getEditPostPage(){
-        return getEditPostPage();
-    }
+    }    
+
 }
