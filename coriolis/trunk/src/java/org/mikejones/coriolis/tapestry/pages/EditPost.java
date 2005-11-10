@@ -3,8 +3,6 @@
  */
 package org.mikejones.coriolis.tapestry.pages;
 
-import java.util.List;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.annotations.Bean;

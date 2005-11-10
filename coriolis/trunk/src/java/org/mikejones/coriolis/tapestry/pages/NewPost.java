@@ -41,8 +41,6 @@ public abstract class NewPost extends BasePage implements PageBeginRenderListene
             return null;
     	getPostManager().addPost(getPost());
     	return "Home";
-    }
-
-   
+    }   
 
 }

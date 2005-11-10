@@ -5,7 +5,6 @@ package org.mikejones.coriolis.managers.api;
 
 import java.util.List;
 
-import org.apache.tapestry.IRequestCycle;
 import org.mikejones.coriolis.om.Post;
 
 /**
@@ -31,6 +30,4 @@ public interface PostManager {
     
     public void saveOrUpdate(Post post);
     
-    public void editPost(IRequestCycle cycle, Integer postId);
-
 }

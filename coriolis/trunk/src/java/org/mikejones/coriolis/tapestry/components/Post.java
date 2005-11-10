@@ -32,6 +32,6 @@ public abstract class Post extends BaseComponent {
     }
 
     public void editPost(Integer id) {
-      getPostManager().editPost(getPage().getRequestCycle(), id);  
+//      getPostManager().editPost(getPage().getRequestCycle(), id);  
     }
 }
