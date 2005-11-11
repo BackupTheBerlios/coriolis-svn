@@ -32,34 +32,64 @@ public abstract class EditPost extends SecurePage implements PageBeginRenderList
     @InjectObject("service:blog.PostManager")
     public abstract PostManager getPostManager();
     
+    
     @Bean(BlogDelegate.class)
     public abstract IValidationDelegate getDelegate();    
 
+    public abstract void setPostId(Integer id);
+    
+    public abstract Integer getPostId();
     
     /* (non-Javadoc)
      * @see org.apache.tapestry.event.PageRenderListener#pageBeginRender(org.apache.tapestry.event.PageEvent)
      */
     public void pageBeginRender(PageEvent arg0) {
+        if (getPost()==null){
+           setPost(getPostManager().getPost(getPostId().intValue())); 
+        }
+        else {
+            setPostId(getPost().getId());
+        }
         if(getPostManager().getPosts()==null) {
             setPost(new Post());
+            getPostManager().addPost(getPost());
+        }
+        else {
+            if (getPostManager().getPost(getPostId().intValue())==null){
+                getPostManager().addPost(getPost());  
+            }  
         }
     } 
     
-    public void editPost(IRequestCycle cycle) {
+    public void editPost(IRequestCycle cycle, Integer id) {
         pageValidate(new PageEvent(this, cycle));
-        if(getDelegate().getHasErrors()){ 
-        //List errorRenderers = getDelegate().getErrorRenderers();
-       // errorRenderers.
+        if (getDelegate().getHasErrors()) {
+            setMessage("Adam says: There are errors in the text input");
+        }
+        if (id == null) {
+            id = new Integer(0);
+        }
+        if (getPostManager().getPost(id) == null) {
+            Post post = new Post();
+            post.setId(0);
+            setPost(post);
+        } else {
+            setPost(getPostManager().getPost(id));
         }
         cycle.activate(this);
     }
 
     public void updatePost(IRequestCycle cycle) {
+        setPost(getPostManager().getPost(getPostId().intValue()));
         if (StringUtils.isEmpty(getPost().getText())) {
             setMessage("The text field is required!");
-        } else {            
+        } else if(getDelegate().getHasErrors()){ 
+                setMessage("Adam says: There are some errors here.");
+            }
+        else {
             getPostManager().saveOrUpdate(getPost());
-            cycle.activate("Blog");
+            cycle.activate("Home");
         }
     }
+
 }

@@ -12,6 +12,8 @@
     
     <property name="message" />
     
-    <property name="post"  />    
+    <property name="post"  />
+    
+    <property name="id"  /> 
     
 </page-specification>

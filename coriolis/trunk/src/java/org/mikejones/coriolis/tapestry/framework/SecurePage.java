@@ -21,7 +21,6 @@ public abstract class SecurePage extends BasePage implements PageValidateListene
     public void pageValidate(PageEvent pageEvent) {
         BlogVisit visit = getBlogVisit();
         if (!visit.isUserLoggedIn()) {
-            //pageEvent.getRequestCycle().getPage("Login").
             throw new PageRedirectException("Login");
         } 
 
