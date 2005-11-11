@@ -8,13 +8,22 @@ import java.text.SimpleDateFormat;
 
 import org.apache.tapestry.BaseComponent;
 import org.apache.tapestry.annotations.InjectObject;
+import org.apache.tapestry.annotations.InjectPage;
 import org.mikejones.coriolis.managers.api.PostManager;
+import org.mikejones.coriolis.tapestry.pages.EditPost;
 import org.mikejones.coriolis.tapestry.pages.ViewPost;
 
 public abstract class Post extends BaseComponent {
     
     @InjectObject("service:blog.PostManager")
     public abstract PostManager getPostManager();
+    
+
+    @InjectPage("EditPost")
+    public abstract EditPost getEditPostPage();
+    
+    @InjectPage("ViewPost")
+    public abstract ViewPost getViewPostPage();
     
     private Format dateFormat;
 
@@ -27,11 +36,10 @@ public abstract class Post extends BaseComponent {
     }
     
     public void viewPost(Integer id) {
-        ViewPost page = (ViewPost) getPage().getRequestCycle().getPage("ViewPost");
-        page.viewPost(new Integer(id));
+        getViewPostPage().viewPost(new Integer(id));
     }
 
     public void editPost(Integer id) {
-//      getPostManager().editPost(getPage().getRequestCycle(), id);  
+      getEditPostPage().editPost(getPage().getRequestCycle(), id);  
     }
 }
