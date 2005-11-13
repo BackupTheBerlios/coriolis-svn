@@ -17,6 +17,7 @@
         <!--attainGoal name="war:inplace"/-->
 		<attainGoal name="java:compile"/>
         <attainGoal name="eclipse"/>
+        <ant:hiberate
         <ant:echo><![CDATA[ 
          ___             _              _ _             
  ___ ___|  _|___ ___ ___| |_    ___ ___| |_|___ ___ ___ 
