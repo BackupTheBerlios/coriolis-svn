@@ -1,0 +1,14 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/TR/xmlschema-1/"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+	<display-name>blog</display-name>
+	<servlet>
+		<servlet-name>blog</servlet-name>
+		<servlet-class>org.apache.tapestry.ApplicationServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>blog</servlet-name>
+		<url-pattern>/app</url-pattern>
+	</servlet-mapping>
+</web-app>

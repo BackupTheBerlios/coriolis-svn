@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<module id="blog" version="1.0.0">
+  <contribution configuration-id="tapestry.state.ApplicationObjects">
+    <state-object name="blogVisit" scope="session">
+      <create-instance class="org.mikejones.coriolis.tapestry.framework.aso.BlogVisit"/>
+    </state-object>
+  </contribution>
+  <!-- Service points -->
+  <service-point id="HibernateSession" interface="net.sf.hibernate.Session"/>
+  <service-point id="HibernateSessionFactory" interface="org.apache.hivemind.ServiceImplementationFactory"/>
+  <service-point id="PersonManager" interface="org.mikejones.coriolis.managers.api.PersonManager"/>
+  <service-point id="PostManager" interface="org.mikejones.coriolis.managers.api.PostManager"/>
+  <service-point id="SessionManager" interface="org.mikejones.coriolis.hibernate.services.api.SessionManager" />
+    
+  <!-- mock implementations -->
+  <implementation service-id="PersonManager">
+    <invoke-factory>
+      <construct class="org.mikejones.coriolis.managers.impl.MockPersonManager"/>
+    </invoke-factory>
+  </implementation>
+  <implementation service-id="PostManager">
+    <invoke-factory>
+      <construct class="org.mikejones.coriolis.managers.impl.MockPostManager"/>
+    </invoke-factory>
+  </implementation>
+  <implementation service-id="SessionManager">
+    <invoke-factory model="threaded">
+      <construct class="org.mikejones.coriolis.hibernate.services.impl.HivemindSessionManager"/>
+    </invoke-factory>
+  </implementation>  
+  <!-- HIbernate implementations -->
+  <implementation service-id="HibernateSession">
+    <invoke-factory service-id="hibernateSessionFactory" model="threaded">
+      <construct/>
+    </invoke-factory>
+  </implementation>
+  <implementation service-id="HibernateSessionFactory">
+    <invoke-factory model="singleton">
+      <construct class="com.anite.borris.services.hibernate.factory.HibernateSessionFactory"
+        initialize-method="init"/>
+    </invoke-factory>
+  </implementation>
+</module>

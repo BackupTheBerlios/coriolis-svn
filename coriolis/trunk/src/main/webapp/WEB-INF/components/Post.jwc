@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE component-specification PUBLIC 
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<component-specification allow-body="no" allow-informal-parameters="no">
+    
+    <description>This is a post for the application</description>
+    
+    <asset name="mail" path="i/icon-mail.gif" />
+    <asset name="page" path="i/icon-page.gif" />
+    <asset name="edit" path="i/icon-edit.gif" />
+    <asset name="delete" path="i/icon-delete.gif" />
+    
+    <parameter name="post" required="yes"/> 
+    
+</component-specification>

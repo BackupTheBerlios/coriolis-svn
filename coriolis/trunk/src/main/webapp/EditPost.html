@@ -1,0 +1,20 @@
+<span jwcid="@Layout">
+	<span jwcid="@Conditional" condition="ognl:beans.delegate.hasErrors" >
+        <p class="error">
+            <img style="vertical-align:text-bottom" src="/blog/i/icon-alert.gif" alt="There are errors on the page!" />
+	        <span jwcid="@Delegator" delegate="ognl:beans.delegate.firstError">
+	            Error Message
+	    	</span>
+        </p>        
+    </span>
+    <form jwcid="@Form" listener="listener:updatePost" delegate="ognl:beans.delegate" >
+		<input type="hidden" jwcid="@Hidden" value="ognl:post.id" />
+        <label for="title">Title</label>
+        <input type="text" class="textbox" jwcid="@TextField" value="ognl:post.title" />
+		
+        <label for="text" jwcid="@FieldLabel" field="ognl:components.inputText" displayName="Text">Text</label>
+       	<textarea jwcid="inputText@TextArea" value="ognl:post.text" ></textarea>
+        
+        <input type="submit" name="addPost" value="Add Post" />
+	</form>
+</span>

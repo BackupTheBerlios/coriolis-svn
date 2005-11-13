@@ -1,0 +1,30 @@
+<div class="post">
+    <div class="postHeader">
+        <h2>
+            <span jwcid="@Insert" value="ognl:post.title" >Post Title</span>
+
+            <a href="#" jwcid="@DirectLink" listener="listener:editPost" parameters="ognl:post.id" title="Edit Post">
+    			<img jwcid="@Image" alt="Edit post." image="ognl:getAsset('edit')" class="post"/>
+            </a>
+            <a href="#" jwcid="@DirectLink" listener="ognl:listeners.deletePost" parameters="ognl:post.id" title="Delete Post">
+        		<img jwcid="@Image" alt="Delete Post" image="ognl:getAsset('delete')" class="post"/>                                
+            </a>
+		</h2>
+        <p>
+            <span jwcid="@Insert" value="ognl:post.postDate" format="ognl:dateFormat">[TIME] on [DATE]</span>
+        </p>
+    </div>
+    <div class="postBody">
+        <p>
+            <span jwcid="@InsertText" value="ognl:post.text">Post text</span>
+        </p>
+    </div>
+    <div class="postFooter">
+        <p>
+            <img jwcid="@Image" alt="Make Comment" image="ognl:getAsset('mail')" />
+			<a href="#" jwcid="@DirectLink" listener="listener:viewPost" parameters="ognl:{post.id}">
+                <span jwcid="@Insert" value="ognl:post.comments.size">10</span> comment(s) left so far. 
+            </a>
+        </p>
+    </div>
+</div>
