@@ -363,12 +363,13 @@
   </dependencies>
   <build>
     <finalName>coriolis</finalName>
-    <outputDirectory>target</outputDirectory>
+    <outputDirectory>target/classes</outputDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-eclipse-plugin</artifactId>
         <configuration>
           <projectnatures>
+            <java.lang.String>org.eclipse.jdt.core.javanature</java.lang.String>
             <java.lang.String>com.tssap.selena.model.modeling_nature</java.lang.String>
             <java.lang.String>com.borland.selena.uml14.uml14_nature</java.lang.String>
           </projectnatures>
