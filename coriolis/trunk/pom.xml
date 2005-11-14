@@ -102,7 +102,7 @@
     <dependency>
       <groupId>servletapi</groupId>
       <artifactId>servletapi</artifactId>
-      <version>2.3</version>      
+      <version>2.3</version>
     </dependency>
     <!-- end of tapestry dependancies -->
     <!-- project dependencies -->
@@ -116,7 +116,7 @@
       <artifactId>commons-lang</artifactId>
       <version>2.1</version>
     </dependency>
-    <!-- Database Drivers -->    
+    <!-- Database Drivers -->
     <dependency>
       <groupId>postgresql</groupId>
       <artifactId>postgresql</artifactId>
@@ -363,5 +363,24 @@
   </dependencies>
   <build>
     <finalName>coriolis</finalName>
+    <outputDirectory>target</outputDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <projectnatures>
+            <java.lang.String>com.tssap.selena.model.modeling_nature</java.lang.String>
+            <java.lang.String>com.borland.selena.uml14.uml14_nature</java.lang.String>
+          </projectnatures>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
