@@ -6,6 +6,7 @@ package org.mikejones.coriolis.tapestry.pages;
 import java.util.List;
 
 import org.apache.tapestry.annotations.InjectObject;
+import org.apache.tapestry.annotations.Persist;
 import org.apache.tapestry.event.PageBeginRenderListener;
 import org.apache.tapestry.event.PageEvent;
 import org.apache.tapestry.html.BasePage;
@@ -22,6 +23,10 @@ public abstract class Home extends BasePage implements PageBeginRenderListener {
     public abstract void setPosts(List<Post> posts);
     
     public abstract Post getPost();
+    
+    @Persist("client")
+    public abstract Integer getPostId();
+    public abstract void setPostId(Integer id);
     
     @InjectObject("service:blog.PostManager")
     public abstract PostManager getPostManager();
