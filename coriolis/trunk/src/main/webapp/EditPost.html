@@ -7,8 +7,8 @@
 	    	</span>
         </p>        
     </span>
-    <form jwcid="@Form" listener="listener:updatePost" delegate="ognl:beans.delegate" >
-		<input type="hidden" jwcid="@Hidden" value="ognl:post.id" />
+    <form jwcid="@Form" listener="listener:updatePost" parameters="ognl:post.id" delegate="ognl:beans.delegate" >
+		<!--input type="hidden" jwcid="@Hidden" value="ognl:post.id" /-->
         <label for="title">Title</label>
         <input type="text" class="textbox" jwcid="@TextField" value="ognl:post.title" />
 		
