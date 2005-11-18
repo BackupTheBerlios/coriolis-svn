@@ -2,18 +2,24 @@
 	<span jwcid="@Conditional" condition="ognl:beans.delegate.hasErrors" >
         <p class="error">
             <img style="vertical-align:text-bottom" src="/blog/i/icon-alert.gif" alt="There are errors on the page!" />
-	        <span jwcid="@Delegator" delegate="ognl:beans.delegate.firstError">
+	        <span jwcid="delegator@Delegator" delegate="ognl:beans.delegate.firstError">
 	            Error Message
 	    	</span>
+            <span jwcid="delegator1@Delegator" delegate="ognl:beans.delegate.firstError">
+	            Error Message
+	    	</span>
+            <!--span jwcid="@Delegator" delegate="ognl:beans.delegate.thirdError">
+	            Error Message
+	    	</span-->
         </p>        
     </span>
-    <form jwcid="@Form" listener="listener:updatePost" parameters="ognl:post.id" delegate="ognl:beans.delegate" >
-		<!--input type="hidden" jwcid="@Hidden" value="ognl:post.id" /-->
+    <form jwcid="@Form" listener="listener:updatePost" parameters="ognl:postId" delegate="ognl:beans.delegate" >
+		<!--input type="hidden" jwcid="@Hidden" value="ognl:post.postId" /-->
         <label for="title">Title</label>
-        <input type="text" class="textbox" jwcid="@TextField" value="ognl:post.title" />
+        <input type="text" class="textbox" jwcid="title@TextField" value="ognl:title" />
 		
         <label for="text" jwcid="@FieldLabel" field="ognl:components.inputText" displayName="Text">Text</label>
-       	<textarea jwcid="inputText@TextArea" value="ognl:post.text" ></textarea>
+       	<textarea jwcid="inputText@TextArea" value="ognl:text" ></textarea>
         
         <input type="submit" name="addPost" value="Add Post" />
 	</form>

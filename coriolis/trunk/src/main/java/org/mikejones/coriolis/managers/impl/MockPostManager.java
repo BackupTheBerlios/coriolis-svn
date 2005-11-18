@@ -20,7 +20,7 @@ public class MockPostManager implements PostManager {
     public MockPostManager() {
         posts = new ArrayList<Post>();
         Post post = new Post();
-        post.setId(new Integer(0));
+        post.setPostId(new Integer(0));
         post.setTitle("This is an examplte Title");
         post
                 .setText("here is some really long text for a message.It will be much longer that this, I really should be able to put html"
@@ -29,7 +29,7 @@ public class MockPostManager implements PostManager {
         posts.add(post);        
 
         post = new Post();
-        post.setId(new Integer(1));
+        post.setPostId(new Integer(1));
         post.setTitle("created prog title");
         post.setText("post text taht is a little longs");
         post.setPostDate(new Date());
@@ -54,7 +54,7 @@ public class MockPostManager implements PostManager {
     public Post getPost(Integer id) {
         for (int i = 0; i < posts.size(); i++) {
             Post post = posts.get(i);
-            if (post.getId().equals(id)) {
+            if (post.getPostId().equals(id)) {
                 return post;
             }
         }
@@ -76,7 +76,7 @@ public class MockPostManager implements PostManager {
      * @see org.mikejones.coriolis.managers.api.IPostManager#addPost(org.mikejones.coriolis.om.Post)
      */
     public void addPost(Post post) {
-        post.setId(posts.size());
+        post.setPostId(posts.size());
         posts.add(post);
     }
 
@@ -88,7 +88,7 @@ public class MockPostManager implements PostManager {
     public void removePost(Post post) {
         for (int i = 0; i < posts.size(); i++) {
             Post loopPost = posts.get(i);
-            if (loopPost.getId().equals(post.getId())) {
+            if (loopPost.getPostId().equals(post.getPostId())) {
                 posts.remove(i);
                 return;
             }
@@ -98,7 +98,7 @@ public class MockPostManager implements PostManager {
     public void removePost(Integer id) {
         for (int i = 0; i < posts.size(); i++) {
             Post post = posts.get(i);
-            if (post.getId().equals(id)) {
+            if (post.getPostId().equals(id)) {
                 posts.remove(i);
                 return;
             }
@@ -108,7 +108,7 @@ public class MockPostManager implements PostManager {
     public void saveOrUpdate(Post post) {
         for (int i = 0; i < posts.size(); i++) {
             Post localPost = posts.get(i);
-            if (localPost.getId().equals(post.getId())) {
+            if (localPost.getPostId().equals(post.getPostId())) {
                 localPost.setTitle(post.getTitle());
                 localPost.setText(post.getText());
             }

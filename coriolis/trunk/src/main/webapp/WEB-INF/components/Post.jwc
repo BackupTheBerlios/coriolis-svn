@@ -13,4 +13,6 @@
     
     <parameter name="post" required="yes"/> 
     
+    <!--property name="postTitle"  /-->
+    
 </component-specification>

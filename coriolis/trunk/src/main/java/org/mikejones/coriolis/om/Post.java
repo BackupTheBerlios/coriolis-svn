@@ -43,7 +43,7 @@ public class Post {
      * @return Returns the id.
      */
     @Id
-    public Integer getId() {
+    public Integer getPostId() {
         return id;
     }
 
@@ -51,7 +51,7 @@ public class Post {
      * @param id
      *            The id to set.
      */
-    public void setId(Integer id) {
+    public void setPostId(Integer id) {
         this.id = id;
     }
 
