@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC	"-//Apache Software Foundation//Tapestry Script Specification 4.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+    <!--include-script resource-path="/org/mikejones/coriolis/tapestry/components/dojo.js"/-->
+    <body>
+        <unique>
+            dojo.require("dojo.widget.Editor");
+        </unique>
+    </body>
+
+</script>

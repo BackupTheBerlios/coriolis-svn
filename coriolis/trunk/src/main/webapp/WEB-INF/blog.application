@@ -17,5 +17,6 @@
     <component-type type="Post" specification-path="components/Post.jwc"/>
     <component-type type="Layout" specification-path="components/Layout.jwc"/>
     <component-type type="FormErrors" specification-path="components/FormErrors.jwc"/>
+    <component-type type="DojoTextArea" specification-path="components/DojoTextArea.jwc"/>
     
 </application>
