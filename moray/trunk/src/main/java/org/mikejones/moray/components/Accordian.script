@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC	"-//Apache Software Foundation//Tapestry Script Specification 4.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+    <include-script resource-path="/org/mikejones/moray/components/prototype.js"/>
+    <include-script resource-path="/org/mikejones/moray/components/rico.js"/>
+    
+    <input-symbol key="accordian" class="org.mikejones.moray.components.Accordian" required="yes"/>
+    
+    <set key="name" expression="accordian.id"/>
+    <body>        
+        <![CDATA[
+        new Rico.Accordion( ${name}, {panelHeight:300} );
+        ]]>
+    </body>
+    
+
+</script>
