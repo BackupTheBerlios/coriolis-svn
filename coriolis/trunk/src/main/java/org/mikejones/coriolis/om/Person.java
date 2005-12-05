@@ -7,6 +7,7 @@ import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.GeneratorType;
 import javax.persistence.Id;
 import javax.persistence.TemporalType;
 /**
@@ -30,7 +31,7 @@ public class Person {
     /**
      * @return Returns the id.
      */
-    @Id
+    @Id(generate=GeneratorType.AUTO)
     public Integer getId() {
         return id;
     }
