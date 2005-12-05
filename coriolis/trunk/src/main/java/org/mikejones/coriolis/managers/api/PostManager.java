@@ -12,8 +12,6 @@ import org.mikejones.coriolis.om.Post;
  */
 public interface PostManager {
     
-    public Post getPost(int index);
-    
     public Post getPost(Integer id);
     
     /**
@@ -22,12 +20,10 @@ public interface PostManager {
      */
     public List<Post> getPosts();
     
-    public void addPost(Post post);
+    public void deletePost(Post post);    
     
-    public void removePost(Post post);    
+    public void deletePost(Integer id);
     
-    public void removePost(Integer id);
-    
-    public void saveOrUpdate(Post post);
+    public void savePost(Post post);
     
 }
