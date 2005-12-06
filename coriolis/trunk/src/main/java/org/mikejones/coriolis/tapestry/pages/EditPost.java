@@ -4,17 +4,13 @@
 package org.mikejones.coriolis.tapestry.pages;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.tapestry.IRender;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.annotations.Bean;
-import org.apache.tapestry.annotations.InjectComponent;
 import org.apache.tapestry.annotations.InjectObject;
 import org.apache.tapestry.annotations.InjectState;
-import org.apache.tapestry.annotations.Persist;
 import org.apache.tapestry.event.PageBeginRenderListener;
 import org.apache.tapestry.event.PageEvent;
 import org.apache.tapestry.valid.IValidationDelegate;
-import org.apache.tapestry.valid.ValidatorException;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
 import org.mikejones.coriolis.tapestry.framework.SecurePage;
@@ -26,22 +22,9 @@ public abstract class EditPost extends SecurePage implements PageBeginRenderList
 
     public abstract void setMessage(String message);
     
-    public abstract Post getPost();
     public abstract void setPost(Post post);
     
-    public abstract String getPostTitle();
-    public abstract void setPostTitle(String title);
-    
-    public abstract String getTitle();
-    public abstract void setTitle(String title);
-    
-    
-    public abstract String getText();
-    public abstract void setText(String text);
-    
-    @Persist("client")
-    public abstract Integer getPostId();
-    public abstract void setPostId(Integer id);
+    public abstract Post getPost();
     
     @InjectState("blogVisit")
     public abstract BlogVisit getBlogVisit();
@@ -50,9 +33,8 @@ public abstract class EditPost extends SecurePage implements PageBeginRenderList
     public abstract PostManager getPostManager();
     
     @Bean(BlogDelegate.class)
-    public abstract IValidationDelegate getDelegate();
-    
-    
+    public abstract IValidationDelegate getDelegate();    
+
     
     /* (non-Javadoc)
      * @see org.apache.tapestry.event.PageRenderListener#pageBeginRender(org.apache.tapestry.event.PageEvent)
@@ -63,69 +45,21 @@ public abstract class EditPost extends SecurePage implements PageBeginRenderList
         }
     } 
     
-    public void editPost(IRequestCycle cycle, Integer id) {
-        if(getPostManager().getPosts()==null | id == null) {
-            setPost(new Post());
-        }
-        else {
-        setPost(getPostManager().getPost(id));
-        setTitle(getPost().getTitle());
-        }
-        editPost(cycle);
-    }
-    
     public void editPost(IRequestCycle cycle) {
         pageValidate(new PageEvent(this, cycle));
-        if(getDelegate().getHasErrors()){
-            setMessage("Correct login required.");
-            cycle.activate(this); 
+        if(getDelegate().getHasErrors()){ 
+        //List errorRenderers = getDelegate().getErrorRenderers();
+       // errorRenderers.
         }
-        if (getPostId()==null){
-            setPostId((Integer)cycle.getListenerParameters()[0]);
-        }
-        int x =new Integer(getPostId());
-        if(getPostManager().getPost(x)!=null) {
-            setPost(getPostManager().getPost(x));
-            setTitle(getPost().getTitle());
-            setText(getPost().getText());
-            cycle.activate(this);
-        }
+        cycle.activate(this);
     }
 
     public void updatePost(IRequestCycle cycle) {
-        if (StringUtils.isEmpty(getText())) {
-            ValidatorException ve = new ValidatorException("The text field is required!");//setMessage("The text field is required!");
-            getDelegate().record(ve);
-            getDelegate().getErrorRenderers();
-            if (getDelegate().isInError()) {
-                cycle.activate(this);
-            } 
+        if (StringUtils.isEmpty(getPost().getText())) {
+            setMessage("The text field is required!");
+        } else {            
+            getPostManager().savePost(getPost());
+            cycle.activate("Blog");
         }
-        else {
-                if (this.getPost() != null) {
-                    getPostManager().saveOrUpdate(this.getPost());
-                    //cycle.activate("Home");
-                } else {
-                    //setPostId(((Integer)cycle.getListenerParameters()[0]).intValue());
-                    Post updatePost = getPostManager().getPost(getPostId().intValue());
-                    updatePost.setText(getText());
-                    setPost(updatePost);
-                    getPostManager().saveOrUpdate(getPost());
-                    //cycle.activate("Home");
-                }
-            }
-            if (StringUtils.isEmpty(getTitle())) {
-                ValidatorException ve = new ValidatorException("The text title is required!");//setMessage("The text field is required!");
-                getDelegate().record(ve);
-                if (getDelegate().isInError()) {
-                    cycle.activate(this);
-                } 
-            } else {
-                if (this.getTitle() != null & getPost()!= null) {
-                    getPost().setTitle(getTitle());
-                    getPostManager().saveOrUpdate(getPost());
-                    cycle.activate("Home");
-                }
-            }
     }
 }
