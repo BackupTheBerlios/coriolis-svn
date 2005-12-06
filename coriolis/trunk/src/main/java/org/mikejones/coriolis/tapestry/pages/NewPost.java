@@ -32,14 +32,14 @@ public abstract class NewPost extends BasePage implements PageBeginRenderListene
      */
     public void pageBeginRender(PageEvent pageEvent) {
         if (getPost() == null) {
-            setPost(new Post());
+            setPost(new Post());                
         }
     }
     
     public String addPost() {
         if(getDelegate().getHasErrors())
             return null;
-    	getPostManager().addPost(getPost());
+    	getPostManager().savePost(getPost());
     	return "Home";
     }   
 

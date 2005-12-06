@@ -1,13 +1,14 @@
-, <span jwcid="@Layout">
+<span jwcid="@Layout">
 	<span jwcid="@FormErrors" delegate="bean:delegate" />
-	<form jwcid="@Form" listener="ognl:listeners.addPost" delegate="bean:delegate" >
- 		<span jwcid="@FieldLabel" field="component:title" />
+	<form jwcid="@Form" listener="ognl:listeners.addPost" delegate="bean:delegate" > 		
         <input jwcid="title@TextField" validators="validators:required" displayName="Title" value="ognl:post.title" type="text" class="textbox" />
-        
+        <span jwcid="@FieldLabel" field="component:title" />
         <br/>
-        <textarea jwcid="text@TextArea" validators="validators:required" displayName="Text" value="ognl:post.text"></textarea>
         <span jwcid="@FieldLabel" field="component:text" displayName="Text" />
 		<br />       	        
-        <input jwcid="@Submit" type="submit" value="Add Post" class="button" />
+        <div style="border: 1px solid #908f8f;">
+			<textarea jwcid="text@DojoTextArea" validators="validators:required" displayName="Text" value="ognl:post.text" items="bold;italic;underline;strikethrough;"/>
+        </div>        
+        <input jwcid="@Submit" type="submit" value="Add Post" class="button" />        
 	</form>   
 </span>
