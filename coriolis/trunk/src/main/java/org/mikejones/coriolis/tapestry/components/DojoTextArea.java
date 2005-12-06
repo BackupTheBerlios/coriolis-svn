@@ -25,7 +25,7 @@ public abstract class DojoTextArea extends AbstractFormComponent implements Tran
 
     @Parameter(required = false)
     public abstract String getStyle();
-    
+
     @Parameter(required = false)
     public abstract String getItems();
 
@@ -56,7 +56,7 @@ public abstract class DojoTextArea extends AbstractFormComponent implements Tran
 
         if (getStyle() != null)
             writer.attribute("style", getStyle());
-        
+
         if (getItems() != null)
             writer.attribute("items", getItems());
 
