@@ -19,6 +19,9 @@
     <component-type type="FormErrors" specification-path="components/FormErrors.jwc"/>
     <component-type type="DojoTextArea" specification-path="components/DojoTextArea.jwc"/>
     
+    <component-type type="Toggler" specification-path="components/Toggler.jwc"/>
+    <component-type type="FloatingPane" specification-path="components/FloatingPane.jwc"/>
+    
     <component-type type="Accordian" specification-path="components/Accordian.jwc"/>
    	 
    
