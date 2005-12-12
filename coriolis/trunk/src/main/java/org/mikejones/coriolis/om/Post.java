@@ -43,7 +43,7 @@ public class Post {
     /**
      * @return Returns the id.
      */
-    @Id(generate=GeneratorType.AUTO)
+    @Id(generate = GeneratorType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -60,7 +60,7 @@ public class Post {
      * @return Returns the comments.
      */
     @OneToMany(cascade = { CascadeType.ALL }, mappedBy = "post")
-    @OrderBy("date")
+    @OrderBy("date asc")
     public List<Comment> getComments() {
         return comments;
     }

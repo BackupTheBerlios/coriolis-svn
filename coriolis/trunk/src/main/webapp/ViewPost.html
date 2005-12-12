@@ -1,69 +1,50 @@
 <span jwcid="@Layout">
-	<div class="contentBox">
-		<div class="postHeader">
-	        <h2>
-	            <span jwcid="@Insert" value="ognl:post.title" >Post Title</span>
 	
-	            <a href="#" jwcid="@DirectLink" listener="ognl:listeners.editPost" parameters="ognl:post.id" title="Edit Post">
-	    			<img jwcid="@Image" alt="Edit post." image="ognl:getAsset('edit')" class="post"/>
-	            </a>
-	            <a href="#" jwcid="@DirectLink" listener="ognl:listeners.deletePost" parameters="ognl:post.id" title="Delete Post">
-	        		<img jwcid="@Image" alt="Delete Post" image="ognl:getAsset('delete')" class="post"/>                                
-	            </a>
-			</h2>
-	        <p>
-	            <span jwcid="@Insert" value="ognl:post.postDate" >[TIME] on [DATE]</span>
-	        </p>
-	    </div>
-	    <div class="postBody">
-	        <p>
-	            <span jwcid="@InsertText" value="ognl:post.text">Post text</span>
-	        </p>
-	    </div>
-	    <div id="comments">
-	        <h3>Comments</h3>
-	        <p><a href="#leaveComment" class="arrow">Leave a comment below</a></p>
-	        
-	        
-	    	<div class="comment" jwcid="@Foreach" element="div" source="ognl:post.comments" value="ognl:loopComment">	                            
-	            
-	            <p>
-	                <img jwcid="@Image" alt="A Comment" image="ognl:getAsset('page')" />
-		            <strong>
-		                <span jwcid="@Insert" value="ognl:loopComment.author">Author</span>
-		            </strong>
-		            <span jwcid="@Insert" value="ognl:loopComment.date">05 February 2005 15:12 </span>
-	            </p>
-	            <p>
-	            	<span jwcid="@Insert" value="ognl:loopComment.comment">
-	                    I am illustrating how comments work here! Or do not work as the case may be...
-	                </span>
-	            </p>
-	        </div>
-	    </div>
-	    <span jwcid="@FormErrors" delegate="bean:delegate" />
-	    <div class="commentArea">
-	        <form jwcid="@Form" listener="ognl:listeners.addComment" delegate="bean:delegate" >
-	            <input type="hidden" jwcid="@Hidden" value="ognl:postId" />
-	            <h3 id="leaveComment">Leave A Comment From Your Baadself</h3>
+	<span jwcid="@Post" post="ognl:post" />
+    <div id="comments">
+        <h3>Comments</h3>
+        <p><a href="#leaveComment" class="arrow">Leave a comment below</a></p>
+        
+        
+    	<div class="comment" jwcid="@Foreach" element="div" source="ognl:post.comments" value="ognl:loopComment">	                            
+            
+            <p>
+                <img jwcid="@Image" alt="A Comment" image="ognl:getAsset('page')" />
+	            <strong>
+	                <span jwcid="@Insert" value="ognl:loopComment.author">Author</span>
+	            </strong>
+	            <span jwcid="@Insert" value="ognl:loopComment.date">05 February 2005 15:12 </span>
+            </p>
+            <p>
+            	<span jwcid="@Insert" value="ognl:loopComment.comment">
+                    I am illustrating how comments work here! Or do not work as the case may be...
+                </span>
+            </p>
+        </div>	    
+        <div class="contentBox">
+		    <span jwcid="@FormErrors" delegate="bean:delegate" />
+		    <div class="commentArea">
+		        <form jwcid="@Form" listener="ognl:listeners.addComment" delegate="bean:delegate" >
+		            <input type="hidden" jwcid="@Hidden" value="ognl:postId" />
+		            <h3 id="leaveComment">Leave A Comment From Your Baadself</h3>
+			            
+		            <input type="text" class="textbox" jwcid="author@TextField" validators="validators:required" value="ognl:comment.author" displayName="Author"  />
+					<label jwcid="@FieldLabel" field="component:author" for="author" />
+	                <br />
+	                            
+		            <input type="text" class="textbox" jwcid="url@TextField" validators="validators:required" value="ognl:comment.authorWebsite" displayName="Website" />
+	                <label jwcid="@FieldLabel" field="component:url" for="url" />
+		            <br />
+	                
+		            <label jwcid="@FieldLabel"  field="component:comment" for="comment" />
+	                <br />
+		            <textarea jwcid="comment@TextArea" value="ognl:comment.comment" validators="validators:required" displayName="Comment"></textarea>                        
 		            
-	            <input type="text" class="textbox" jwcid="author@TextField" validators="validators:required" value="ognl:comment.author" displayName="Author"  />
-				<label jwcid="@FieldLabel" field="component:author" for="author" />
-                <br />
-                            
-	            <input type="text" class="textbox" jwcid="url@TextField" validators="validators:required" value="ognl:comment.authorWebsite" displayName="Website" />
-                <label jwcid="@FieldLabel" field="component:url" for="url" />
-	            <br />
-                
-	            <label jwcid="@FieldLabel"  field="component:comment" for="comment" />
-                <br />
-	            <textarea jwcid="comment@TextArea" value="ognl:comment.comment" validators="validators:required" displayName="Comment"></textarea>                        
-	            
-	            <p>* Required field.</p>
-	            <input type="submit" jwcid="@Submit" value="Post-Me-Do" class="button" />
-	
-	        </form>
-	    </div>
+		            <p>* Required field.</p>
+		            <input type="submit" jwcid="@Submit" value="Post-Me-Do" class="button" />
+		
+		        </form>
+		    </div>
+        </div>
 	</div>
-
 </span>

@@ -39,7 +39,7 @@ public abstract class EditPost extends SecurePage implements PageBeginRenderList
     /* (non-Javadoc)
      * @see org.apache.tapestry.event.PageRenderListener#pageBeginRender(org.apache.tapestry.event.PageEvent)
      */
-    public void pageBeginRender(PageEvent arg0) {
+    public void pageBeginRender(PageEvent event) {
         if(getPostManager().getPosts()==null) {
             setPost(new Post());
         }

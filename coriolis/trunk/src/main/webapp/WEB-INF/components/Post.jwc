@@ -12,7 +12,5 @@
     <asset name="delete" path="i/icon-delete.gif" />
     
     <parameter name="post" required="yes"/> 
-    
-    <!--property name="postTitle"  /-->
-    
+        
 </component-specification>

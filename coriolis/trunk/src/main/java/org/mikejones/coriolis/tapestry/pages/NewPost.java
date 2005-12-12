@@ -14,11 +14,11 @@ import org.mikejones.coriolis.om.Post;
 import org.mikejones.coriolis.tapestry.framework.validation.BlogDelegate;
 
 public abstract class NewPost extends BasePage implements PageBeginRenderListener {
-    
+
     @Bean(BlogDelegate.class)
     public abstract IValidationDelegate getDelegate();
-    
-	@InjectObject("service:blog.PostManager")
+
+    @InjectObject("service:blog.PostManager")
     public abstract PostManager getPostManager();
 
     public abstract Post getPost();
@@ -32,15 +32,15 @@ public abstract class NewPost extends BasePage implements PageBeginRenderListene
      */
     public void pageBeginRender(PageEvent pageEvent) {
         if (getPost() == null) {
-            setPost(new Post());                
+            setPost(new Post());
         }
     }
-    
+
     public String addPost() {
-        if(getDelegate().getHasErrors())
+        if (getDelegate().getHasErrors())
             return null;
-    	getPostManager().savePost(getPost());
-    	return "Home";
-    }   
+        getPostManager().savePost(getPost());
+        return "Home";
+    }
 
 }
