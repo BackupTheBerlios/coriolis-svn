@@ -2,5 +2,12 @@
 	<span class="post" jwcid="@Foreach" source="ognl:posts" value="ognl:post">
         <span jwcid="@Post" post="ognl:post" />        
 	</span>        
+    
+    <span jwcid="@Toggler" text="Click this" toggleable="component:fp" />
+    
+    <span jwcid="fp@FloatingPane" title="title" toggle="wipe" hasShaddow="true" >
+        some stuff that should appear
+	</span>
+    
 </span>
 		

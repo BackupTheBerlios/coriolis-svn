@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC 
+	"-//W3C//DTD XHTML 1.0 Strict//EN"          
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-Strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+	<head>
+		<title>Page Title</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<style type="text/css">
+			@import url(s/base.css);
+            @import url(s/layout.css);
+            @import url(s/menu.css);
+            @import url(s/calendar.css);
+            @import url(s/post.css);
+		</style>
+        <script src="../../../../dojo/dojo.js" type="text/javascript"></script>
+	</head>
+
+	
+<body>
+<script type="text/javascript" src="/app?digest=1f7008d3e65882519740d925d6c5a813&amp;path=%2Forg%2Fapache%2Ftapestry%2Fform%2FForm.js&amp;service=asset"></script>
+<script type="text/javascript"><!--
+
+
+        
+            dojo.require("dojo.widget.Editor");
+        
+    
+
+// --></script>   
+        <div id="wrapper">        
+            <div id="head">
+                
+            </div>            
+            <div id="navbar">
+				<ul id="internals">
+	            	<li>
+                        <a href="/app?page=Home&amp;service=page" title="Return to the homepage">Home</a>
+
+					</li>    
+                    <li>
+                        <a title="Search" href="#" class="inactive">Search</a>
+					</li>                                        
+	                
+		                <li>
+		                    <a href="/app?page=NewPost&amp;service=page">New Post</a>
+		                </li>
+		                <li >
+		                    <a title="Change the look of the blog." href="#" class="inactive">Change Skin</a>
+
+		                </li>
+		                <li>		                    
+                            <a href="/app?service=restart" title="Logout">[Logout]</a>
+		                </li>
+	                
+                    
+				</ul>	            	
+	        </div>
+            
+            <div id="contentWrapper">
+                
+                <div id="subContent">                    
+                    <h2>December 2005</h2><div class="calendar"><table><thead><tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td></tr><tr><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr><tr><td class="current">11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td></tr><tr><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td></tr><tr><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td></tr></tbody></table></div>
+
+                    <h2>People</h2>
+                    <ul class="subMenu">                            
+	                	<li><a title="King of the nerds." href="http://www.martinfowler.com">Martin Fowler</a></li>
+	                </ul>
+                    <h2>Tools</h2>
+                    <ul class="subMenu">
+                        <li><a title="Open source IDE" href="http://www.eclipse.org">Eclipse</a></li>
+
+                        <li><a title="Component based web dev." href="http://jakarta.apache.org/tapestry/">Tapestry</a></li>
+                        <li><a title="Dependency injection service microkernel." href="http://jakarta.apache.org/hivemind/">Hivemind</a></li>
+                        <li><a title="Unit testing platform Java" href="http://www.junit.org">JUnit</a></li>
+                        <li><a title="Build tool for Java" href="http://maven.apache.org">Maven</a></li>
+                        <li><a title="Continuous integration tool" href="http://cruisecontrol.sourceforge.net/">CruiseControl</a></li>
+                        <li><a class="last" title="Browser Based testing" href="http://selenium.thoughtworks.com/index.html">Selenium</a></li>
+
+                    </ul>                    
+                    <h2>Web Design</h2>
+                    <ul class="subMenu">
+	                    <li><a title="King of the designers." href="http://www.zeldman.com">Zeldman</a></li>
+	                    <li><a title="Useful site." href="http://www.simplebits.com">SimpleBits</a></li>
+	                    <li><a class="last" title="Overly serious but still useful." href="http://www.mezzoblue.com">MezzoBlue</a></li>
+	                </ul>                    
+                </div>
+
+            
+                <div id="mainContent">                    
+                	
+	
+	<form method="post" action="/app" name="Form" id="Form">
+<div style="display:none;"><input type="hidden" name="formids" value="title,title_0,text,Submit"/>
+<input type="hidden" name="component" value="$Form"/>
+<input type="hidden" name="page" value="NewPost"/>
+<input type="hidden" name="service" value="direct"/>
+<input type="hidden" name="session" value="T"/>
+<input type="hidden" name="submitmode" value=""/>
+<input type="hidden" name="submitname" value=""/>
+</div> 		
+        <input type="text" name="title" value="" id="title" class="textbox"/>
+        <label for="title_0">Title</label>
+        <br/>
+
+        <label for="text">Text</label>
+		<br />       	        
+        <div style="border: 1px solid #908f8f;">
+			<textarea dojoType="Editor" name="text" items="bold;italic;underline;strikethrough;" id="text"></textarea>
+        </div>        
+        <input type="submit" name="Submit" id="Submit" value="Add Post" class="button"/>        
+	</form>   
+           
+                </div>                
+                <div style="clear: both">&nbsp;</div>            
+            </div>            
+            <div id="footer">
+
+                <p>This website may or may not be Xhtml Strict 1.0 using Css 2.0</p>
+            </div>                  
+        </div>    
+    <script language="JavaScript" type="text/javascript"><!--
+Tapestry.register_form('Form');
+Tapestry.set_focus('title');
+
+// --></script></body>
+</html>
