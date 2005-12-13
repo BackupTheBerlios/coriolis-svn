@@ -169,6 +169,24 @@
           <target>1.5</target>
         </configuration>
       </plugin>
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <projectnatures>
+            <java.lang.String>org.eclipse.jdt.core.javanature</java.lang.String>
+            <java.lang.String>com.tssap.selena.model.modeling_nature</java.lang.String>
+            <java.lang.String>com.borland.selena.uml14.uml14_nature</java.lang.String>
+          </projectnatures>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>eclipse</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>

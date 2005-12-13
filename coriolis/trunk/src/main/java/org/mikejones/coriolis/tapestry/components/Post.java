@@ -18,8 +18,8 @@ public abstract class Post extends BaseComponent {
     @InjectObject("service:blog.PostManager")
     public abstract PostManager getPostManager();
 
-    @InjectObject("infrastructure:cycle")
-    public abstract IRequestCycle getRequestCycle();
+//    @InjectObject("infrastructure:cycle")
+//    public abstract IRequestCycle getRequestCycle();
 
     private Format dateFormat;
 
