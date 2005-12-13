@@ -10,15 +10,6 @@
     
     <bean name="delegate" class="org.mikejones.coriolis.framework.validation.BlogDelegate"/>
     
-    <component id="error" type="Delegator">
-	<binding name="delegate" value="beans.delegate.firstError"/>
-    <binding name="delegate1" value="beans.delegate.secondError"/>
-    <!--binding name="delegate2" value="beans.delegate.thirdError"/-->
-	</component>
-	<component id="form" type="Form">
-	<binding name="delegate" value="beans.delegate"/>
-	</component>
-    
     <property name="message" />
     
     <property name="post"  /> 

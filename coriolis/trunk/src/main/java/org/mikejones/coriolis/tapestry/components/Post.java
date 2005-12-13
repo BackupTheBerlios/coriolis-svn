@@ -35,7 +35,7 @@ public abstract class Post extends BaseComponent {
     }
 
     public void editPost(Integer id) {
-        EditPost editPost = (EditPost) getPage().getRequestCycle().getPage("EditPage");
+        EditPost editPost = (EditPost) getPage().getRequestCycle().getPage("EditPost");
         editPost.setPost(getPostManager().getPost(id));
         getPage().getRequestCycle().activate(editPost);
 
