@@ -7,7 +7,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 
 import org.apache.tapestry.BaseComponent;
-import org.apache.tapestry.IRequestCycle;
+import org.apache.tapestry.IPage;
 import org.apache.tapestry.annotations.InjectObject;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.tapestry.pages.EditPost;
@@ -17,9 +17,6 @@ public abstract class Post extends BaseComponent {
 
     @InjectObject("service:blog.PostManager")
     public abstract PostManager getPostManager();
-
-//    @InjectObject("infrastructure:cycle")
-//    public abstract IRequestCycle getRequestCycle();
 
     private Format dateFormat;
 
@@ -34,11 +31,11 @@ public abstract class Post extends BaseComponent {
         page.viewPost(new Integer(id));
     }
 
-    public void editPost(Integer id) {
+    public IPage editPost(Integer id) {
         EditPost editPost = (EditPost) getPage().getRequestCycle().getPage("EditPost");
         editPost.setPost(getPostManager().getPost(id));
-        getPage().getRequestCycle().activate(editPost);
-
+        editPost.setPostId(id);
+        return editPost;
     }
 
     public String deletePost(Integer id) {

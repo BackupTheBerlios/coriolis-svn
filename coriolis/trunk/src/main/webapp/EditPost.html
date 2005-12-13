@@ -1,19 +1,15 @@
 <span jwcid="@Layout">
-	<span jwcid="@FormErrors" delegate="bean:delegate" />
-    <form jwcid="@Form" listener="listener:updatePost" parameters="ognl:postId" delegate="ognl:beans.delegate" >		
-        <input type="hidden" jwcid="@Hidden" value="ognl:post.id" />
+	<form jwcid="@Form" listener="ognl:listeners.updatePost" delegate="bean:delegate" > 
+        <span jwcid="@Hidden" value="ognl:postId" listener="ognl:listeners.loadPost" />
+        <span jwcid="@FieldLabel" field="component:title" />
+        <br/>
+        <input jwcid="title@TextField" validators="validators:required" displayName="Title" value="ognl:post.title" type="text" class="textbox" />
         
-        <label for="title">Title</label>
-        <input type="text" class="textbox" jwcid="title@TextField" value="ognl:post.title" />
-		<br />
-        
-        <label for="text" jwcid="@FieldLabel" field="ognl:components.inputText" displayName="Text">Text</label>
-       	<div style="border: 1px solid #908f8f;">
+        <span jwcid="@FieldLabel" field="component:text" displayName="Text" />
+		<br />       	        
+        <div style="border: 1px solid #908f8f; background-color: #fff;">
 			<textarea jwcid="text@DojoTextArea" validators="validators:required" displayName="Text" value="ognl:post.text" items="bold;italic;underline;strikethrough;"/>
-        </div>  
-        
-        <input type="submit" name="addPost" value="Add Post" />
-        
-        
+        </div>        
+        <input jwcid="@Submit" type="submit" value="Add Post" class="button" />        
 	</form>
 </span>

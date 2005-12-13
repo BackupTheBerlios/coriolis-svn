@@ -3,63 +3,41 @@
  */
 package org.mikejones.coriolis.tapestry.pages;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.annotations.Bean;
 import org.apache.tapestry.annotations.InjectObject;
-import org.apache.tapestry.annotations.InjectState;
-import org.apache.tapestry.event.PageBeginRenderListener;
-import org.apache.tapestry.event.PageEvent;
 import org.apache.tapestry.valid.IValidationDelegate;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
 import org.mikejones.coriolis.tapestry.framework.SecurePage;
-import org.mikejones.coriolis.tapestry.framework.aso.BlogVisit;
 import org.mikejones.coriolis.tapestry.framework.validation.BlogDelegate;
 
+public abstract class EditPost extends SecurePage {
 
-public abstract class EditPost extends SecurePage implements PageBeginRenderListener{
+    public abstract void setPostId(Integer id);
 
-    public abstract void setMessage(String message);
-    
+    public abstract Integer getPostId();
+
     public abstract void setPost(Post post);
-    
+
     public abstract Post getPost();
-    
-    @InjectState("blogVisit")
-    public abstract BlogVisit getBlogVisit();
-    
+
     @InjectObject("service:blog.PostManager")
     public abstract PostManager getPostManager();
-    
+
     @Bean(BlogDelegate.class)
-    public abstract IValidationDelegate getDelegate();    
+    public abstract IValidationDelegate getDelegate();
 
-    
-    /* (non-Javadoc)
-     * @see org.apache.tapestry.event.PageRenderListener#pageBeginRender(org.apache.tapestry.event.PageEvent)
-     */
-    public void pageBeginRender(PageEvent event) {
-        if(getPostManager().getPosts()==null) {
-            setPost(new Post());
-        }
-    } 
-    
-    public void editPost(IRequestCycle cycle) {
-        pageValidate(new PageEvent(this, cycle));
-        if(getDelegate().getHasErrors()){ 
-        //List errorRenderers = getDelegate().getErrorRenderers();
-       // errorRenderers.
-        }
-        cycle.activate(this);
+    public void loadPost() {
+        Post post = getPostManager().getPost(getPostId());
+        setPost(post);
     }
 
-    public void updatePost(IRequestCycle cycle) {
-        if (StringUtils.isEmpty(getPost().getText())) {
-            setMessage("The text field is required!");
-        } else {            
+    public String updatePost() {
+        if (!getDelegate().isInError()) {
             getPostManager().savePost(getPost());
-            cycle.activate("Blog");
+            return "Home";
         }
+        return null;
     }
+
 }
