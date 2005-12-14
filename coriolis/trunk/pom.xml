@@ -17,6 +17,18 @@
   </developers>
   <repositories>
     <repository>
+      <id>gnasherM2</id>
+      <name>gnahser maven 2 repo</name>
+      <layout>default</layout>
+      <url>http://gnasher.aniteps.com/maven2</url>
+    </repository>    
+    <repository>
+      <id>gnasherM1</id>
+      <name>gnashser maven 1 repo</name>
+      <layout>legacy</layout>
+      <url>http://gnasher.aniteps.com/repo</url>
+    </repository>
+    <repository>
       <id>Zebra2</id>
       <name>Zebra</name>
       <layout>default</layout>
