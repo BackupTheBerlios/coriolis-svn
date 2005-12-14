@@ -25,6 +25,12 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
+    <repository>
+      <id>ibiblio</id>
+      <name>ibiblio maven 2</name>
+      <layout>default</layout>
+      <url>http://www.ibiblio.org/maven2</url>
+    </repository>
   </repositories>
   <dependencies>
     <!-- dependacies below taken from web and from compiled project-->
