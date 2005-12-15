@@ -1,5 +1,5 @@
 <span jwcid="@Layout">
-	<span class="post" jwcid="@Foreach" source="ognl:posts" value="ognl:post">
+	<span class="post" jwcid="@For" source="ognl:posts" value="ognl:post">
         <span jwcid="@Post" post="ognl:post" />        
 	</span>        
     
@@ -8,6 +8,7 @@
     <span jwcid="fp@FloatingPane" title="title" toggle="wipe" hasShaddow="true" >
         some stuff that should appear
 	</span>
+    <a href="app?service=rss">rss</a>
     
 </span>
 		
