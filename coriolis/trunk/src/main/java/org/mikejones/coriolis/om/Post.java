@@ -7,14 +7,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratorType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
-import javax.persistence.TemporalType;
 
 /**
  * A class to respresent a post.
@@ -115,7 +113,6 @@ public class Post {
     /**
      * @return Returns the date.
      */
-    @Basic(temporalType = TemporalType.TIME)
     public Date getPostDate() {
         return postDate;
     }
