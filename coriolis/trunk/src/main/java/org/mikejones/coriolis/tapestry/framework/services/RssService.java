@@ -1,7 +1,7 @@
 /*
  * created on 14-Dec-2005
  */
-package org.mikejones.coriolis.tapestry.framework.service;
+package org.mikejones.coriolis.tapestry.framework.services;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -86,5 +86,37 @@ public class RssService implements IEngineService {
      */
     public String getName() {
         return "rss";
+    }
+    
+    /**
+     * write out the post stuff
+     * @return
+     */
+    protected String writeRSS() {
+        Document document = DocumentHelper.createDocument();
+
+        Element rss = document.addElement("rss");
+        rss.addAttribute("version", "2.0");
+        Element channel = rss.addElement("channel");
+        channel.addElement("title").addText("title");
+        channel.addElement("link").addText("link");
+
+        List<Post> posts = postManager.getPosts();
+
+        for (Post post : posts) {
+            Element item = channel.addElement("item");
+            item.addElement("title").setText(post.getTitle());
+            item.addElement("link").setText("need a link maker");
+
+            // TODO stip out the html stuff
+            item.addElement("description").setText(post.getText());
+
+            // TODO prob need a format for that
+            item.addElement("pubDate").setText("time");
+            item.addElement("guid").setText(post.getId().toString());
+        }
+
+        return document.asXML();
+
     }
 }
