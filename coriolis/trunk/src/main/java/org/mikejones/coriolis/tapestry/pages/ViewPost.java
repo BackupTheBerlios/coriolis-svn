@@ -3,6 +3,8 @@
  */
 package org.mikejones.coriolis.tapestry.pages;
 
+import org.apache.tapestry.IExternalPage;
+import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.annotations.Bean;
 import org.apache.tapestry.annotations.InjectObject;
 import org.apache.tapestry.event.PageBeginRenderListener;
@@ -17,8 +19,8 @@ import org.mikejones.coriolis.tapestry.framework.validation.BlogDelegate;
 /**
  * @author <a href="mailTo:michael.daniel.jones@gmail.com" >mike</a>
  */
-public abstract class ViewPost extends BasePage implements PageBeginRenderListener {
-    
+public abstract class ViewPost extends BasePage implements PageBeginRenderListener, IExternalPage {
+
     @Bean(BlogDelegate.class)
     public abstract IValidationDelegate getDelegate();
 
@@ -48,6 +50,17 @@ public abstract class ViewPost extends BasePage implements PageBeginRenderListen
             setComment(new Comment());
     }
 
+    /*
+     *  (non-Javadoc)
+     * @see org.apache.tapestry.IExternalPage#activateExternalPage(java.lang.Object[], org.apache.tapestry.IRequestCycle)
+     */
+    public void activateExternalPage(Object[] params, IRequestCycle cycle) {
+        setPostId((Integer)params[0]);        
+        // TODO prob need some kind of error handling for people entering random numbers
+        setPost(getPostManager().getPost(getPostId()));
+    }
+
+   
     public void viewPost(Integer postId) {
         PostManager postManager = getPostManager();
         setPost(postManager.getPost(postId));
@@ -56,15 +69,20 @@ public abstract class ViewPost extends BasePage implements PageBeginRenderListen
         getRequestCycle().activate(this);
     }
 
+    /**
+     * listener method
+     * TODO should this be on the component?
+     *
+     */
     public void addComment() {
         PostManager postManager = getPostManager();
         Post post = postManager.getPost(getPostId());
-        
-        if(getDelegate().getHasErrors()) {
+
+        if (getDelegate().getHasErrors()) {
             setPost(post);
             return;
-        }                
-        
+        }
+
         post.addComment(getComment());
         setPost(post);
         setComment(new Comment());
