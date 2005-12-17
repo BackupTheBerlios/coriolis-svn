@@ -15,6 +15,7 @@
 		<mapping class="org.mikejones.coriolis.om.Post"/>
 		<mapping class="org.mikejones.coriolis.om.Comment"/>
 		<mapping class="org.mikejones.coriolis.om.Person"/>
+		<mapping class="org.mikejones.coriolis.om.Category"/>
 		
 	</session-factory>
 </hibernate-configuration>

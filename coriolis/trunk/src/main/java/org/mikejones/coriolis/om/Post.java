@@ -11,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratorType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
@@ -33,9 +34,12 @@ public class Post {
     private List<Comment> comments;
 
     private Date postDate;
+    
+    private List<Category> categories;
 
     public Post() {
         comments = new ArrayList<Comment>();
+        categories = new ArrayList<Category>();
     }
 
     /**
@@ -122,6 +126,19 @@ public class Post {
      */
     public void setPostDate(Date date) {
         this.postDate = date;
+    }
+    
+    @ManyToMany(mappedBy = "posts")
+    public List<Category> getCategories() {
+    	return categories;
+    }
+    
+    public void setCategories(List<Category> categories) {
+    	this.categories = categories;
+    }
+    
+    public void addCategory(Category category) {
+    	getCategories().add(category);
     }
 
 }

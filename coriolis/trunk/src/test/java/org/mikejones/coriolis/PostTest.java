@@ -3,49 +3,44 @@
  */
 package org.mikejones.coriolis;
 
-import java.util.Date;
-import java.util.List;
-
 import org.hibernate.Transaction;
-import org.mikejones.coriolis.om.Comment;
-import org.mikejones.coriolis.om.Post;
+import org.mikejones.coriolis.om.*;
 
 public class PostTest extends BaseCase {
 
-    
-    @SuppressWarnings("unchecked")
     public void testSavePost() throws Exception {
-        Post post = new Post();
-        post.setPostDate(new Date());
-        post.setTitle("this is a title");
-        post.setText("here is the text");
+        Post post = PostHelper.createPost();
         
         Transaction t = session.beginTransaction();
         session.save(post);
         t.commit();
         
-        List<Post> posts = session.createQuery("from " + Post.class.getName()).list();
-        
-        assertTrue(posts.size()==1);        
+        Post saved = (Post)session.get(Post.class, post.getId());
+        PostHelper.assertPost(saved);
     }
     
     public void testSavePostWithComments() throws Exception {
-        Post post = new Post();
-        post.setPostDate(new Date());
-        post.setTitle("this is a title");
-        post.setText("here is the text");
-        
-        Comment comment = new Comment();
-        comment.setAuthor("author");
-        comment.setComment("comment");
-        comment.setDate(new Date());
-        
-        post.addComment(comment);
+        Post post = PostHelper.createPostWithComment();
         
         Transaction t = session.beginTransaction();
         session.save(post);
         t.commit();        
+        
+        Post saved = (Post)session.get(Post.class, post.getId());
+        PostHelper.assertPostWithComment(saved);
     }
+    
+	public void testSavePostWithCategory() throws Exception {
+    	Post post = PostHelper.createPostWithCategory();
+    	
+    	Transaction t = session.beginTransaction();
+    	session.save(post);
+    	t.commit();
+    	
+    	Post saved = (Post)session.get(Post.class, post.getId());
+    	PostHelper.assertPostWithCategory(saved);
+    }
+    
 }
 
 
