@@ -23,6 +23,7 @@
   <!-- Service points -->
   <service-point id="PersonManager" interface="org.mikejones.coriolis.managers.api.PersonManager"/>
   <service-point id="PostManager" interface="org.mikejones.coriolis.managers.api.PostManager"/>
+  <service-point id="CategoryManager" interface="org.mikejones.coriolis.managers.api.CategoryManager"/>
   <implementation service-id="PersonManager">
     <invoke-factory>
       <construct class="org.mikejones.coriolis.managers.impl.MockPersonManager"/>
@@ -31,6 +32,11 @@
   <implementation service-id="PostManager">
     <invoke-factory>
       <construct class="org.mikejones.coriolis.managers.impl.HibernatePostManager"/>
+    </invoke-factory>
+  </implementation>
+  <implementation service-id="CategoryManager">
+    <invoke-factory>
+      <construct class="org.mikejones.coriolis.managers.impl.HibernateCategoryManager"/>
     </invoke-factory>
   </implementation>
 </module>
