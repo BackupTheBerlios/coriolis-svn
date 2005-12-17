@@ -54,7 +54,7 @@ public class Category {
 		this.description = description;
 	}
 	
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToMany(cascade = { CascadeType.ALL, CascadeType.MERGE })
 	public List<Post> getPosts() {
 		return posts;
 	}

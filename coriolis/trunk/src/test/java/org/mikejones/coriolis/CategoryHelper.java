@@ -16,10 +16,22 @@ public class CategoryHelper extends TestCase {
     	return result;
     }
 	
+	public static Category createCategoryWithPost() {
+		Category result = createCategory();
+		Post post = PostHelper.createPost();
+		result.addPost(post);
+		return result;
+	}
+	
 	public static void assertCategory(Category category) {
 		assertEquals(CATEGORY_TITLE, category.getTitle());
     	assertEquals(CATEGORY_DESCRIPTION, category.getDescription());
 	}
 	
-	
+	public static void assertCategoryWithPost(Category category) {
+		assertCategory(category);
+		assertEquals(1, category.getPosts().size());
+		Post post = category.getPosts().get(0);
+		PostHelper.assertPost(post);
+	}
 }

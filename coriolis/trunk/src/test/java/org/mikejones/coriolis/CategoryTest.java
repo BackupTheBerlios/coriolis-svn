@@ -17,7 +17,14 @@ public class CategoryTest extends BaseCase {
 	}
 	
 	public void testSaveCategoryWithPost() {
-				
+		Category category = CategoryHelper.createCategoryWithPost();
+		
+		Transaction transaction = session.beginTransaction();
+		session.save(category);
+		transaction.commit();
+		
+		Category saved = (Category)session.get(Category.class, category.getId());
+		CategoryHelper.assertCategoryWithPost(saved);
 	}
 	
 }
