@@ -11,26 +11,8 @@ import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
 
 
-public class HibernatePostManager implements PostManager {
+public class HibernatePostManager extends BaseManager implements PostManager {
     
-    public Session session;
-    
-    /**
-     * Get the injected session
-     * @return
-     */
-    public Session getSession() {
-        return session;
-    }
-
-    /**
-     * Method to inject the session
-     * @param session
-     */
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
     public Post getPost(int index) {
         // TODO Auto-generated method stub
         return null;
