@@ -1,25 +1,9 @@
 <?xml version="1.0"?>
 <module id="blog" version="1.0.0">
-  <contribution configuration-id="tapestry.state.ApplicationObjects">
-    <state-object name="blogVisit" scope="session">
-      <create-instance class="org.mikejones.coriolis.tapestry.framework.aso.BlogVisit"/>
-    </state-object>
-  </contribution>
   
-  <service-point id="rssService" interface="org.apache.tapestry.engine.IEngineService">
-    <invoke-factory>
-      <construct class="org.mikejones.coriolis.tapestry.service.RssService" />
-        <!--<set-service property="builder" service-id="tapestry.request.AbsoluteURLBuilder" />-->
-        <!--<set-service property="request" service-id="tapestry.globals.HttpServletRequest"/>
-        <set-service property="response" service-id="tapestry.globals.HttpServletResponse"/>-->
-        <!--<set-object property="servletPath" value="app-property:org.apache.tapestry.servlet-path" />-->
-        <!--<set-object property="linkFactory" value="infrastructure:linkFactory" />-->
-
-    </invoke-factory>
-  </service-point>
-  <contribution configuration-id="tapestry.services.ApplicationServices">
-    <service name="rss" object="service:blog.rssService"/>
-  </contribution>
+  <sub-module descriptor="coriolis.framework.xml"/>
+  
+  
   <!-- Service points -->
   <service-point id="PersonManager" interface="org.mikejones.coriolis.managers.api.PersonManager"/>
   <service-point id="PostManager" interface="org.mikejones.coriolis.managers.api.PostManager"/>

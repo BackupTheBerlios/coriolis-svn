@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module id="coriolis.framework" version="1.0" package="org.mikejones.coriolis.tapestry.framework">
+    <contribution configuration-id="tapestry.state.ApplicationObjects">
+        <state-object name="blogVisit" scope="session">
+            <create-instance class="org.mikejones.coriolis.tapestry.framework.aso.BlogVisit"/>
+        </state-object>
+    </contribution>
+    <contribution configuration-id="tapestry.services.ApplicationServices">
+        <service name="rss" object="service:blog.rssService"/>
+    </contribution>    
+    <service-point id="services.RssService" interface="org.apache.tapestry.engine.IEngineService">
+        <invoke-factory>
+            <construct class="org.mikejones.coriolis.tapestry.service.RssService" />
+        </invoke-factory>
+    </service-point>
+    <service-point id="AllPostsRSS2Provider" interface="org.mikejones.coriolis.tapestry.framework.service.RSSProvider">
+        <invoke-factory>
+            <construct class="org.mikejones.coriolis.tapestry.framework.service.PostRSS2Provider" />
+        </invoke-factory>
+    </service-point>        
+</module>
