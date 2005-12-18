@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<module id="coriolis.managers" version="1.0.0">
+    <service-point id="PersonManager" interface="org.mikejones.coriolis.managers.api.PersonManager">
+        <invoke-factory>
+            <construct class="org.mikejones.coriolis.managers.impl.MockPersonManager"/>
+        </invoke-factory>
+    </service-point>
+    <service-point id="PostManager" interface="org.mikejones.coriolis.managers.api.PostManager">
+        <invoke-factory>
+            <construct class="org.mikejones.coriolis.managers.impl.HibernatePostManager"/>
+        </invoke-factory>
+    </service-point>
+    <service-point id="CategoryManager"
+        interface="org.mikejones.coriolis.managers.api.CategoryManager">
+        <invoke-factory>
+            <construct class="org.mikejones.coriolis.managers.impl.HibernateCategoryManager"/>
+        </invoke-factory>
+    </service-point>
+</module>
