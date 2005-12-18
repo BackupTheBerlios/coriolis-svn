@@ -11,7 +11,7 @@ import org.mikejones.coriolis.om.Category;
 
 public abstract class CategoryMenu extends AbstractComponent {
 
-	@InjectObject("service:blog.CategoryManager")
+	@InjectObject("service:coriolis.managers.CategoryManager")
 	public abstract CategoryManager getCategoryManager();
 	
 	@Override

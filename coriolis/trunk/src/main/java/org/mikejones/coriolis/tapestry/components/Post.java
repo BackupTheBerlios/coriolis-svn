@@ -15,7 +15,7 @@ import org.mikejones.coriolis.tapestry.pages.ViewPost;
 
 public abstract class Post extends BaseComponent {
 
-    @InjectObject("service:blog.PostManager")
+    @InjectObject("service:coriolis.managers.PostManager")
     public abstract PostManager getPostManager();
 
     private Format dateFormat;

@@ -7,15 +7,15 @@
     </contribution>
     <contribution configuration-id="tapestry.services.ApplicationServices">
         <service name="rss" object="service:coriolis.framework.RssService"/>
-    </contribution>    
+    </contribution>
     <service-point id="RssService" interface="org.apache.tapestry.engine.IEngineService">
         <invoke-factory>
-            <construct class="org.mikejones.coriolis.tapestry.service.RssService" />
+            <construct class="org.mikejones.coriolis.tapestry.service.RssService"/>
         </invoke-factory>
     </service-point>
     <!--<service-point id="AllPostsRSS2Provider" interface="org.mikejones.coriolis.tapestry.framework.service.RSSProvider">
         <invoke-factory>
             <construct class="org.mikejones.coriolis.tapestry.framework.service.PostRSS2Provider" />
         </invoke-factory>
-    </service-point>   -->     
+    </service-point>   -->
 </module>

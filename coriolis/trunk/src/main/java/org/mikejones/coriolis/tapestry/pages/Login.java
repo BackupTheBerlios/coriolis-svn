@@ -13,7 +13,7 @@ import org.mikejones.coriolis.tapestry.framework.aso.BlogVisit;
 
 public abstract class Login extends BasePage {
 
-    @InjectObject("service:blog.PersonManager")
+    @InjectObject("service:coriolis.managers.PersonManager")
     public abstract PersonManager getPersonManager();
 
     @InjectState("blogVisit")

@@ -21,7 +21,7 @@ public abstract class EditPost extends SecurePage {
 
     public abstract Post getPost();
 
-    @InjectObject("service:blog.PostManager")
+    @InjectObject("service:coriolis.managers.PostManager")
     public abstract PostManager getPostManager();
 
     @Bean(BlogDelegate.class)

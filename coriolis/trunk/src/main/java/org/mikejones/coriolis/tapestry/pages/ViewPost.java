@@ -24,7 +24,7 @@ public abstract class ViewPost extends BasePage implements PageBeginRenderListen
     @Bean(BlogDelegate.class)
     public abstract IValidationDelegate getDelegate();
 
-    @InjectObject("service:blog.PostManager")
+    @InjectObject("service:coriolis.managers.PostManager")
     public abstract PostManager getPostManager();
 
     public abstract Comment getLoopComment();

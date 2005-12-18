@@ -18,7 +18,7 @@ public abstract class NewPost extends BasePage implements PageBeginRenderListene
     @Bean(BlogDelegate.class)
     public abstract IValidationDelegate getDelegate();
 
-    @InjectObject("service:blog.PostManager")
+    @InjectObject("service:coriolis.managers.PostManager")
     public abstract PostManager getPostManager();
 
     public abstract Post getPost();
