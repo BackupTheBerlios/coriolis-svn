@@ -28,7 +28,7 @@ public abstract class DojoTextArea extends AbstractFormComponent implements Tran
 
     @Parameter(required = false)
     public abstract String getItems();
-
+    
     @InjectScript("DojoTextArea.script")
     public abstract IScript getDojoScript();
 
@@ -50,15 +50,15 @@ public abstract class DojoTextArea extends AbstractFormComponent implements Tran
         writer.attribute("dojoType", "Editor");
 
         writer.attribute("name", getName());
+        
+        if (getItems() != null)
+            writer.attribute("items", getItems());
 
         if (isDisabled())
             writer.attribute("disabled", "disabled");
 
         if (getStyle() != null)
-            writer.attribute("style", getStyle());
-
-        if (getItems() != null)
-            writer.attribute("items", getItems());
+            writer.attribute("style", getStyle());       
 
         renderIdAttribute(writer, cycle);
 

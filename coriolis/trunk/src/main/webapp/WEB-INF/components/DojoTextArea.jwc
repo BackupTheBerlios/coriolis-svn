@@ -6,6 +6,24 @@
 <component-specification allow-body="no" allow-informal-parameters="no">
     <description>
         A WYSIWYG Text Area using the dojo rich text scripts
+        
+        textGroup
+		    bold, italic, underline, strikethrough
+		blockGroup
+		    fontFace, formatBlock
+		justifyGroup
+		    justifyleft, justifycenter, justifyright
+		commandGroup
+		    save, cancel
+		colorGroup
+		    forecolor, hilitecolor
+		listGroup
+		    insertorderedlist, insertunorderedlist
+		indentGroup
+		    outdent, indent
+		linkGroup
+		    createlink, insertimage 
+        
     </description>
     
     <parameter name="disabled">
