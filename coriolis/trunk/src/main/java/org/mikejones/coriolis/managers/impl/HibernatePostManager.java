@@ -5,7 +5,6 @@ package org.mikejones.coriolis.managers.impl;
 
 import java.util.List;
 
-import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;

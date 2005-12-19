@@ -3,6 +3,8 @@
  */
 package org.mikejones.coriolis.tapestry.pages;
 
+import java.util.Date;
+
 import org.apache.tapestry.annotations.Bean;
 import org.apache.tapestry.annotations.InjectObject;
 import org.apache.tapestry.event.PageBeginRenderListener;
@@ -39,6 +41,7 @@ public abstract class NewPost extends BasePage implements PageBeginRenderListene
     public String addPost() {
         if (getDelegate().getHasErrors())
             return null;
+        getPost().setPostDate(new Date());
         getPostManager().savePost(getPost());
         return "Home";
     }

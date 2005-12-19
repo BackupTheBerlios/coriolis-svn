@@ -3,6 +3,7 @@
  */
 package org.mikejones.coriolis.tapestry.framework.services;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.dom4j.Document;
@@ -16,7 +17,9 @@ import org.mikejones.coriolis.om.Post;
  * 
  * @author <a href="mailTo:michael.jones@anite.com">Mike</a>
  */
-public class PostRSS2Provider implements RSSProvider {
+public class PostRSS2Provider implements RssProvider {
+    
+    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z");
 
     public PostManager postManager;
 
@@ -46,7 +49,8 @@ public class PostRSS2Provider implements RSSProvider {
         rss.addAttribute("version", "2.0");
         Element channel = rss.addElement("channel");
         channel.addElement("title").addText("title");
-        channel.addElement("link").addText("link");
+        channel.addElement("link").addText("http://localhost:8080/app");
+        channel.addElement("description").addText("blog description");
 
         List<Post> posts = postManager.getPosts();
 
@@ -73,7 +77,7 @@ public class PostRSS2Provider implements RSSProvider {
         item.addElement("description").setText(post.getText());
 
         // TODO prob need a format for that
-        item.addElement("pubDate").setText(post.getPostDate().toString());
+        item.addElement("pubDate").setText(simpleDateFormat.format(post.getPostDate()   ));
         // item.addElement("guid").setText(post.getId().toString());
 
     }
@@ -85,7 +89,7 @@ public class PostRSS2Provider implements RSSProvider {
      * @return
      */
     protected String linkToPost(Post post) {
-        return "http://localhost/myapp?service=external&context=ViewPost&sp="+post.getId();
+        return "http://localhost:8080/app?service=external&context=ViewPost&sp="+post.getId();
     }
 
 }

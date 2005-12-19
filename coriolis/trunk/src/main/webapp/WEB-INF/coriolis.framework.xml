@@ -10,12 +10,12 @@
     </contribution>
     <service-point id="RssService" interface="org.apache.tapestry.engine.IEngineService">
         <invoke-factory>
-            <construct class="org.mikejones.coriolis.tapestry.service.RssService"/>
+            <construct class="org.mikejones.coriolis.tapestry.framework.services.RssService"/>
         </invoke-factory>
     </service-point>
-    <!--<service-point id="AllPostsRSS2Provider" interface="org.mikejones.coriolis.tapestry.framework.service.RSSProvider">
+    <service-point id="PostsRSS2Provider" interface="org.mikejones.coriolis.tapestry.framework.services.RssProvider">
         <invoke-factory>
-            <construct class="org.mikejones.coriolis.tapestry.framework.service.PostRSS2Provider" />
+            <construct class="org.mikejones.coriolis.tapestry.framework.services.PostRSS2Provider" />
         </invoke-factory>
-    </service-point>   -->
+    </service-point>
 </module>
