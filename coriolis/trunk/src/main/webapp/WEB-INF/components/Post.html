@@ -4,10 +4,12 @@
             <span jwcid="@Insert" value="ognl:post.title" >Post Title</span>
 
             <a href="#" jwcid="@DirectLink" listener="listener:editPost" parameters="ognl:post.id" title="Edit Post">
-    			<img jwcid="@Image" alt="Edit post." image="ognl:getAsset('edit')" class="post"/>
+    			<!--<img jwcid="@Image" alt="Edit post." image="ognl:getAsset('edit')" class="post"/>-->
+				Edit Post 
             </a>
             <a href="#" jwcid="@DirectLink" listener="ognl:listeners.deletePost" parameters="ognl:post.id" title="Delete Post">
-        		<img jwcid="@Image" alt="Delete Post" image="ognl:getAsset('delete')" class="post"/>                                
+        		<!--<img jwcid="@Image" alt="Delete Post" image="ognl:getAsset('delete')" class="post"/>-->
+				Delete Post 
             </a>
 		</h2>
         <p>
@@ -21,7 +23,7 @@
     </div>
     <div class="postFooter">
         <p>
-            <img jwcid="@Image" alt="Make Comment" image="ognl:getAsset('mail')" />
+            <!--<img jwcid="@Image" alt="Make Comment" image="ognl:getAsset('mail')" />-->
 			<a href="#" jwcid="@DirectLink" listener="listener:viewPost" parameters="ognl:{post.id}">
                 <span jwcid="@Insert" value="ognl:post.comments.size">10</span> comment(s) left so far. 
             </a>
