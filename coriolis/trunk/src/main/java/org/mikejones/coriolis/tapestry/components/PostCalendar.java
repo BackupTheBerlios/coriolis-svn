@@ -19,7 +19,7 @@ public class PostCalendar extends AbstractComponent {
             return;
         Calendar calendar = Calendar.getInstance();
         
-        writer.begin("h2");
+        writer.begin("h3");
         writer.print(dateFormat.format(calendar.getTime()));
         writer.end();
         

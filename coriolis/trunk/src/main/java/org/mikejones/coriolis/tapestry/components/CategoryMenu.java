@@ -18,7 +18,7 @@ public abstract class CategoryMenu extends AbstractComponent {
 	protected void renderComponent(IMarkupWriter writer, IRequestCycle cycle) {
 		List<Category> categories = getCategoryManager().getCategories();
 		
-		writer.begin("h2");
+		writer.begin("h3");
 		writer.print("Categories");
 		writer.end();
 		
