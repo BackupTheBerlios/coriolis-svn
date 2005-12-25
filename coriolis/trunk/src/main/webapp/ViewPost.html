@@ -3,13 +3,10 @@
 	<span jwcid="@Post" post="ognl:post" />
     <div id="comments">
         <h3>Comments</h3>
-        <p><a href="#leaveComment" class="arrow">Leave a comment below</a></p>
-        
         
     	<div class="comment" jwcid="@Foreach" element="div" source="ognl:post.comments" value="ognl:loopComment">	                            
-            
             <p>
-                <img jwcid="@Image" alt="A Comment" image="ognl:getAsset('page')" />
+                <!--<img jwcid="@Image" alt="A Comment" image="ognl:getAsset('page')" />-->
 	            <strong>
 	                <span jwcid="@Insert" value="ognl:loopComment.author">Author</span>
 	            </strong>
@@ -21,30 +18,29 @@
                 </span>
             </p>
         </div>	    
-        <div class="contentBox">
-		    <span jwcid="@FormErrors" delegate="bean:delegate" />
-		    <div class="commentArea">
-		        <form jwcid="@Form" listener="ognl:listeners.addComment" delegate="bean:delegate" >
-		            <input type="hidden" jwcid="@Hidden" value="ognl:postId" />
-		            <h3 id="leaveComment">Leave A Comment From Your Baadself</h3>
-			            
-		            <input type="text" class="textbox" jwcid="author@TextField" validators="validators:required" value="ognl:comment.author" displayName="Author"  />
-					<label jwcid="@FieldLabel" field="component:author" for="author" />
-	                <br />
-	                            
-		            <input type="text" class="textbox" jwcid="url@TextField" validators="validators:required" value="ognl:comment.authorWebsite" displayName="Website" />
-	                <label jwcid="@FieldLabel" field="component:url" for="url" />
-		            <br />
-	                
-		            <label jwcid="@FieldLabel"  field="component:comment" for="comment" />
-	                <br />
-		            <textarea jwcid="comment@TextArea" value="ognl:comment.comment" validators="validators:required" displayName="Comment"></textarea>                        
+        
+	    <span jwcid="@FormErrors" delegate="bean:delegate" />
+	    
+        <div class="comment-area">
+	        <form jwcid="@Form" listener="ognl:listeners.addComment" delegate="bean:delegate" >
+                
+	            <input type="hidden" jwcid="@Hidden" value="ognl:postId" />
+	            <h3 id="leaveComment">Leave A Comment From Your Baadself</h3>
 		            
-		            <p>* Required field.</p>
-		            <input type="submit" jwcid="@Submit" value="Post-Me-Do" class="button" />
-		
-		        </form>
-		    </div>
-        </div>
+	            <label jwcid="@FieldLabel" field="component:author" for="author" class="required" />
+                <input type="text" class="textbox" jwcid="author@TextField" validators="validators:required" value="ognl:comment.author" displayName="Author"  />
+				
+                <label jwcid="@FieldLabel" field="component:url" for="url" class="required" />            
+	            <input type="text" class="textbox" jwcid="url@TextField" validators="validators:required" value="ognl:comment.authorWebsite" displayName="Website" />
+                
+	            <label jwcid="@FieldLabel"  field="component:comment" for="comment" class="required" />
+	            <textarea jwcid="comment@TextArea" value="ognl:comment.comment" validators="validators:required" displayName="Comment"></textarea>                        
+	            
+	            <p><span class="required">*</span> Required field.</p>
+	            <input type="submit" jwcid="@Submit" value="Save Your Comment" class="button" />
+	
+	        </form>
+	    </div>
+        
 	</div>
 </span>
