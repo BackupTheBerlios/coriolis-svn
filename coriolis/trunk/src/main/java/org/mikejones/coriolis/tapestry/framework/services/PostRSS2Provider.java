@@ -89,7 +89,7 @@ public class PostRSS2Provider implements RssProvider {
      * @return
      */
     protected String linkToPost(Post post) {
-        return "http://localhost:8080/app?service=external&context=ViewPost&sp="+post.getId();
+        return "http://localhost:8080/app?page=ViewPost&service=external&sp="+post.getId();
     }
 
 }
