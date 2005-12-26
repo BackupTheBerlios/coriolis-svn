@@ -86,7 +86,7 @@ public abstract class ViewPost extends BasePage implements PageBeginRenderListen
         post.addComment(getComment());
         postManager.savePost(post);
         
-        setPost(post);        
+        setPost(post);
         setComment(new Comment());
     }
 

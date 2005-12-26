@@ -26,7 +26,7 @@ public class BlogDelegate extends ValidationDelegate {
     public void writeLabelPrefix(IFormComponent component, IMarkupWriter writer, IRequestCycle cycle) {
         //Called BEFORE the FieldLabel renders
 
-        if (isInError(component)) {
+    	if (isInError(component)) {
             writer.begin("span");
             writer.attribute("class", "error");
         }
@@ -37,15 +37,17 @@ public class BlogDelegate extends ValidationDelegate {
      */
     public void writeLabelSuffix(IFormComponent component, IMarkupWriter writer, IRequestCycle cycle) {
         if (isInError(component)) {
-            writer.end();
+        	writer.end();
         }
     }
 
     /* (non-Javadoc)
      * @see org.apache.tapestry.valid.ValidationDelegate#writePrefix(org.apache.tapestry.IMarkupWriter, org.apache.tapestry.IRequestCycle, org.apache.tapestry.form.IFormComponent, org.apache.tapestry.valid.IValidator)
      */
-    public void writePrefix(IMarkupWriter arg0, IRequestCycle arg1, IFormComponent arg2, IValidator arg3) {
-        //Called BEFORE ValidField renders
+    public void writePrefix(IMarkupWriter writer, IRequestCycle cycle, IFormComponent component, IValidator validator) {
+    	if (component.isRequired()) {
+            writer.print("*");
+        }
     }
 
     /**
@@ -55,9 +57,7 @@ public class BlogDelegate extends ValidationDelegate {
      * @param component
      */
     public void writeSuffix(IMarkupWriter writer, IRequestCycle cycle, IFormComponent component, IValidator validator) {
-        if (validator != null && validator.isRequired()) {
-            writer.print("*");
-        }
+        
     }
 
     /**
@@ -69,9 +69,7 @@ public class BlogDelegate extends ValidationDelegate {
     public void writeAttributes(IMarkupWriter writer, IRequestCycle cycle, IFormComponent component,
             IValidator validator) {
 
-        if (isInError(component)) {
-            writer.attribute("class", "error");
-        }
+        
 
     }
 

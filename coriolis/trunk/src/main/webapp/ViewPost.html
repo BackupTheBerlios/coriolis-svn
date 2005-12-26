@@ -6,7 +6,7 @@
         
     	<div class="comment" jwcid="@Foreach" element="div" source="ognl:post.comments" value="ognl:loopComment">	                            
             <p>
-                <!--<img jwcid="@Image" alt="A Comment" image="ognl:getAsset('page')" />-->
+                <img jwcid="@Image" alt="A Comment" image="ognl:getAsset('page')" />
 	            <strong>
 	                <span jwcid="@Insert" value="ognl:loopComment.author">Author</span>
 	            </strong>

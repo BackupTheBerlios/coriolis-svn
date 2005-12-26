@@ -26,7 +26,7 @@ public class HibernatePostManager extends HibernateManager implements PostManage
      */    
     @SuppressWarnings("unchecked")
     public List<Post> getPosts() {
-        return session.createQuery("from " + Post.class.getName() + " post order by post.postDate desc").list() ;
+        return session.createQuery("from " + Post.class.getName() + " post order by post.postDate desc").list();
     }
 
     public void savePost(Post post) {
