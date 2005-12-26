@@ -111,22 +111,22 @@
     <dependency>
       <groupId>tapestry</groupId>
       <artifactId>tapestry</artifactId>
-      <version>4.0-rc-1</version>
+      <version>4.0-rc-2</version>
     </dependency>
     <dependency>
       <groupId>tapestry</groupId>
       <artifactId>tapestry-contrib</artifactId>
-      <version>4.0-rc-1</version>
+      <version>4.0-rc-2</version>
     </dependency>
     <dependency>
       <groupId>tapestry</groupId>
       <artifactId>tapestry-annotations</artifactId>
-      <version>4.0-rc-1</version>
+      <version>4.0-rc-2</version>
     </dependency>
     <dependency>
       <groupId>tapestry</groupId>
       <artifactId>tapestry-portlet</artifactId>
-      <version>4.0-rc-1</version>
+      <version>4.0-rc-2</version>
     </dependency>
     <dependency>
       <groupId>servletapi</groupId>
