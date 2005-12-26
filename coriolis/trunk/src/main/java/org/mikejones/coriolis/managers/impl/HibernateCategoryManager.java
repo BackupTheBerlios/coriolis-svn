@@ -5,7 +5,7 @@ import java.util.List;
 import org.mikejones.coriolis.managers.api.CategoryManager;
 import org.mikejones.coriolis.om.Category;
 
-public class HibernateCategoryManager extends BaseManager implements CategoryManager {
+public class HibernateCategoryManager extends HibernateManager implements CategoryManager {
 
 	@SuppressWarnings("unchecked")
 	public List<Category> getCategories() {

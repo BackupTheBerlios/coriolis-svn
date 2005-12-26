@@ -16,4 +16,10 @@
             <construct class="org.mikejones.coriolis.managers.impl.HibernateCategoryManager"/>
         </invoke-factory>
     </service-point>
+    <service-point id="BlogManager"
+        interface="org.mikejones.coriolis.managers.api.BlogManager">
+        <invoke-factory>
+            <construct class="org.mikejones.coriolis.managers.impl.HibernateBlogManager"/>
+        </invoke-factory>
+    </service-point>
 </module>

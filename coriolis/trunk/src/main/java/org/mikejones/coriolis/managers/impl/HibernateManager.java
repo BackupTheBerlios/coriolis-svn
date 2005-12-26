@@ -2,7 +2,7 @@ package org.mikejones.coriolis.managers.impl;
 
 import org.hibernate.Session;
 
-public abstract class BaseManager {
+public abstract class HibernateManager {
 
 	public Session session;
     

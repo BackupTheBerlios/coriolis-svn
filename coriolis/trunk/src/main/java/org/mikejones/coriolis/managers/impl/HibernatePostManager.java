@@ -10,7 +10,7 @@ import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
 
 
-public class HibernatePostManager extends BaseManager implements PostManager {
+public class HibernatePostManager extends HibernateManager implements PostManager {
     
     public Post getPost(int index) {
         // TODO Auto-generated method stub

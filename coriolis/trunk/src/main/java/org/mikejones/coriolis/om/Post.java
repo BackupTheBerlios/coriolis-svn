@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratorType;
 import javax.persistence.Id;
@@ -87,6 +89,7 @@ public class Post {
     /**
      * @return Returns the text.
      */
+    @Column(columnDefinition="text")
     public String getText() {
         return text;
     }
