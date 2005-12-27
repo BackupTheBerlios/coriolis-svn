@@ -1,15 +1,35 @@
 <span jwcid="@Layout">
 	<form jwcid="@Form" listener="ognl:listeners.updatePost" delegate="bean:delegate" > 
-        <span jwcid="@Hidden" value="ognl:postId" listener="ognl:listeners.loadPost" />
-        <span jwcid="@FieldLabel" field="component:title" />
-        <br/>
-        <input jwcid="title@TextField" validators="validators:required" displayName="Title" value="ognl:post.title" type="text" class="textbox" />
-        
-        <span jwcid="@FieldLabel" field="component:text" displayName="Text" />
-		<br />       	        
-        <div style="border: 1px solid #908f8f; background-color: #fff;">
-			<textarea jwcid="text@DojoTextArea" validators="validators:required" displayName="Text" value="ognl:post.text" items="textGroup;|;listGroup;|;justifyGroup;|;colorGroup;|;listGroup;|;indentGroup"/>
-        </div>        
-        <input jwcid="@Submit" type="submit" value="Add Post" class="button" />        
+        <fieldset>
+            <legend>Edit Post</legend>
+		    <span jwcid="@Hidden" value="ognl:postId" listener="ognl:listeners.loadPost" />
+			<span jwcid="@FieldLabel" field="component:title" />
+		    <input 
+            	jwcid="title@TextField" 
+            	validators="validators:required" 
+            	displayName="Title" 
+            	value="ognl:post.title" 
+            	type="text" 
+            	class="textbox" 
+            />
+		    <span 
+            	jwcid="@FieldLabel" 
+            	field="component:text" 
+            	displayName="Text" 
+            />
+			<textarea 
+            	jwcid="text@DojoTextArea" 
+            	validators="validators:required" 
+            	displayName="Text" 
+            	value="ognl:post.text" 
+            	items="textGroup;|;listGroup;|;justifyGroup;|;colorGroup;|;listGroup;|;indentGroup"
+            />
+	        <input 
+            	jwcid="@Submit" 
+            	type="submit" 
+            	value="Save Changes" 
+            	class="button" 
+           	/>        
+		</fieldset>
 	</form>
 </span>

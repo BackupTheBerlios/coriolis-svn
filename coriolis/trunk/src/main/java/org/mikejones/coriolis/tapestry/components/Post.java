@@ -22,7 +22,7 @@ public abstract class Post extends BaseComponent {
 
     public Format getDateFormat() {
         if (dateFormat == null)
-            dateFormat = new SimpleDateFormat("kk':'mm 'on' dd MMMM yyyy");
+            dateFormat = new SimpleDateFormat("dd MMMM yyyy");
         return dateFormat;
     }
 
