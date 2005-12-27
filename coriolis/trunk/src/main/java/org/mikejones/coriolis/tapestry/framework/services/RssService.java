@@ -6,10 +6,12 @@ package org.mikejones.coriolis.tapestry.framework.services;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Date;
+import java.util.HashMap;
 
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.engine.IEngineService;
 import org.apache.tapestry.engine.ILink;
+import org.apache.tapestry.services.LinkFactory;
 import org.apache.tapestry.util.ContentType;
 import org.apache.tapestry.web.WebResponse;
 
@@ -23,8 +25,18 @@ public class RssService implements IEngineService {
     private WebResponse response;
 
     private RssProvider rssProvider;
+    
+    private LinkFactory linkFactory;
 
-    public RssProvider getRssProvider() {
+    public LinkFactory getLinkFactory() {
+		return linkFactory;
+	}
+
+	public void setLinkFactory(LinkFactory linkFactory) {
+		this.linkFactory = linkFactory;
+	}
+
+	public RssProvider getRssProvider() {
         return rssProvider;
     }
 
@@ -40,13 +52,13 @@ public class RssService implements IEngineService {
         return response;
     }
 
-    // TODO implement this O_O
     public void setResponse(WebResponse response) {
         this.response = response;
     }
 
-    public ILink getLink(boolean b, Object object) {
-        return null;
+    public ILink getLink(boolean post, Object object) {
+    	return linkFactory.constructLink(this, post, new HashMap() , false );
+        
     }
 
     public void service(IRequestCycle cycle) throws IOException {

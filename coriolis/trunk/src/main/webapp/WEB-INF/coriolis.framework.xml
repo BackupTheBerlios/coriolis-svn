@@ -10,7 +10,9 @@
     </contribution>
     <service-point id="RssService" interface="org.apache.tapestry.engine.IEngineService">
         <invoke-factory>
-            <construct class="org.mikejones.coriolis.tapestry.framework.services.RssService"/>
+            <construct class="org.mikejones.coriolis.tapestry.framework.services.RssService">
+                <set-object property="linkFactory" value="service:tapestry.url.LinkFactory"/>
+            </construct>
         </invoke-factory>
     </service-point>
     <service-point id="PostsRSS2Provider" interface="org.mikejones.coriolis.tapestry.framework.services.RssProvider">
