@@ -40,6 +40,7 @@ public class RssService implements IEngineService {
         return response;
     }
 
+    // TODO implement this O_O
     public void setResponse(WebResponse response) {
         this.response = response;
     }

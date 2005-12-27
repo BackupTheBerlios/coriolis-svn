@@ -84,7 +84,18 @@ public class PostRSS2Provider implements RssProvider {
     
     
     /**
-     * TODO write test for this
+     * TODO change this to use the external likn service
+     * 
+     * // Add <inject property="externalService" object="engine-service:external"> to specification
+     * // or use @InjectObject("engine-service:external")
+     * public abstract IEngineService getExternalService();
+     * 
+     * public String getURL(IRequestCycle cycle, String pageName, Object[] parameters){
+     *   IEngineService service = getExternalService();
+     *   ExternalServiceParameter parameter = new ExternalServiceParameter(pageName, parameters);
+     *   ILink link = service.getLink(cycle, parameter);
+     *   return link.getURL();
+     * }
      * @param post
      * @return
      */

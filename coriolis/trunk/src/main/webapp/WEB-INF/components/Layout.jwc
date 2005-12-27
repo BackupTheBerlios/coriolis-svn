@@ -9,6 +9,8 @@
     <description>This is the layout component for my application</description>
 
     <property name="isLoggedIn" />
+    <property name="blog" />
+    <asset name="rss2" path="i/rss2.gif" />
     <!--inject name="blogVisit" type="state" object="visit"/-->
     
 </component-specification>

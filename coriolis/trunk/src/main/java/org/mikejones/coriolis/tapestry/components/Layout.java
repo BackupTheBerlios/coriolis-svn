@@ -8,9 +8,14 @@ import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.annotations.InjectObject;
 import org.apache.tapestry.annotations.InjectState;
 import org.mikejones.coriolis.managers.api.BlogManager;
+import org.mikejones.coriolis.om.Blog;
 import org.mikejones.coriolis.tapestry.framework.aso.BlogVisit;
 
 public abstract class Layout extends BaseComponent {
+	
+	public abstract Blog getBlog();
+	
+	public abstract void setBlog(Blog blog);	
 
     @InjectState("blogVisit")
     public abstract BlogVisit getBlogVisit();
@@ -22,6 +27,13 @@ public abstract class Layout extends BaseComponent {
 
     protected void prepareForRender(IRequestCycle cycle) {
         setIsLoggedIn(getPage().getEngine().getInfrastructure().getApplicationStateManager().exists("blogVisit"));
+        
+        if(getBlog()==null) {
+        	Blog blog = new Blog();
+        	blog.setTitle("[change this in admin]");
+        	setBlog(blog);
+        	
+        }
     }
 
 }

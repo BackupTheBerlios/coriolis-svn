@@ -63,7 +63,7 @@ public class Post {
      * @return Returns the comments.
      */
     @OneToMany(cascade = { CascadeType.ALL }, mappedBy = "post")
-    @OrderBy("date asc")
+    @OrderBy("date desc")
     public List<Comment> getComments() {
         return comments;
     }

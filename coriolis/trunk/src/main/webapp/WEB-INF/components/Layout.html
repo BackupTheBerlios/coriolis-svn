@@ -12,7 +12,7 @@
 
 		<div id="header">
 			<div class="padding-div">
-				Site Header
+				<span jwcid="@Insert" value="ognl:blog.title" />
 			</div>
 		</div>            
 
@@ -23,11 +23,11 @@
 						<a jwcid="@PageLink" page="Home" title="Return to the homepage" href="#">Home</a>
 					</li>    
 					<li>
-						<a title="Search" href="#" class="inactive">Search</a>
+						<a jwcid="@PageLink" page="Search" title="Search for a post" >Search</a>
 					</li>                                        
 					<span jwcid="@If" condition="ognl:isLoggedIn" >
 						<li>
-							<a jwcid="@PageLink" page="NewPost" href="#" >New Post</a>
+							<a jwcid="@PageLink" page="NewPost" title="Add a new post" >New Post</a>
 						</li>
 						<li >
 							<a jwcid="@PageLink" page="Admin" title="Edit your blog settings.">Admin</a>
@@ -55,6 +55,10 @@
 				<div class="padding-div">
 					<span jwcid="@PostCalendar" />
 					<span jwcid="@CategoryMenu" />
+                    
+                    <a href="app?service=rss">
+                        <img jwcid="@Image" image="asset:rss2" />
+					</a>
 				</div>
 			</div>
 		

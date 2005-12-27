@@ -4,7 +4,6 @@
         <p>
             Enter your login credentials.
         </p>
-        <span jwcid="@Insert" value="state:blogVisit" />
         <span jwcid="@FormErrors" delegate="bean:delegate" />
 	    <form jwcid="@Form" success="ognl:listeners.login" delegate="bean:delegate"  >
 	        <label jwcid="@FieldLabel" field="component:username" >Username</label>

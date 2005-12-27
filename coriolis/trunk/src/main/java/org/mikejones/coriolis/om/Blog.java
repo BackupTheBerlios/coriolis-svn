@@ -6,7 +6,7 @@ import javax.persistence.Id;
 
 /**
  * A class that represents the blog and contains the specific settings
- * 
+ * TODO get this class cached
  * @author mike
  * 
  */
