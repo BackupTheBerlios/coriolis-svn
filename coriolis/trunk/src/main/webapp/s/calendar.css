@@ -10,16 +10,18 @@
 .calendar table {
     margin: 0;
     width: 100%;
-    border: 1px solid #eee;
+    border: 2px solid #ccc;
     border-collapse: collapse;
 }
 
 .calendar th, .calendar td {
     padding: 3px;
+    border: 1px solid #fff;
 }
     
 .calendar th {
-    background: #eee;
+    background: #ddd;
+    border: 1px solid #ccc;
 }
 
 .calendar td {
@@ -27,5 +29,5 @@
 }
 
 .calendar td.current {
-    background: #def;
+    background: #9cf; color: #fff;
 }
