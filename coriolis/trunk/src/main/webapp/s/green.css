@@ -1,0 +1,36 @@
+@import url(base.css);
+
+body {
+    background: #000 url(../i/bg-body.gif) top center repeat-y;
+}
+
+#header {
+    background: #9c3;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+#content-wrapper {
+    background: #fff url(../i/bg-content-wrapper.gif) top left repeat-y;
+}
+
+#site-navigation {
+    padding: 0;
+    background: #466432;
+    border: 0;
+}
+
+#site-navigation a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#site-navigation a:hover {
+    background: transparent;
+    color: #9c3;
+}
+
+#footer {
+    background: #690;
+    border: 0;
+}
