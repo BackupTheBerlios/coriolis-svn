@@ -1,7 +1,7 @@
 @import url(base.css);
 
 body {
-    background: #000 url(../i/bg-body.gif) top center repeat-y;
+    background: #ddd url(../i/bg-body.gif) top center repeat-y;
 }
 
 #header {
