@@ -1,15 +1,8 @@
-<html jwcid="@Shell" title="message:page.title" doctype="message:doctype" delegate="ognl:components.head" >
-	<head jwcid="head@Any">		
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <link href="http://localhost:8080/app?service=rss" rel="alternate" type="application/rss+xml" title="rss" />
-		<style type="text/css">
-			@import url(s/green.css);
-            @import url(s/calendar.css);
-		</style>
-        <script src="/js/dojo.js" type="text/javascript"></script>
-	</head>
+<html jwcid="@Shell" title="ognl:windowTitle" stylesheets="ognl:styleSheets" doctype="message:doctype" >
+    <script src="/js/dojo.js" type="text/javascript"></script>
+    <link href="http://localhost:8080/app?service=rss" rel="alternate" type="application/rss+xml" title="rss" /> 
 	<body jwcid="@Body">
-
+		
 		<div id="header">
 			<div class="padding-div">
 				<span jwcid="@Insert" value="ognl:blog.title" />
