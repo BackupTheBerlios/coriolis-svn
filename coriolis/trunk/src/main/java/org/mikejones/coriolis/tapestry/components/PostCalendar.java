@@ -5,19 +5,28 @@ package org.mikejones.coriolis.tapestry.components;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import org.apache.tapestry.AbstractComponent;
 import org.apache.tapestry.IMarkupWriter;
 import org.apache.tapestry.IRequestCycle;
+import org.apache.tapestry.annotations.InjectObject;
+import org.mikejones.coriolis.managers.api.PostManager;
+import org.mikejones.coriolis.om.Post;
 
-public class PostCalendar extends AbstractComponent {
+public abstract class PostCalendar extends AbstractComponent {
     
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("MMMMM yyyy");
 
+    @InjectObject("service:coriolis.managers.PostManager")
+    public abstract PostManager getPostManager();
+    
     protected void renderComponent(IMarkupWriter writer, IRequestCycle cycle) {
         if (cycle.isRewinding())
             return;
         Calendar calendar = Calendar.getInstance();
+        
+        List<Post> posts = getPostManager().getPostsForMonth();
         
         writer.begin("h3");
         writer.print(dateFormat.format(calendar.getTime()));

@@ -113,6 +113,11 @@ public class MockPostManager implements PostManager {
                 localPost.setText(post.getText());
             }
         }   
-    }    
+    }
+
+	public List<Post> getPostsForMonth() {
+		// TODO Auto-generated method stub
+		return null;
+	}    
 
 }

@@ -3,6 +3,7 @@
  */
 package org.mikejones.coriolis.managers.api;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.mikejones.coriolis.om.Post;
@@ -19,6 +20,12 @@ public interface PostManager {
      * @return list of posts
      */
     public List<Post> getPosts();
+    
+    /**
+     * Get the list of post in the db sorted by date posted for the month
+     * @return list of posts
+     */
+    public List<Post> getPostsForMonth();
     
     public void deletePost(Post post);    
     
