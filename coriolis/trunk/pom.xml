@@ -17,6 +17,12 @@
   </developers>
   <repositories>
     <repository>
+      <id>ibiblio</id>
+      <name>ibiblio maven 2</name>
+      <layout>default</layout>
+      <url>http://www.ibiblio.org/maven2</url>
+    </repository>
+    <!--<repository>
       <id>gnasherM2</id>
       <name>gnahser maven 2 repo</name>
       <layout>default</layout>
@@ -27,7 +33,7 @@
       <name>gnashser maven 1 repo</name>
       <layout>legacy</layout>
       <url>http://gnasher.aniteps.com/repo</url>
-    </repository>
+    </repository>-->
     <repository>
       <id>Zebra2</id>
       <name>Zebra</name>
@@ -37,12 +43,7 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
-    <repository>
-      <id>ibiblio</id>
-      <name>ibiblio maven 2</name>
-      <layout>default</layout>
-      <url>http://www.ibiblio.org/maven2</url>
-    </repository>
+    
   </repositories>
   <dependencies>
     <!-- dependacies below taken from web and from compiled project-->
