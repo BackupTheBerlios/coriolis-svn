@@ -3,9 +3,11 @@
 */
 
 body {
-	margin: 0 auto;
+	margin: 20px 50px;
 	padding: 0;
-	width: 700px;
+	max-width: 1300px;
+	min-width: 700px;
+	background: #f5f5f5;
 }
 
 body, input, textarea, table {
@@ -170,15 +172,28 @@ div.error {
     layout elements
 */
 
+#wrapper {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
 #header {
     background: #fff;
-    border-bottom: 1px solid #ddd;
-    line-height: 40px;
+    line-height: 80px;
+    height: 0%;
 }
 
 #site-navigation {
+    margin: 10px 0;
     background: #fff;
-    border-bottom: 1px solid #ddd;
+    line-height: 1;
+    text-transform: uppercase;
+    height: 0%;
+}
+
+#site-navigation .padding-div {
+    padding: 5px 10px;
 }
 
 #content-wrapper {
@@ -187,7 +202,7 @@ div.error {
 
 #main-content {
     float: right;
-    width: 490px;
+    width: 75%;
 }
 
 #main-content .padding-div, #sub-content .padding-div {
@@ -196,17 +211,15 @@ div.error {
 
 #sub-content {
     float: left;
-    width: 210px;
+    width: 24.9%;
 }
+
+#sub-content .padding-div { padding-left: 0; }
+#main-content .padding-div { padding-right: 0; }
 
 #footer {
     clear: both;
-}
-
-#footer div {
-    margin-bottom: 20px;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    margin: 20px 0 0 0;
 }
 
 /*
