@@ -9,7 +9,9 @@ import java.text.SimpleDateFormat;
 import org.apache.tapestry.BaseComponent;
 import org.apache.tapestry.IPage;
 import org.apache.tapestry.annotations.InjectObject;
+import org.apache.tapestry.annotations.InjectState;
 import org.mikejones.coriolis.managers.api.PostManager;
+import org.mikejones.coriolis.tapestry.framework.aso.BlogVisit;
 import org.mikejones.coriolis.tapestry.pages.EditPost;
 import org.mikejones.coriolis.tapestry.pages.ViewPost;
 
@@ -18,8 +20,15 @@ public abstract class Post extends BaseComponent {
     @InjectObject("service:coriolis.managers.PostManager")
     public abstract PostManager getPostManager();
 
+    @InjectState("blogVisit")
+    public abstract BlogVisit getBlogVisit();
+    
     private Format dateFormat;
 
+    public boolean getIsUserLoggedIn() {
+    	return getBlogVisit().isUserLoggedIn();
+    }
+    
     public Format getDateFormat() {
         if (dateFormat == null)
             dateFormat = new SimpleDateFormat("dd MMMM yyyy");
