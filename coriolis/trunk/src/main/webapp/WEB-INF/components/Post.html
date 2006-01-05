@@ -3,23 +3,20 @@
 		<span jwcid="@Insert" value="ognl:post.title" >Post Title</span>
 	</h3>
 	<div class="post-head">
-		<div class="buttons">
-			<a href="#" jwcid="@DirectLink" listener="listener:editPost" parameters="ognl:post.id" title="Edit Post">
-				<img jwcid="@Image" alt="Edit post." image="ognl:getAsset('edit')" />
-			</a>
-            | 
-			<a href="#" jwcid="@DirectLink" listener="ognl:listeners.deletePost" parameters="ognl:post.id" title="Delete Post">
-				<img jwcid="@Image" alt="Delete Post" image="ognl:getAsset('delete')" />
-			</a>
-		</div>
+        <span jwcid="@If" condition="ognl:isUserLoggedIn">
+			<div class="buttons">
+				<a href="#" jwcid="@DirectLink" listener="listener:editPost" parameters="ognl:post.id" title="Edit Post">
+					<img jwcid="@Image" alt="Edit post." image="ognl:getAsset('edit')" />
+				</a>
+	            | 
+				<a href="#" jwcid="@DirectLink" listener="ognl:listeners.deletePost" parameters="ognl:post.id" title="Delete Post">
+					<img jwcid="@Image" alt="Delete Post" image="ognl:getAsset('delete')" />
+				</a>
+			</div>
+        </span>
 		<div class="info">
 	        <img jwcid="@Image" image="ognl:getAsset('file')" />
 	    	<span jwcid="@Insert" value="ognl:post.postDate" format="ognl:dateFormat">[TIME] on [DATE]</span>
-            | 
-            <img jwcid="@Image" alt="Make Comment" image="ognl:getAsset('comment')" />
-			<a href="#" jwcid="@DirectLink" listener="listener:viewPost" parameters="ognl:{post.id}">
-				<span jwcid="@Insert" value="ognl:post.comments.size">10</span> Comment(s)
-			</a>
 		</div>
         <div style="clear: both;"></div>
     </div>
@@ -28,5 +25,10 @@
             <span jwcid="@InsertText" value="ognl:post.text" raw="true">Post text</span>
         </p>
     </div>
-
+	<div class="post-footer">
+        <img jwcid="@Image" alt="Make Comment" image="ognl:getAsset('comment')" />
+		<a href="#" jwcid="@DirectLink" listener="listener:viewPost" parameters="ognl:{post.id}">
+			Comments (<span jwcid="@Insert" value="ognl:post.comments.size">10</span>)
+		</a>
+	</div>
 </div>

@@ -2,38 +2,37 @@ package org.mikejones.coriolis.tapestry.components;
 
 import java.util.List;
 
-import org.apache.tapestry.AbstractComponent;
-import org.apache.tapestry.IMarkupWriter;
-import org.apache.tapestry.IRequestCycle;
+import org.apache.tapestry.BaseComponent;
+import org.apache.tapestry.IPage;
 import org.apache.tapestry.annotations.InjectObject;
+import org.apache.tapestry.event.PageBeginRenderListener;
+import org.apache.tapestry.event.PageEvent;
 import org.mikejones.coriolis.managers.api.CategoryManager;
 import org.mikejones.coriolis.om.Category;
+import org.mikejones.coriolis.tapestry.pages.ViewPosts;
 
-public abstract class CategoryMenu extends AbstractComponent {
+public abstract class CategoryMenu extends BaseComponent implements PageBeginRenderListener {
 
 	@InjectObject("service:coriolis.managers.CategoryManager")
 	public abstract CategoryManager getCategoryManager();
 	
-	@Override
-	protected void renderComponent(IMarkupWriter writer, IRequestCycle cycle) {
-		List<Category> categories = getCategoryManager().getCategories();
-		
-		writer.begin("h3");
-		writer.print("Categories");
-		writer.end();
-		
-		writer.begin("ul");
-		writer.attribute("class", "subMenu");
-		for (int i = 0; i < categories.size(); i++) {
-			Category category = categories.get(i);
-			writer.begin("li");
-			writer.attribute("title", category.getDescription());
-			writer.print(category.getTitle());
-			writer.print("(" + category.getPosts().size() + ")");
-			writer.end();
-		}
-		writer.end();
-		
+	public abstract List<Category> getCategories();
+
+	public abstract void setCategories(List<Category> categories);
+	
+	public abstract Category getCategory();
+	
+	public void pageBeginRender(PageEvent pageEvent) {
+		setCategories(getCategoryManager().getCategories());
 	}
 	
+	public IPage viewCategoryPosts(Integer id) {
+		ViewPosts page = (ViewPosts)getPage().getRequestCycle().getPage("ViewPosts");
+		Category category = getCategoryManager().getCategory(id);
+		if (category.getPosts().size() > 0) {
+			page.setPosts(category.getPosts());
+			return page;
+		}
+		return null;
+	}
 }

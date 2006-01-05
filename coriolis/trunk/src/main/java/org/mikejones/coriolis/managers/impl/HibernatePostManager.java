@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.NullArgumentException;
 import org.hibernate.Transaction;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
@@ -33,6 +34,7 @@ public class HibernatePostManager extends HibernateManager implements
 						+ " post order by post.postDate desc").list();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Post> getPostsForMonth() {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.DAY_OF_MONTH, 1);
@@ -57,15 +59,17 @@ public class HibernatePostManager extends HibernateManager implements
 	}
 
 	public void deletePost(Post post) {
-		// TODO Auto-generated method stub
-
+		if (post == null) 
+			throw new NullArgumentException("post");
+		
+		Transaction t = session.beginTransaction();
+		session.delete(post);
+		t.commit();
 	}
 
 	public void deletePost(Integer id) {
-		Transaction t = session.beginTransaction();
 		Post post = getPost(id);
-		session.delete(post);
-		t.commit();
+		deletePost(post);
 	}
 
 }
