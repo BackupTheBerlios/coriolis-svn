@@ -1,0 +1,32 @@
+<div class="calendar">
+	<h3><span jwcid="@Insert" value="ognl:month.description" /></h3>
+	<table>
+		<thead>
+	        <tr>
+	            <th>S</th>
+	            <th>M</th>
+	            <th>T</th>
+	            <th>W</th>
+	            <th>T</th>
+	            <th>F</th>
+	            <th>S</th>
+			</tr>
+		</thead>
+        <tbody>
+            <tr jwcid="@For" source="ognl:month.weeks" value="ognl:week" element="tr">
+                <span jwcid="@For" source="ognl:week.days" value="ognl:day">                        
+					<td jwcid="@Any" class="ognl:day.dayClass">						
+                        <span jwcid="@If" condition="ognl:day.hasPost" >
+                            <a jwcid="@DirectLink" listener="listener:postForDate" parameters="ognl:day.dayMonthYear()">
+                                <span jwcid="@Insert" value="ognl:day.dayNumber()"  />
+                            </a>
+						</span>
+                        <span jwcid="@Else">
+                            <span jwcid="@Insert" value="ognl:day.dayNumber()" /> 
+						</span>
+					</td>
+				</span>                
+			</tr>
+        </tbody>
+	</table>
+</div>

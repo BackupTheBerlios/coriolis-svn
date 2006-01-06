@@ -6,14 +6,14 @@
     <!-- Page class package looks here for the page name, if it doestnt find it uses basepage -->
     <!-- these are comma seperated values -->
 	<meta key="org.apache.tapestry.page-class-packages" value="org.mikejones.coriolis.tapestry.pages"/>
-    <meta key="org.apache.tapestry.component-class-packages" value="org.mikejones.coriolis.tapestry.components"/>
+    <meta key="org.apache.tapestry.component-class-packages" value="org.mikejones.coriolis.tapestry.components, org.mikejones.coriolis.tapestry.components.postcalendar"/>
     
     <page name="Home" specification-path="pages/Home.page"/>
     <page name="NewPost" specification-path="pages/NewPost.page"/>
     <page name="Login" specification-path="pages/Login.page"/>
     <page name="ViewPost" specification-path="pages/ViewPost.page"/>
     
-	<component-type type="PostCalendar" specification-path="components/PostCalendar.jwc"/>
+	<component-type type="PostCalendar" specification-path="components/postcalendar/PostCalendar.jwc"/>
     <component-type type="Post" specification-path="components/Post.jwc"/>
     <component-type type="CategoryMenu" specification-path="components/CategoryMenu.jwc" />
     <component-type type="Layout" specification-path="components/Layout.jwc"/>

@@ -57,8 +57,7 @@ public class RssService implements IEngineService {
     }
 
     public ILink getLink(boolean post, Object object) {
-    	return linkFactory.constructLink(this, post, new HashMap() , false );
-        
+    	return linkFactory.constructLink(this, post, new HashMap() , false );        
     }
 
     public void service(IRequestCycle cycle) throws IOException {

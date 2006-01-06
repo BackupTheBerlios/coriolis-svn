@@ -3,7 +3,6 @@
  */
 package org.mikejones.coriolis.managers.api;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.mikejones.coriolis.om.Post;
@@ -13,6 +12,11 @@ import org.mikejones.coriolis.om.Post;
  */
 public interface PostManager {
     
+    /**
+     * get a post from a specific id
+     * @param id
+     * @return
+     */
     public Post getPost(Integer id);
     
     /**
@@ -27,10 +31,22 @@ public interface PostManager {
      */
     public List<Post> getPostsForMonth();
     
+    /**
+     * Delete a post
+     * @param post
+     */
     public void deletePost(Post post);    
     
+    /**
+     * Delete a post by id
+     * @param id
+     */
     public void deletePost(Integer id);
     
+    /**
+     * save or update a post
+     * @param post
+     */
     public void savePost(Post post);
     
 }
