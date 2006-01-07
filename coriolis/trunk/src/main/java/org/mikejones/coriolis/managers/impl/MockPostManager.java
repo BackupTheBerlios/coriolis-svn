@@ -118,6 +118,11 @@ public class MockPostManager implements PostManager {
 	public List<Post> getPostsForMonth() {
 		// TODO Auto-generated method stub
 		return null;
-	}    
+	}
+
+    public List<Post> getPostForDate(Date date) {
+        // TODO Auto-generated method stub
+        return null;
+    }    
 
 }

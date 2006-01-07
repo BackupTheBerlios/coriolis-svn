@@ -3,16 +3,20 @@
  */
 package org.mikejones.coriolis.tapestry.components.postcalendar;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.tapestry.BaseComponent;
+import org.apache.tapestry.IPage;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.annotations.InjectObject;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
+import org.mikejones.coriolis.tapestry.pages.ViewPosts;
 
 public abstract class PostCalendar extends BaseComponent {
 
@@ -65,6 +69,22 @@ public abstract class PostCalendar extends BaseComponent {
 
         setMonth(month);
 
+    }
+    
+    public IPage postsForDate(IRequestCycle cycle, String dateString) {
+        try {
+            Date date = Day.dateFormat.parse(dateString);
+            List<Post> posts = getPostManager().getPostForDate(date);
+            ViewPosts viewPosts = (ViewPosts) cycle.getPage("ViewPosts");
+            viewPosts.setPosts(posts);
+            return viewPosts;
+            
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+        
     }
 
     protected Week createWeek(int weekNumber, int firstDay, int daysInMonth, int today, List<Integer> postDays) {

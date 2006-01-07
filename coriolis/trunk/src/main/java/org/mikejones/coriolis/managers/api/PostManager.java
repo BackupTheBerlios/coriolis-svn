@@ -3,6 +3,7 @@
  */
 package org.mikejones.coriolis.managers.api;
 
+import java.util.Date;
 import java.util.List;
 
 import org.mikejones.coriolis.om.Post;
@@ -30,6 +31,13 @@ public interface PostManager {
      * @return list of posts
      */
     public List<Post> getPostsForMonth();
+    
+    /**
+     * Get all the posts for a given date
+     * @param date
+     * @return
+     */
+    public List<Post> getPostForDate(Date date);
     
     /**
      * Delete a post
