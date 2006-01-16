@@ -11,16 +11,20 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.tapestry.BaseComponent;
+import org.apache.tapestry.IMarkupWriter;
 import org.apache.tapestry.IPage;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.annotations.InjectObject;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
+import org.mikejones.coriolis.tapestry.framework.services.AjaxUpdatable;
 import org.mikejones.coriolis.tapestry.pages.ViewPosts;
 
-public abstract class PostCalendar extends BaseComponent {
+public abstract class PostCalendar extends BaseComponent implements AjaxUpdatable {
 
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("MMMMM yyyy");
+
+    public static SimpleDateFormat ajaxLinkDateFormat = new SimpleDateFormat("MM/yyyy");
 
     @InjectObject("service:coriolis.managers.PostManager")
     public abstract PostManager getPostManager();
@@ -30,12 +34,16 @@ public abstract class PostCalendar extends BaseComponent {
     public abstract void setMonth(Month month);
 
     public abstract List<Week> getWeeks();
-    
+
     public abstract Week getWeek();
 
     public abstract List<Day> getDays();
-    
+
     public abstract Day getDay();
+
+    public abstract CalendarConfig getCalendarConfig();
+
+    public abstract void setCalendarConfig(CalendarConfig calendarConfig);
 
     protected List<Integer> findDaysWithPosts() {
         List<Post> posts = getPostManager().getPostsForMonth();
@@ -51,26 +59,24 @@ public abstract class PostCalendar extends BaseComponent {
 
     @Override
     protected void prepareForRender(IRequestCycle cycle) {
+
+        if (getCalendarConfig() == null)
+            setCalendarConfig(new CalendarConfig(Calendar.getInstance()));
+
         Month month = new Month();
 
-        Calendar calendar = Calendar.getInstance();
-
-        month.setDescription(dateFormat.format(calendar.getTime()));
+        month.setDescription(dateFormat.format(getCalendarConfig().getCalendar().getTime()));
 
         List<Integer> days = findDaysWithPosts();
 
-        int firstDay = firtDayOfMonth();
-        int daysInMonth = calendar.getMaximum(Calendar.DAY_OF_MONTH);
-        int numberOfWeeks = numberOfWeeks(firstDay, daysInMonth);
-
-        for (int i = 0; i < numberOfWeeks; i++) {
-            month.addWeek(createWeek(i, firstDay, daysInMonth, daysInMonth, days));
+        for (int i = 0; i < getCalendarConfig().getWeeksInMonth(); i++) {
+            month.addWeek(createWeek(i, days));
         }
 
         setMonth(month);
 
     }
-    
+
     public IPage postsForDate(IRequestCycle cycle, String dateString) {
         try {
             Date date = Day.dateFormat.parse(dateString);
@@ -78,27 +84,27 @@ public abstract class PostCalendar extends BaseComponent {
             ViewPosts viewPosts = (ViewPosts) cycle.getPage("ViewPosts");
             viewPosts.setPosts(posts);
             return viewPosts;
-            
+
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;
-        
+
     }
 
-    protected Week createWeek(int weekNumber, int firstDay, int daysInMonth, int today, List<Integer> postDays) {
+    protected Week createWeek(int weekNumber, List<Integer> postDays) {
         int firstTdNumber = (weekNumber * 7) + 1;
         int lastTdNumber = firstTdNumber + 7;
-        int lastDayTD = daysInMonth + firstDay;
+        int firstDay = getCalendarConfig().getFirstDayOfMonth();
+        int lastDayTD = getCalendarConfig().getDaysInMonth() + firstDay;
 
         Week week = new Week();
 
         // TODO really need to look at this
-        
 
         for (int i = firstTdNumber; i < lastTdNumber; i++) {
-            
+
             Day day = new Day();
             if (i < firstDay || i >= lastDayTD) {
                 // dont need to do owt
@@ -108,29 +114,38 @@ public abstract class PostCalendar extends BaseComponent {
 
                 if (postDays.contains(dayNumber)) {
                     day.setHasPost(true);
-                    
-                    
+
                 }
-                Calendar monthAndYear = Calendar.getInstance();
-                monthAndYear.set(Calendar.DAY_OF_MONTH, dayNumber);
-                day.setDay(monthAndYear);
-                day.setToday(today == dayNumber);
+                Calendar dayc = getCalendarConfig().createCalendar(dayNumber);
+                day.setDay(dayc);
+                day.setToday(getCalendarConfig().getToday() == dayNumber);
             }
             week.addDay(day);
         }
         return week;
     }
 
-    private int firtDayOfMonth() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.DAY_OF_MONTH, 1);
-        return calendar.get(Calendar.DAY_OF_WEEK);
+    public String previousDate() {
+
+        Calendar calendar = getCalendarConfig().getCalendar();
+        calendar.add(Calendar.MONTH, -1);
+
+        return ajaxLinkDateFormat.format(calendar.getTime());
     }
 
-    private int numberOfWeeks(int firstDayOfMonth, int daysInMonth) {
-        int totalDays = daysInMonth + firstDayOfMonth + 1;
-        totalDays += (totalDays % 7);
-        return totalDays / 7;
+    public void prepageForAjaxRender(IMarkupWriter writer, Object params) {
+
+        Object[] pars = (Object[]) params;
+        try {
+            Date date = ajaxLinkDateFormat.parse(((String) pars[0]));
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            setCalendarConfig(new CalendarConfig(calendar));
+        } catch (ParseException e) {
+            // default back to normal
+            setCalendarConfig(new CalendarConfig(Calendar.getInstance()));
+        }
+
     }
 
 }

@@ -1,4 +1,4 @@
-<div class="calendar">
+<div jwcid="@Any" class="calendar" id="ognl:id">
 	<h3><span jwcid="@Insert" value="ognl:month.description" /></h3>
 	<table>
 		<thead>
@@ -17,7 +17,7 @@
                 <span jwcid="@For" source="ognl:week.days" value="ognl:day">                        
 					<td jwcid="@Any" class="ognl:day.dayClass">						
                         <span jwcid="@If" condition="ognl:day.hasPost" >
-                            <a jwcid="@DirectLink" listener="listener:postsForDate" parameters="ognl:day.dayMonthYear()">
+                            <a jwcid="@DirectLink" listener="listener:postsForDate" parameters="ognl:day.dayMonthYear()"-->
                                 <span jwcid="@Insert" value="ognl:day.dayNumber()"  />
                             </a>
 						</span>
@@ -29,4 +29,5 @@
 			</tr>
         </tbody>
 	</table>
+	<a jwcid="@AjaxDirectLink" targetComponentId="postCalendar" parameters="ognl:previousDate()">link</a>
 </div>

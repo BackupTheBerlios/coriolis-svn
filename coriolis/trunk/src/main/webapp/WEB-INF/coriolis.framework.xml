@@ -7,11 +7,22 @@
     </contribution>
     <contribution configuration-id="tapestry.services.ApplicationServices">
         <service name="rss" object="service:coriolis.framework.RssService"/>
+        <service name="ajaxdirect" object="service:coriolis.framework.AjaxDirectService"/>
     </contribution>
     <service-point id="RssService" interface="org.apache.tapestry.engine.IEngineService">
         <invoke-factory>
             <construct class="org.mikejones.coriolis.tapestry.framework.services.RssService">
                 <set-object property="linkFactory" value="service:tapestry.url.LinkFactory"/>
+            </construct>
+        </invoke-factory>
+    </service-point>
+    <service-point id="AjaxDirectService" interface="org.apache.tapestry.engine.IEngineService">
+        <invoke-factory>
+            <construct class="org.mikejones.coriolis.tapestry.framework.services.AjaxDirectService">
+                <set-object property="linkFactory" value="service:tapestry.url.LinkFactory"/>
+                <set-object property="markupWriterSource"  value="infrastructure:markupWriterSource"/>
+                <set-object property="webResponse" value="infrastructure:response"/>
+                <set-object property="requestCycle" value="infrastructure:requestCycle"/>
             </construct>
         </invoke-factory>
     </service-point>
