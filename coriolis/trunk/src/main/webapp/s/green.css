@@ -1,35 +1,32 @@
 @import url(base.css);
 
 body {
-    background: #f5f5f5 url(../i/bg-body.gif) 0 100px fixed repeat-x;
+    
 }
 
 #header {
     background: #9c3;
-    border: 1px solid #7a1;
 }
 
 #content-wrapper {
-    /*background: #fff url(../i/bg-content-wrapper.gif) top left repeat-y;*/
+    
 }
 
 #site-navigation {
     padding: 0;
     background: #466432;
-    border: 1px solid #244210;
 }
 
 #site-navigation a {
-    color: #9c3;
+    color: #fff;    
     text-decoration: none;
 }
 
 #site-navigation a:hover {
     background: transparent;
-    color: #fff;    
+    color: #9c3;
 }
 
 #footer {
     background: #690;
-    border: 1px solid #470;
 }

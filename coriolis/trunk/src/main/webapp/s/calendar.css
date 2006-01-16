@@ -8,20 +8,18 @@
 }
 
 .calendar table {
-    margin: 0;
+    margin: 5px 0 10px 0;
     width: 100%;
-    border: 2px solid #ccc;
     border-collapse: collapse;
 }
 
 .calendar th, .calendar td {
     padding: 3px;
-    border: 1px solid #fff;
 }
     
 .calendar th {
-    background: #ddd;
-    border: 1px solid #ccc;
+    background: #eee;
+    border: 1px solid #fff;
 }
 
 .calendar td {
