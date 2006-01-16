@@ -49,7 +49,7 @@ public abstract class PostCalendar extends BaseComponent implements AjaxUpdatabl
         List<Post> posts = getPostManager().getPostsForMonth();
         List<Integer> days = new ArrayList<Integer>();
 
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = getCalendarConfig().getCalendar();
         for (Post post : posts) {
             calendar.setTime(post.getPostDate());
             days.add(calendar.get(Calendar.DAY_OF_MONTH));
@@ -130,6 +130,12 @@ public abstract class PostCalendar extends BaseComponent implements AjaxUpdatabl
         Calendar calendar = getCalendarConfig().getCalendar();
         calendar.add(Calendar.MONTH, -1);
 
+        return ajaxLinkDateFormat.format(calendar.getTime());
+    }
+    
+    public String nextDate() {
+        Calendar calendar = getCalendarConfig().getCalendar();
+        calendar.add(Calendar.MONTH, 1);
         return ajaxLinkDateFormat.format(calendar.getTime());
     }
 

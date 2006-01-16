@@ -16,7 +16,6 @@ import org.apache.tapestry.annotations.InjectScript;
 import org.apache.tapestry.annotations.Parameter;
 import org.apache.tapestry.engine.IEngineService;
 import org.apache.tapestry.engine.ILink;
-import org.apache.tapestry.link.DirectLink;
 import org.mikejones.coriolis.tapestry.framework.services.AjaxDirectServiceParameter;
 
 public abstract class AjaxDirectLink extends AbstractComponent {
@@ -24,8 +23,6 @@ public abstract class AjaxDirectLink extends AbstractComponent {
     protected static String SYM_COMPONENT_NAME = "component";
 
     protected static String SYM_LINK = "link";
-    
-    protected static String SYM_PARAMS = "params";
 
     @InjectObject("engine-service:ajaxdirect")
     public abstract IEngineService getAjaxDirectService();
@@ -49,21 +46,19 @@ public abstract class AjaxDirectLink extends AbstractComponent {
         ILink link = getAjaxDirectService().getLink(false, serviceParameter);
 
         Map<String, String> params = new HashMap<String, String>();
-        
+
         String absUrl = link.getAbsoluteURL();
         String[] urlParts = absUrl.split("\\?");
-        
-        
+
         params.put(SYM_LINK, urlParts[0]);
-        params.put(SYM_PARAMS, urlParts[1]);
-        
+
         params.put(SYM_COMPONENT_NAME, getTargetComponentId());
 
         getAjaxDirectScript().execute(cycle, TapestryUtils.getPageRenderSupport(cycle, this), params);
 
         writer.begin("a");
-        writer.attribute("href", "javascript:getHTML()");
-        writer.print("replace");
+        writer.attribute("href", "javascript:getHTML('" + urlParts[1] + "')");
+        renderBody(writer, cycle);
         writer.end("a");
 
     }

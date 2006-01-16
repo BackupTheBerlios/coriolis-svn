@@ -122,7 +122,8 @@ public class CalendarConfig {
     }
     
     public Calendar getCalendar() {
-        return this.calendar;
+        
+        return (Calendar) this.calendar.clone();
     }
 
 }
