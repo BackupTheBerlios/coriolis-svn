@@ -15,6 +15,7 @@
 
 .calendar th, .calendar td {
     padding: 3px;
+    font-weight: normal;
 }
     
 .calendar th {

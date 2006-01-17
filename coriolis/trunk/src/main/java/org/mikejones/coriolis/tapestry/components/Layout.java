@@ -46,6 +46,13 @@ public abstract class Layout extends BaseComponent {
     public List<IAsset> getStyleSheets() {
     	return styles; 	
     }
+    
+    public String getStatusMessage() {
+    	if (getBlogVisit().isUserLoggedIn()) {
+    		return "You are currently logged in as " + getBlogVisit().getUser(null).getUsername();
+    	}
+    	return "You are not currently logged in";
+    }
 
     public abstract void setIsLoggedIn(boolean isLoggedIn);
     

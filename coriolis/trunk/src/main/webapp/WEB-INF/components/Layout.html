@@ -3,6 +3,10 @@
     <link href="http://localhost:8080/app?service=rss" rel="alternate" type="application/rss+xml" title="rss" /> 
 	<body jwcid="@Body">
 		
+		<div id="status-bar">
+			<span jwcid="@Insert" value="ognl:statusMessage" />
+		</div>
+		
 		<div id="wrapper">
 		
 		<div id="header">
@@ -28,11 +32,11 @@
 							<a jwcid="@PageLink" page="Admin" title="Edit your blog settings.">Admin</a>
 						</li>
 						<li>		                    
-							<a jwcid="@ServiceLink" service="ognl:@org.apache.tapestry.Tapestry@RESTART_SERVICE" title="Logout">[Logout]</a>
+							<a jwcid="@ServiceLink" service="ognl:@org.apache.tapestry.Tapestry@RESTART_SERVICE" title="Logout">Logout</a>
 						</li>
 					</span>
 					<span jwcid="@Else" >
-						<li><a jwcid="@PageLink" page="Login" title="Return to the homepage" href="#">[Login]</a></li>
+						<li><a jwcid="@PageLink" page="Login" title="Return to the homepage" href="#">Login</a></li>
 					</span>
 				</ul>
 			</div>

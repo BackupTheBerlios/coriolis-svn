@@ -168,6 +168,13 @@ div.error {
     layout elements
 */
 
+#status-bar {
+	margin: 10px 20px 3px 20px;
+	font-size: 80%;
+	text-align: right;
+	color: #369;
+}
+
 #wrapper {
     background: #fff;
     padding: 10px;
@@ -184,7 +191,7 @@ div.error {
     margin: 5px 0;
     background: #fff;
     line-height: normal;
-    text-transform: uppercase;
+    
     height: 0%;
 }
 
