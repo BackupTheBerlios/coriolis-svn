@@ -45,7 +45,7 @@ public abstract class AjaxPostCalendar extends AbstractComponent implements IDir
         
     }
     
-    private static SimpleDateFormat dateFormat = new SimpleDateFormat("MMMMM yyyy");
+//    private static SimpleDateFormat dateFormat = new SimpleDateFormat("MMMMM yyyy");
 
     public static SimpleDateFormat linkDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 

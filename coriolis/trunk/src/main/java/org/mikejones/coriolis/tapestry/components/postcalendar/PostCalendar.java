@@ -115,20 +115,27 @@ public abstract class PostCalendar extends BaseComponent implements AjaxUpdatabl
                 if (postDays.contains(dayNumber)) {
                     day.setHasPost(true);
                 }
+
                 Calendar dayc = getCalendarConfig().createCalendar(dayNumber);
                 day.setDay(dayc);
-                day.setToday(getCalendarConfig().getToday() == dayNumber);
+
+                if (getCalendarConfig().getMonth() == Calendar.getInstance().get(Calendar.MONTH)) {
+                    day.setToday(getCalendarConfig().getToday() == dayNumber);
+                }
+
             }
             week.addDay(day);
         }
         return week;
     }
 
+    /**
+     * Utility method to the previous date in the 
+     * @return
+     */
     public String previousDate() {
-
         Calendar calendar = getCalendarConfig().getCalendar();
         calendar.add(Calendar.MONTH, -1);
-
         return ajaxLinkDateFormat.format(calendar.getTime());
     }
 
@@ -145,7 +152,12 @@ public abstract class PostCalendar extends BaseComponent implements AjaxUpdatabl
             Date date = ajaxLinkDateFormat.parse(((String) pars[0]));
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
-            setCalendarConfig(new CalendarConfig(calendar));
+
+            if (calendar.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)) {
+                setCalendarConfig(new CalendarConfig(Calendar.getInstance()));
+            } else {
+                setCalendarConfig(new CalendarConfig(calendar));
+            }
         } catch (ParseException e) {
             // default back to normal
             setCalendarConfig(new CalendarConfig(Calendar.getInstance()));

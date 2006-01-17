@@ -85,8 +85,9 @@ public class CalendarConfig {
     }
 
     private int firstDayOfMonth(Calendar calendar) {
-        calendar.set(Calendar.DAY_OF_MONTH, 1);
-        return calendar.get(Calendar.DAY_OF_WEEK);
+        Calendar clone = (Calendar) calendar.clone();
+        clone.set(Calendar.DAY_OF_MONTH, 1);
+        return clone.get(Calendar.DAY_OF_WEEK);
     }
 
     private int numberOfWeeks(int firstDayOfMonth, int daysInMonth) {
