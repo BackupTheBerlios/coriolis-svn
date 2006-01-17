@@ -35,8 +35,7 @@ public class HibernatePostManager extends HibernateManager implements PostManage
      *  (non-Javadoc)
      * @see org.mikejones.coriolis.managers.api.PostManager#getPostsForMonth()
      */
-    public List<Post> getPostsForMonth() {
-        Calendar calendar = Calendar.getInstance();
+    public List<Post> getPostsForMonth(Calendar calendar) {
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
@@ -46,7 +45,24 @@ public class HibernatePostManager extends HibernateManager implements PostManage
         Date lastDay = calendar.getTime();
 
         return postsBetweenDates(firstDay, lastDay);
+    }
 
+    protected Date firstMomentOfMonth(Calendar calendar) {
+        Calendar copy = (Calendar) calendar.clone();
+        copy.set(Calendar.DAY_OF_MONTH, 1);
+        copy.set(Calendar.HOUR_OF_DAY, 0);
+        copy.set(Calendar.MINUTE, 0);
+
+        return copy.getTime();
+
+    }
+
+    protected Date latMomentOfMonth(Calendar calendar) {
+        Calendar copy = (Calendar) calendar.clone();
+        copy.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+        copy.set(Calendar.HOUR_OF_DAY, calendar.getMaximum(Calendar.HOUR_OF_DAY));
+        copy.set(Calendar.MINUTE, calendar.getMaximum(Calendar.MINUTE));
+        return copy.getTime();
     }
 
     /*

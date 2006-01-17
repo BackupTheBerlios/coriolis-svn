@@ -4,6 +4,7 @@
 package org.mikejones.coriolis.managers.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -115,7 +116,7 @@ public class MockPostManager implements PostManager {
         }   
     }
 
-	public List<Post> getPostsForMonth() {
+	public List<Post> getPostsForMonth(Calendar calendar) {
 		// TODO Auto-generated method stub
 		return null;
 	}

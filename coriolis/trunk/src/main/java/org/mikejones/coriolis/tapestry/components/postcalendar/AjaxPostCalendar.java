@@ -184,7 +184,7 @@ public abstract class AjaxPostCalendar extends AbstractComponent implements IDir
     }
 
     protected List<Integer> findDaysWithPosts() {
-        List<Post> posts = getPostManager().getPostsForMonth();
+        List<Post> posts = getPostManager().getPostsForMonth(getCalendarConfig().getCalendar());
         List<Integer> days = new ArrayList<Integer>();
 
         Calendar calendar = Calendar.getInstance();
