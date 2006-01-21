@@ -10,17 +10,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.apache.tapestry.BaseComponent;
-import org.apache.tapestry.IMarkupWriter;
 import org.apache.tapestry.IPage;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.annotations.InjectObject;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Post;
-import org.mikejones.coriolis.tapestry.framework.services.AjaxUpdatable;
 import org.mikejones.coriolis.tapestry.pages.ViewPosts;
 
-public abstract class PostCalendar extends BaseComponent implements AjaxUpdatable {
+public abstract class PostCalendar extends BaseComponent {
 
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("MMMMM yyyy");
 
@@ -139,17 +138,32 @@ public abstract class PostCalendar extends BaseComponent implements AjaxUpdatabl
         return ajaxLinkDateFormat.format(calendar.getTime());
     }
 
+    /**
+     * Gets the string of the next month/year for the calendar to show
+     * @return
+     */
     public String nextDate() {
         Calendar calendar = getCalendarConfig().getCalendar();
         calendar.add(Calendar.MONTH, 1);
         return ajaxLinkDateFormat.format(calendar.getTime());
     }
 
-    public void prepageForAjaxRender(IMarkupWriter writer, Object params) {
+    public boolean showNextDate() {
+        Calendar thisMonth = DateUtils.round(Calendar.getInstance(), Calendar.MONTH);
+        Calendar calendarMonth = DateUtils.round(getCalendarConfig().getCalendar(), Calendar.MONTH);
 
-        Object[] pars = (Object[]) params;
+        return thisMonth.compareTo(calendarMonth) > 0 ;
+    }
+
+    /**
+     * Listener method called before rendering the component again
+     * @param dateString
+     */
+    public void prepageForAjaxRender(String dateString) {
+
         try {
-            Date date = ajaxLinkDateFormat.parse(((String) pars[0]));
+
+            Date date = ajaxLinkDateFormat.parse(dateString);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
 

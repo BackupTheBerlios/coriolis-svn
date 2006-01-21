@@ -5,6 +5,7 @@ package org.mikejones.coriolis.tapestry.pages;
 
 import java.util.List;
 
+import org.apache.tapestry.IPage;
 import org.apache.tapestry.annotations.InjectObject;
 import org.apache.tapestry.event.PageBeginRenderListener;
 import org.apache.tapestry.event.PageEvent;
@@ -32,6 +33,11 @@ public abstract class Home extends BasePage implements PageBeginRenderListener {
      */
     public void pageBeginRender(PageEvent event) {
         setPosts(getPostManager().getPosts());
+    }
+    
+    public IPage editPost(Integer id) {
+       System.out.print("ooo we are in the other one");
+       return null;
     }
 
 }

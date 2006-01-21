@@ -1,8 +1,20 @@
 <div jwcid="@Any" class="calendar" id="ognl:id">
 	<h3>
-        <a jwcid="@AjaxDirectLink" targetComponentId="postCalendar" parameters="ognl:previousDate()">&lt;&lt;</a>
+        <a 
+            jwcid="@AjaxDirectLink" 
+            targetComponentId="postCalendar" 
+            listener="listener:prepageForAjaxRender"
+            parameters="ognl:previousDate()">&lt;&lt;</a>
         <span jwcid="@Insert" value="ognl:month.description" />
-	    <a jwcid="@AjaxDirectLink" targetComponentId="postCalendar" parameters="ognl:nextDate()">&gt;&gt;</a>
+        
+        <span jwcid="@If" condition="ognl:showNextDate()">
+	    <a 
+            jwcid="@AjaxDirectLink" 
+            targetComponentId="postCalendar" 
+            listener="listener:prepageForAjaxRender"
+            targetcomponent=""
+            parameters="ognl:nextDate()">&gt;&gt;</a>
+        </span>
     </h3>
 	<table>
 		<thead>

@@ -7,9 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.tapestry.AbstractComponent;
+import org.apache.tapestry.IActionListener;
+import org.apache.tapestry.IDirect;
 import org.apache.tapestry.IMarkupWriter;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.IScript;
+import org.apache.tapestry.Tapestry;
 import org.apache.tapestry.TapestryUtils;
 import org.apache.tapestry.annotations.InjectObject;
 import org.apache.tapestry.annotations.InjectScript;
@@ -18,7 +21,7 @@ import org.apache.tapestry.engine.IEngineService;
 import org.apache.tapestry.engine.ILink;
 import org.mikejones.coriolis.tapestry.framework.services.AjaxDirectServiceParameter;
 
-public abstract class AjaxDirectLink extends AbstractComponent {
+public abstract class AjaxDirectLink extends AbstractComponent implements IDirect {
 
     protected static String SYM_COMPONENT_NAME = "component";
 
@@ -32,6 +35,9 @@ public abstract class AjaxDirectLink extends AbstractComponent {
 
     @Parameter(required = true)
     public abstract String getTargetComponentId();
+
+    @Parameter(required = true)
+    public abstract IActionListener getListener();
 
     @Parameter
     public abstract Object getParameters();
@@ -61,6 +67,25 @@ public abstract class AjaxDirectLink extends AbstractComponent {
         renderBody(writer, cycle);
         writer.end("a");
 
+    }
+
+    /*
+     *  (non-Javadoc)
+     * @see org.apache.tapestry.IDirect#trigger(org.apache.tapestry.IRequestCycle)
+     */
+    public void trigger(IRequestCycle cycle) {
+        IActionListener listener = getListener();
+        if (listener == null)
+            throw Tapestry.createRequiredParameterException(this, "listener");
+        listener.actionTriggered(this, cycle);
+    }
+
+    /*
+     *  (non-Javadoc)
+     * @see org.apache.tapestry.IDirect#isStateful()
+     */
+    public boolean isStateful() {
+        return false;
     }
 
 }

@@ -108,6 +108,10 @@ public class CalendarConfig {
         return calendar;
     }
 
+    /**
+     * Returns a clone of the calendar 
+     * @return
+     */
     public Calendar getCalendar() {
         return (Calendar) this.calendar.clone();
     }

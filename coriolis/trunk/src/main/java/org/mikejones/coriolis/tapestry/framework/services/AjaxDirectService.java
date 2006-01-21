@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.apache.hivemind.util.Defense;
 import org.apache.tapestry.IComponent;
+import org.apache.tapestry.IDirect;
 import org.apache.tapestry.IMarkupWriter;
 import org.apache.tapestry.IPage;
 import org.apache.tapestry.IRequestCycle;
@@ -27,6 +28,8 @@ import org.mikejones.coriolis.tapestry.components.ajax.AjaxPageRenderSupport;
 public class AjaxDirectService implements IEngineService {
 
     public static String NAME = "ajaxdirect";
+
+    public static String TARGET_COMPONENT_ID = "target-component";
 
     private LinkFactory linkFactory;
 
@@ -71,15 +74,12 @@ public class AjaxDirectService implements IEngineService {
         parameters.put(ServiceConstants.SERVICE, getName());
         parameters.put(ServiceConstants.PAGE, activePage.getPageName());
         parameters.put(ServiceConstants.COMPONENT, component.getIdPath());
+
         parameters.put(ServiceConstants.CONTAINER, componentPage == activePage ? null : componentPage.getPageName());
         //        parameters.put(ServiceConstants.SESSION, stateful ? "T" : null);
         parameters.put(ServiceConstants.PARAMETER, dsp.getServiceParameters());
 
-        //        Map<String, String> params = new HashMap<String, String>();
-        //        params.put("component", "$Layout.postCalendar");
         return linkFactory.constructLink(this, post, parameters, false);
-
-        //        return _linkFactory.constructLink(post, parameters, true);
 
     }
 
@@ -87,33 +87,44 @@ public class AjaxDirectService implements IEngineService {
 
         String componentId = cycle.getParameter(ServiceConstants.COMPONENT);
         String componentPageName = cycle.getParameter(ServiceConstants.CONTAINER);
+
         String activePageName = cycle.getParameter(ServiceConstants.PAGE);
         boolean activeSession = cycle.getParameter(ServiceConstants.SESSION) != null;
-        
-        IPage renderPage = cycle.getPage(activePageName);
-        cycle.activate(renderPage);
 
-        AjaxUpdatable component = (AjaxUpdatable) renderPage.getNestedComponent("$Layout.postCalendar");
+        IPage page = cycle.getPage(activePageName);
+
+        cycle.activate(page);
+
+        IPage componentPage = componentPageName == null ? page : cycle.getPage(componentPageName);
+
+        IComponent component = componentPage.getNestedComponent(componentId);
+
+        Object[] serviceParms = (Object[]) linkFactory.extractListenerParameters(cycle);
+        triggerComponent(cycle, (IDirect) component, serviceParms);
 
         ContentType contentType = new ContentType("text/plain");
-
         PrintWriter printWriter = webResponse.getPrintWriter(contentType);
-
         IMarkupWriter writer = markupWriterSource.newMarkupWriter(printWriter, contentType);
-        
-        PageRenderSupport support = new AjaxPageRenderSupport();
-        
-        TapestryUtils.storePageRenderSupport(cycle, support);
-        
-        Object[] serviceParms = (Object[])linkFactory.extractListenerParameters(cycle);
-        
-        // use the actual writer only on the component
-        component.prepageForAjaxRender(writer, serviceParms);
 
-        ((IComponent) component).render(writer, cycle);
+        PageRenderSupport support = new AjaxPageRenderSupport();
+
+        TapestryUtils.storePageRenderSupport(cycle, support);
+
+        component.getContainer().render(writer, cycle);
 
         writer.flush();
 
+    }
+
+    /**
+     * Triggers the 
+     * @param cycle
+     * @param direct
+     * @param parameters
+     */
+    protected void triggerComponent(IRequestCycle cycle, IDirect direct, Object[] parameters) {
+        cycle.setListenerParameters(parameters);
+        direct.trigger(cycle);
     }
 
     public String getName() {
