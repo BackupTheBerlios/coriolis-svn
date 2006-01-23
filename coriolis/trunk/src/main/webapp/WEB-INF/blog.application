@@ -24,6 +24,8 @@
     
 	<component-type type="AjaxDirectLink" specification-path="components/ajax/AjaxDirectLink.jwc"/>
     
+    <!-- scriptaculous -->
+    <component-type type="AutoCompleteTextField" specification-path="components/AutoCompleteTextField.jwc"/>
     <!-- test things -->
     
     <component-type type="Toggler" specification-path="components/Toggler.jwc"/>
