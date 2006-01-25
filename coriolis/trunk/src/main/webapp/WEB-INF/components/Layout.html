@@ -1,79 +1,65 @@
 <html jwcid="@Shell" title="ognl:windowTitle" stylesheets="ognl:styleSheets" doctype="message:doctype" >
     <script src="/js/dojo.js" type="text/javascript"></script>
     <link href="http://localhost:8080/app?service=rss" rel="alternate" type="application/rss+xml" title="rss" /> 
-	<body jwcid="@Body">
-		
+	<body jwcid="@Body">		
 		<div id="status-bar">
-			<span jwcid="@If" condition="ognl:isLoggedIn" >                 	
-    			You are currently logged in as 
-			</span>
-            <span jwcid="@Else">    	
-   		 		You are not currently logged in
-			</span>   
-		</div>
-		
-		<div id="wrapper">
-		
-		<div id="header">
-			<div class="padding-div">                
-				<span jwcid="@Insert" value="ognl:blog.title" />
-			</div>
-		</div>            
-
-		<div id="site-navigation">
-			<div class="padding-div">
-				<ul class="inline-list">
-					<li>
-						<a jwcid="@PageLink" page="Home" title="Return to the homepage" href="#">Home</a>
-					</li>    
-					<li>
-						<a jwcid="@PageLink" page="Search" title="Search for a post" >Search</a>
-					</li>                                        
-					<span jwcid="@If" condition="ognl:isLoggedIn" >
-                         <li>
-							<a jwcid="@PageLink" page="NewPost" title="Add a new post" >New Post</a>
-						</li>
-						<li >
-							<a jwcid="@PageLink" page="Admin" title="Edit your blog settings.">Admin</a>
-						</li>
-						<li>		                    
-							<a jwcid="@ServiceLink" service="ognl:@org.apache.tapestry.Tapestry@RESTART_SERVICE" title="Logout">Logout</a>
-						</li>						
-					</span>
-					<span jwcid="@Else" >
-                       <li><a jwcid="@PageLink" page="Login" title="Return to the homepage" href="#">Login</a></li>						
-					</span>
-				</ul>
-			</div>
-		</div>
-            
-		<div id="content-wrapper">
-
-			<div id="main-content">        
-				<div class="padding-div">
-					<span jwcid="@RenderBody" />           
-				</div>            
-			</div>                
-							
-			<div id="sub-content">
-				<div class="padding-div">
-					<span jwcid="postCalendar@PostCalendar" />                                                            
-					<span jwcid="@CategoryMenu" />                    
-                    <a jwcid="@ServiceLink" service="rss">
-                        <img jwcid="@Image" image="asset:rss2" />
-					</a>
+			<span jwcid="@If" condition="ognl:isLoggedIn" >You are currently logged in as</span>
+            <span jwcid="@Else">You are not currently logged in</span>   
+		</div>		
+		<div id="wrapper">	
+			<div id="header">
+				<div class="padding-div">                
+					<span jwcid="@Insert" value="ognl:blog.title" />
 				</div>
-			</div>
-			<div style="clear: both;"></div>
-		</div>            
-
-		<div id="footer">
-			<div class="padding-div">
-				This is the footer
-			</div>
-		</div>      
-		
-		</div>            
-
+			</div> 
+			<div id="site-navigation">
+				<div class="padding-div">
+					<ul class="inline-list">
+						<li>
+							<a jwcid="@PageLink" page="Home" title="Return to the homepage" href="#">Home</a>
+						</li>    
+						<li>
+							<a jwcid="@PageLink" page="Search" title="Search for a post">Search</a>
+						</li>                                        
+						<span jwcid="@If" condition="ognl:isLoggedIn" >
+							<li>
+								<a jwcid="@PageLink" page="NewPost" title="Add a new post">New Post</a>
+							</li>
+							<li>
+								<a jwcid="@PageLink" page="Admin" title="Edit your blog settings.">Admin</a>
+							</li>
+							<li>		                    
+								<a jwcid="@ServiceLink" service="ognl:@org.apache.tapestry.Tapestry@RESTART_SERVICE" title="Logout">Logout</a>
+							</li>						
+						</span>
+						<span jwcid="@Else" >
+	                       <li><a jwcid="@PageLink" page="Login" title="Return to the homepage" href="#">Login</a></li>						
+						</span>
+					</ul>
+				</div>
+			</div>	            
+			<div id="content-wrapper">	
+				<div id="main-content">        
+					<div class="padding-div">
+						<span jwcid="@RenderBody" />           
+					</div>            
+				</div>        							
+				<div id="sub-content">
+					<div class="padding-div">
+						<span jwcid="postCalendar@PostCalendar" />                                                            
+						<span jwcid="@CategoryMenu" />                    
+	                    <a jwcid="@ServiceLink" service="rss">
+	                        <img jwcid="@Image" image="asset:rss2" />
+						</a>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>      
+			<div id="footer">
+				<div class="padding-div">
+					This is the footer
+				</div>
+			</div>      		
+		</div>         
     </body>
 </html>
