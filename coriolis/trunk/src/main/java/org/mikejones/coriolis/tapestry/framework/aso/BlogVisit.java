@@ -9,7 +9,7 @@ import org.apache.commons.lang.exception.NestableRuntimeException;
 import org.apache.tapestry.IRequestCycle;
 import org.mikejones.coriolis.om.Person;
 
-public class BlogVisit implements Serializable {    
+public class BlogVisit implements Serializable {
 
     /**
      * 
@@ -31,10 +31,7 @@ public class BlogVisit implements Serializable {
             return null;
         }
         throw new NestableRuntimeException("userid is null; need to set up reteival from services");
-//        BlogEngine engine = (BlogEngine) cycle.getEngine();
-//        PersonManager personManager = (PersonManager) engine.getRegistry(cycle).getService(
-//                PersonManager.class);
-//        return personManager.getUser(userId);        
+
     }
 
     /**
@@ -43,7 +40,7 @@ public class BlogVisit implements Serializable {
      */
     public void setUser(Person person) {
         this.user = person;
-        if(user==null) {
+        if (user == null) {
             userId = null;
             return;
         }
@@ -53,7 +50,5 @@ public class BlogVisit implements Serializable {
     public boolean isUserLoggedIn() {
         return userId != null;
     }
-
-   
 
 }

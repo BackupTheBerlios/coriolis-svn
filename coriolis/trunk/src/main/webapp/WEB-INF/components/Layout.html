@@ -4,13 +4,18 @@
 	<body jwcid="@Body">
 		
 		<div id="status-bar">
-			<span jwcid="@Insert" value="ognl:statusMessage" />
+			<span jwcid="@If" condition="ognl:isLoggedIn" >                 	
+    			You are currently logged in as 
+			</span>
+            <span jwcid="@Else">    	
+   		 		You are not currently logged in
+			</span>   
 		</div>
 		
 		<div id="wrapper">
 		
 		<div id="header">
-			<div class="padding-div">
+			<div class="padding-div">                
 				<span jwcid="@Insert" value="ognl:blog.title" />
 			</div>
 		</div>            
@@ -25,7 +30,7 @@
 						<a jwcid="@PageLink" page="Search" title="Search for a post" >Search</a>
 					</li>                                        
 					<span jwcid="@If" condition="ognl:isLoggedIn" >
-						<li>
+                         <li>
 							<a jwcid="@PageLink" page="NewPost" title="Add a new post" >New Post</a>
 						</li>
 						<li >
@@ -33,10 +38,10 @@
 						</li>
 						<li>		                    
 							<a jwcid="@ServiceLink" service="ognl:@org.apache.tapestry.Tapestry@RESTART_SERVICE" title="Logout">Logout</a>
-						</li>
+						</li>						
 					</span>
 					<span jwcid="@Else" >
-						<li><a jwcid="@PageLink" page="Login" title="Return to the homepage" href="#">Login</a></li>
+                       <li><a jwcid="@PageLink" page="Login" title="Return to the homepage" href="#">Login</a></li>						
 					</span>
 				</ul>
 			</div>
@@ -52,10 +57,8 @@
 							
 			<div id="sub-content">
 				<div class="padding-div">
-					<span jwcid="postCalendar@PostCalendar" />                                        
-                    <!--span jwcid="ajaxPostCalendar@AjaxPostCalendar" listener="listener:postsForDate" /-->                    
-					<span jwcid="@CategoryMenu" />
-                    
+					<span jwcid="postCalendar@PostCalendar" />                                                            
+					<span jwcid="@CategoryMenu" />                    
                     <a jwcid="@ServiceLink" service="rss">
                         <img jwcid="@Image" image="asset:rss2" />
 					</a>

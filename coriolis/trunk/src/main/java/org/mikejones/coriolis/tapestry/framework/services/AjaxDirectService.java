@@ -69,14 +69,16 @@ public class AjaxDirectService implements IEngineService {
 
         Map<String, Object> parameters = new HashMap<String, Object>();
 
-        //        boolean stateful = request.getSession(false) != null;
+//        boolean stateful = request.getSession(false) != null;
+        
+        boolean stateful = false;
 
         parameters.put(ServiceConstants.SERVICE, getName());
         parameters.put(ServiceConstants.PAGE, activePage.getPageName());
         parameters.put(ServiceConstants.COMPONENT, component.getIdPath());
 
         parameters.put(ServiceConstants.CONTAINER, componentPage == activePage ? null : componentPage.getPageName());
-        //        parameters.put(ServiceConstants.SESSION, stateful ? "T" : null);
+parameters.put(ServiceConstants.SESSION, null);
         parameters.put(ServiceConstants.PARAMETER, dsp.getServiceParameters());
 
         return linkFactory.constructLink(this, post, parameters, false);

@@ -3,7 +3,7 @@
 		<span jwcid="@Insert" value="ognl:post.title" >Post Title</span>
 	</h3>
 	<div class="post-head">
-        <span jwcid="@If" condition="ognl:isUserLoggedIn">
+        <span jwcid="@If" condition="state:blogVisit">
 			<div class="buttons">
 				<a href="#" jwcid="@DirectLink" listener="listener:editPost" parameters="ognl:post.id" title="Edit Post">
 					<img jwcid="@Image" alt="Edit post." image="ognl:getAsset('edit')" />
