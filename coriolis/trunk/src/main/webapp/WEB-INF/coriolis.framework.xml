@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module id="coriolis.framework" version="1.0.0" package="org.mikejones.coriolis.tapestry.framework">
+    <contribution configuration-id="tapestry.InfrastructureOverrides">
+        <property name="exceptionPageName" value="CoriolisException" /> 
+    </contribution>
     <contribution configuration-id="tapestry.state.ApplicationObjects">
         <state-object name="blogVisit" scope="session">
             <create-instance class="org.mikejones.coriolis.tapestry.framework.aso.BlogVisit"/>
