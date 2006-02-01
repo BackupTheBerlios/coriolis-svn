@@ -3,18 +3,10 @@
  */
 package org.mikejones.coriolis.om;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratorType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 
 /**
  * A class to respresent a post.
@@ -62,7 +54,7 @@ public class Post {
     /**
      * @return Returns the comments.
      */
-    @OneToMany(cascade = { CascadeType.ALL }, mappedBy = "post")
+    @OneToMany(cascade = { javax.persistence.CascadeType.ALL }, mappedBy = "post")
     @OrderBy("date desc")
     public List<Comment> getComments() {
         return comments;
@@ -130,17 +122,41 @@ public class Post {
         this.postDate = date;
     }
     
-    @ManyToMany(mappedBy = "posts")
+    @ManyToMany(mappedBy="posts", cascade = CascadeType.ALL )
     public List<Category> getCategories() {
-    	return categories;
+    		return categories;
     }
     
     public void setCategories(List<Category> categories) {
-    	this.categories = categories;
+    		this.categories = categories;
     }
     
     public void addCategory(Category category) {
-    	getCategories().add(category);
+    		this.getCategories().add(category);
+    		category.getPosts().add(this);
+    }
+    
+    public void removeCategory(Category category) {
+    		this.getCategories().remove(category);
+    		category.getPosts().remove(this);
+    }
+    
+    public boolean containsCategory(String title) {
+    		for (Category c : this.getCategories()) {
+    			if (title.equals(c.getTitle()))
+    				return true;
+    		}
+    		return false;
+    }
+    
+    public String categoriesAsString() {
+    		String result = "";
+		for (int i = 0; i < getCategories().size(); i++) {
+			result += getCategories().get(i).getTitle();
+			if (i < getCategories().size() - 1)
+				result += ", ";
+		}
+		return result;
     }
 
 }

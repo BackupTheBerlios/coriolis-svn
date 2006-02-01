@@ -11,7 +11,16 @@
             parameters="ognl:category.id" 
             listener="listener:viewCategoryPosts"
             title="View posts in this category">
-        	<span jwcid="@Insert" value="ognl:category.title" /> [<span jwcid="@Insert" value="ognl:category.posts.size" />]
+        	<span 
+            	jwcid="@Insert" 
+            	value="ognl:category.title" 
+            />
+            [
+            <span 
+            	jwcid="@Insert" 
+            	value="ognl:category.posts.size" 
+            />
+            ]
         </a>
 	</li>
 </ul>	

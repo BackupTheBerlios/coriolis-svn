@@ -7,7 +7,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratorType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.Cascade;
 
 /***
  * Represents a category that a Post can belong to.
@@ -54,7 +57,7 @@ public class Category {
 		this.description = description;
 	}
 	
-	@ManyToMany(cascade = { CascadeType.ALL, CascadeType.MERGE })
+	@ManyToMany(cascade = CascadeType.ALL )
 	public List<Post> getPosts() {
 		return posts;
 	}
@@ -65,5 +68,11 @@ public class Category {
 	
 	public void addPost(Post post) {
 		this.getPosts().add(post);
+		post.getCategories().add(this);
+	}
+	
+	public void removePost(Post post) {
+		this.getPosts().remove(post);
+		post.getCategories().remove(this);
 	}
 }

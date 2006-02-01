@@ -1,7 +1,11 @@
 @import url(base.css);
 
 body {
-    
+    background: #ddd;
+}
+
+#wrapper {
+	border: 1px solid #ccc;
 }
 
 #header {
@@ -9,7 +13,7 @@ body {
 }
 
 #content-wrapper {
-    
+
 }
 
 #site-navigation {

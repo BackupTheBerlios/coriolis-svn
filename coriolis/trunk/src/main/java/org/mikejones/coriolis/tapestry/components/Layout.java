@@ -38,10 +38,10 @@ public abstract class Layout extends BaseComponent {
 
     @Asset("s/base.css")
     public abstract IAsset getBaseStyle();
-
-    @Asset("s/green.css")
-    public abstract IAsset getGreenStyle();
-
+//    
+//    @Asset("s/green.css")
+//    public abstract IAsset getGreenStyle();
+    
     @Asset("s/calendar.css")
     public abstract IAsset getCalendarStyle();
 
@@ -68,7 +68,7 @@ public abstract class Layout extends BaseComponent {
         if (styles == null) {
             styles = new ArrayList<IAsset>();
             styles.add(getBaseStyle());
-            styles.add(getGreenStyle());
+            //styles.add(getGreenStyle());
             styles.add(getCalendarStyle());
 
         }

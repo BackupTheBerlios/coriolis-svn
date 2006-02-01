@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Transaction;
 import org.mikejones.coriolis.managers.api.CategoryManager;
 import org.mikejones.coriolis.om.Category;
+import org.mikejones.coriolis.om.Post;
 
 public class HibernateCategoryManager extends HibernateManager implements CategoryManager {
 
@@ -21,7 +22,7 @@ public class HibernateCategoryManager extends HibernateManager implements Catego
 		List result = session.createQuery("from Category as cat where cat.title = ?")
 			.setString(0, title)
 			.list();
-		if (result.size() == 1)
+		if (result.size() > 0)
 			return (Category)result.get(0);
 		
 		return null;
@@ -30,12 +31,19 @@ public class HibernateCategoryManager extends HibernateManager implements Catego
 	public Category saveCategory(Category category) {
 		Transaction t = session.beginTransaction();
 		try {
-			Category result = (Category)session.save(category);
-			t.commit();
-			return result;
+			Object result = session.save(category);
+			return getCategory((Integer)result);
 		} catch (Exception ex) {
 			t.rollback();
 			return null;
 		}
+	}
+	
+	public void removeCategoriesFromPost(Post post) {
+		for (Category c : post.getCategories()) {
+			c.getPosts().remove(post);
+			saveCategory(c);
+		}
+		post.getCategories().clear();
 	}
 }
