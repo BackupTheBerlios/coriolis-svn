@@ -2,10 +2,9 @@
     <script src="/js/dojo.js" type="text/javascript"></script>
     <link href="http://localhost:8080/app?service=rss" rel="alternate" type="application/rss+xml" title="rss" /> 
 	<body jwcid="@Body">		
-		<div id="status-bar">
-			<span jwcid="@If" condition="ognl:isLoggedIn" >You are currently logged in as</span>
-            <span jwcid="@Else">You are not currently logged in</span>   
-		</div>		
+		<!--<div id="status-bar">
+			
+		</div>-->		
 		<div id="wrapper">	
 			<div id="header">
 				<div class="padding-div">                
@@ -23,7 +22,8 @@
 						</li>                                        
 						<span jwcid="@If" condition="ognl:isLoggedIn" >
 							<li>
-								<a jwcid="@PageLink" page="NewPost" title="Add a new post">New Post</a>
+								<!--<a jwcid="@PageLink" page="NewPost" title="Add a new post">New Post</a>-->
+                                <a jwcid="@PageLink" page="EditPost" title="Add a new post">New Post</a>
 							</li>
 							<li>
 								<a jwcid="@PageLink" page="Admin" title="Edit your blog settings.">Admin</a>

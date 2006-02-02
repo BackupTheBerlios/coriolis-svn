@@ -39,4 +39,13 @@ public interface CategoryManager {
      * @param post
      */
     public void removeCategoriesFromPost(Post post);
+    
+    /**
+     * Takes a comma separated list of category titles and updates
+     * the posts' category list to reflect them.
+     * @param post
+     * @param categories
+     */
+    public void updatePostCategoriesFromList(Post post, String categories);
+    
 }

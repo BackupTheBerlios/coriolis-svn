@@ -15,6 +15,7 @@ import org.mikejones.coriolis.om.Category;
 import org.mikejones.coriolis.tapestry.pages.EditPost;
 import org.mikejones.coriolis.tapestry.pages.Home;
 import org.mikejones.coriolis.tapestry.pages.ViewPost;
+import org.mikejones.coriolis.tapestry.pages.ViewPosts;
 
 public abstract class Post extends BaseComponent {
 
@@ -52,8 +53,8 @@ public abstract class Post extends BaseComponent {
     }
     
     public IPage viewPostsInCategory(Integer categoryId) {
-    		Home home = (Home)getPage().getRequestCycle().getPage("Home");
-    		home.setPosts(getCategoryManager().getCategory(categoryId).getPosts());
-    		return home;
+    		ViewPosts page = (ViewPosts)getPage().getRequestCycle().getPage("ViewPosts");
+    		page.setPosts(getCategoryManager().getCategory(categoryId).getPosts());
+    		return page;
     }
 }
