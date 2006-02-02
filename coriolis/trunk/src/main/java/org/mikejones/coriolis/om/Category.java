@@ -57,7 +57,7 @@ public class Category {
 		this.description = description;
 	}
 	
-	@ManyToMany(cascade = CascadeType.ALL )
+	@ManyToMany(mappedBy="categories", cascade = CascadeType.PERSIST )
 	public List<Post> getPosts() {
 		return posts;
 	}

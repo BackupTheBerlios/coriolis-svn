@@ -3,6 +3,7 @@
  */
 package org.mikejones.coriolis.managers.impl;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 import org.apache.commons.lang.NullArgumentException;
 import org.hibernate.Transaction;
 import org.mikejones.coriolis.managers.api.PostManager;
+import org.mikejones.coriolis.om.Category;
 import org.mikejones.coriolis.om.Post;
 
 public class HibernatePostManager extends HibernateManager implements PostManager {
@@ -93,6 +95,14 @@ public class HibernatePostManager extends HibernateManager implements PostManage
         if (post == null)
             throw new NullArgumentException("post");
 
+        List<Category> toRemove = new ArrayList<Category>();
+        
+        for (Category c : post.getCategories())
+        		toRemove.add(c);
+        
+        for (Category c : toRemove)
+        		post.removeCategory(c);
+        
         Transaction t = session.beginTransaction();
         session.delete(post);
         t.commit();

@@ -25,7 +25,7 @@ public class CategoryHelper extends TestCase {
 	
 	public static void assertCategory(Category category) {
 		assertEquals(CATEGORY_TITLE, category.getTitle());
-    	assertEquals(CATEGORY_DESCRIPTION, category.getDescription());
+    		assertEquals(CATEGORY_DESCRIPTION, category.getDescription());
 	}
 	
 	public static void assertCategoryWithPost(Category category) {

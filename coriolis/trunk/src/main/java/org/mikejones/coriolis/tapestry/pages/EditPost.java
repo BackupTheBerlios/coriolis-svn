@@ -51,7 +51,7 @@ public abstract class EditPost extends SecurePage {
 				toRemove.add(c);
 			}
 			for (Category c : toRemove) {
-				c.removePost(p);
+				p.removeCategory(c);
 			}
 			return;
 		}
@@ -68,7 +68,7 @@ public abstract class EditPost extends SecurePage {
 		
 		// remove em
 		for (Category c : toRemove) {
-			c.removePost(p);
+			p.removeCategory(c);
 		}
 		
 		for (String title : titles) {
@@ -84,11 +84,11 @@ public abstract class EditPost extends SecurePage {
 					c.setTitle(title);
 					c.addPost(p);
 					getCategoryManager().saveCategory(c);
-					
-				} else {// already exists, just add it. yeahmon.
-					
+
+				} else {
+				
 					p.addCategory(c);
-					
+				
 				}
 				
 			}

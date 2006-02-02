@@ -9,15 +9,23 @@ import java.text.SimpleDateFormat;
 import org.apache.tapestry.BaseComponent;
 import org.apache.tapestry.IPage;
 import org.apache.tapestry.annotations.InjectObject;
+import org.mikejones.coriolis.managers.api.CategoryManager;
 import org.mikejones.coriolis.managers.api.PostManager;
+import org.mikejones.coriolis.om.Category;
 import org.mikejones.coriolis.tapestry.pages.EditPost;
+import org.mikejones.coriolis.tapestry.pages.Home;
 import org.mikejones.coriolis.tapestry.pages.ViewPost;
 
 public abstract class Post extends BaseComponent {
 
     @InjectObject("service:coriolis.managers.PostManager")
     public abstract PostManager getPostManager();
+    
+    @InjectObject("service:coriolis.managers.CategoryManager")
+    public abstract CategoryManager getCategoryManager();
 
+    public abstract Category getCurrentCategory();
+    
     private Format dateFormat;
 
     public Format getDateFormat() {
@@ -41,5 +49,11 @@ public abstract class Post extends BaseComponent {
     public String deletePost(Integer id) {
         getPostManager().deletePost(id);
         return null;
+    }
+    
+    public IPage viewPostsInCategory(Integer categoryId) {
+    		Home home = (Home)getPage().getRequestCycle().getPage("Home");
+    		home.setPosts(getCategoryManager().getCategory(categoryId).getPosts());
+    		return home;
     }
 }

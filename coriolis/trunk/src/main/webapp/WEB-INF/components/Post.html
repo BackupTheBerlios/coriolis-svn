@@ -1,34 +1,56 @@
 <div class="post">
+
 	<h3>
 		<span jwcid="@Insert" value="ognl:post.title" >Post Title</span>
 	</h3>
-	<div class="post-head">
-		<div class="info">
- 	    	Created <span jwcid="@Insert" value="ognl:post.postDate" format="ognl:dateFormat">[TIME] on [DATE]</span>
+
+    	<div class="post-head">
+	
+        	<div class="info">
+ 	    	
+            Created <span jwcid="@Insert" value="ognl:post.postDate" format="ognl:dateFormat">[TIME] on [DATE]</span>
 			/ 
 			<a href="#" jwcid="@DirectLink" listener="listener:viewPost" parameters="ognl:{post.id}">
-				Comments (<span jwcid="@Insert" value="ognl:post.comments.size">10</span>)
-			</a>
-			<span jwcid="@If" condition="state:blogVisit">
-				/ 
+				Comments (<span jwcid="@Insert" value="ognl:post.comments.size">10</span>)</a>
+			
+            <span jwcid="@If" condition="state:blogVisit">
+                	/ 
 				<a href="#" jwcid="@DirectLink" listener="listener:editPost" parameters="ognl:post.id" title="Edit Post">
-					(edit)
-				</a>
+					(edit)</a>
 	            / 
 				<a href="#" jwcid="@DirectLink" listener="ognl:listeners.deletePost" parameters="ognl:post.id" title="Delete Post">
-					(delete)
-				</a>
+					(delete)	</a>
 	        </span> 
-			/ 
-			Filed under <span jwcid="@Insert" value="ognl:post.categoriesAsString()" />
+            
+            <span jwcid="@If" condition="ognl:post.categories.size() > 0">
+				/ 
+				Filed under 
+                <span jwcid="@For" source="ognl:post.categories" value="ognl:currentCategory">
+                    <a jwcid="@DirectLink" listener="listener:viewPostsInCategory" parameters="ognl:currentCategory.id" title="View posts in this category">
+                        <span jwcid="@Insert" value="ognl:currentCategory.title" /></a>&nbsp;
+                    
+                </span>
+            </span>
+            
+            <span jwcid="@Else">
+                / 
+                (Not filed under a category)
+            </span>
+            
 		</div>
+            
         <div style="clear: both;"></div>
+        
     </div>
+        
     <div class="post-body">
+        
 		<p>
             <span jwcid="@InsertText" value="ognl:post.text" raw="true">Post text</span>
         </p>
+        
     </div>
+    
 	<div class="post-footer">
 		
 	</div>

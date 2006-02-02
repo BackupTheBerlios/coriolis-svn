@@ -122,7 +122,7 @@ public class Post {
         this.postDate = date;
     }
     
-    @ManyToMany(mappedBy="posts", cascade = CascadeType.ALL )
+    @ManyToMany(cascade = CascadeType.PERSIST )
     public List<Category> getCategories() {
     		return categories;
     }
