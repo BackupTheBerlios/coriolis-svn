@@ -2,9 +2,6 @@ package org.mikejones.coriolis;
 
 import org.hibernate.Transaction;
 import org.mikejones.coriolis.om.Category;
-import org.mikejones.coriolis.om.Post;
-
-import com.sun.tools.javac.tree.Tree.Assert;
 
 public class CategoryTest extends BaseCase {
 
