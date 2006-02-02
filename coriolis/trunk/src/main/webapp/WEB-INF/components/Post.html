@@ -9,7 +9,7 @@
 			<a href="#" jwcid="@DirectLink" listener="listener:viewPost" parameters="ognl:{post.id}">
 				Comments (<span jwcid="@Insert" value="ognl:post.comments.size">10</span>)
 			</a>
-			<span jwcid="@If" condition="ognl:isUserLoggedIn">
+			<span jwcid="@If" condition="state:blogVisit">
 				/ 
 				<a href="#" jwcid="@DirectLink" listener="listener:editPost" parameters="ognl:post.id" title="Edit Post">
 					(edit)
