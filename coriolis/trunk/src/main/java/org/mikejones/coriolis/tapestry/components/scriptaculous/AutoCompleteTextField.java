@@ -11,13 +11,17 @@ import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.IScript;
 import org.apache.tapestry.TapestryUtils;
 import org.apache.tapestry.annotations.InjectScript;
+import org.apache.tapestry.annotations.Parameter;
 import org.apache.tapestry.form.TextField;
 
 public abstract class AutoCompleteTextField extends TextField {
 
     @InjectScript("AutoCompleteTextField.script")
     public abstract IScript getAutoCompleteScript();
-
+    
+    @Parameter(required = true)
+    public abstract String getValueString();
+    
     @Override
     protected void renderFormComponent(IMarkupWriter writer, IRequestCycle cycle) {
         String value = getTranslatedFieldSupport().format(this, getValue());
@@ -61,6 +65,7 @@ public abstract class AutoCompleteTextField extends TextField {
         Map<String, Object> symbols = new HashMap<String, Object>();
         symbols.put(INPUT_ID, getClientId());
         symbols.put(UPDATE_ID, updateId);
+        symbols.put(VALUES_KEY, getValueString());
 
         getAutoCompleteScript().execute(cycle, TapestryUtils.getPageRenderSupport(cycle, this), symbols);
 
@@ -69,4 +74,6 @@ public abstract class AutoCompleteTextField extends TextField {
     private final static String INPUT_ID = "inputId";
 
     private final static String UPDATE_ID = "updateId";
+    
+    private final static String VALUES_KEY = "valueString";
 }

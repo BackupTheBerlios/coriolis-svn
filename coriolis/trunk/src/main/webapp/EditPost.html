@@ -1,9 +1,13 @@
 <span jwcid="@Layout"  windowSubtitle="literal:Edit post">
+
 	<form jwcid="@Form" listener="ognl:listeners.updatePost" delegate="bean:delegate" > 
-        <fieldset>
+
+    		<fieldset>
+            
             <legend>Edit Post</legend>
 		    <span jwcid="@Hidden" value="ognl:postId" listener="ognl:listeners.loadPost" />
-			<span jwcid="@FieldLabel" field="component:title" />
+			
+            <span jwcid="@FieldLabel" field="component:title" />
 		    <input 
 	            	jwcid="title@TextField" 
 	            	validators="validators:required" 
@@ -12,12 +16,22 @@
 	            	type="text" 
 	            	class="textbox" 
             />
+            
             <span jwcid="@FieldLabel" field="component:categories" displayName="Categories" />
             <input
+                jwcid="categories@AutoCompleteTextField"
+            		value="ognl:categoriesAsList"
+            		valueString="ognl:categoriesAsArrayValues"
+            		class="textbox"
+            />
+           	<!--
+           	<input
                 jwcid="categories@TextField"
                 value="ognl:categoriesAsList"
                 class="textbox"
             />
+            -->
+            
 		    <span jwcid="@FieldLabel" field="component:text" displayName="Text" />
 			<textarea 
 	            	jwcid="text@DojoTextArea" 
@@ -26,12 +40,15 @@
 	            	value="ognl:post.text" 
 	            	items="textGroup;|;listGroup;|;justifyGroup;|;colorGroup;|;listGroup;|;indentGroup"
             />
+           
 	        <input 
 	            	jwcid="@Submit" 
 	            	type="submit" 
 	            	value="Save Changes" 
 	            	class="button" 
            	/>        
+            
 		</fieldset>
 	</form>
+
 </span>

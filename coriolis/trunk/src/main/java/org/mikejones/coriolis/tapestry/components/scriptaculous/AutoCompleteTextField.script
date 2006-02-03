@@ -3,9 +3,10 @@
 	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
 <script>    
     <input-symbol key="inputId" required="yes"/>
-    <input-symbol key="updateId" required="yes"/>   
+    <input-symbol key="updateId" required="yes"/>  
+    <input-symbol key="valueString" required="yes" /> 
 
 	<initialization>    
-        new Autocompleter.Local('${inputId}','${updateId}',new Array("one", "two", "three", "four", "five"),{tokens: ','});        
+        new Autocompleter.Local('${inputId}','${updateId}',new Array(${valueString}),{tokens: ','});               
     </initialization>
 </script>
