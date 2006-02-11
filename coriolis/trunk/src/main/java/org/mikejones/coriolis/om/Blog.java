@@ -6,32 +6,41 @@ import javax.persistence.Id;
 
 /**
  * A class that represents the blog and contains the specific settings
- * TODO get this class cached
  * @author mike
  * 
  */
 @Entity
 public class Blog {
 
-	private Long id;
+    private Long id;
 
-	private String title;
+    private String title;
 
-	@Id(generate = GeneratorType.AUTO)
-	public Long getId() {
-		return id;
-	}
+    private SiteStyle style = SiteStyle.BLUE; 
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Id(generate = GeneratorType.AUTO)
+    public Long getId() {
+        return id;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public SiteStyle getStyle() {
+        return style;
+    }
+
+    public void setStyle(SiteStyle style) {
+        this.style = style;
+    }
 
 }

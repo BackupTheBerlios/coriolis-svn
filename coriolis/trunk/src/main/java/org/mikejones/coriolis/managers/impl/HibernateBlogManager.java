@@ -12,4 +12,9 @@ public class HibernateBlogManager extends HibernateManager implements BlogManage
 		tx.commit();
 	}
 
+    public Blog loadBlog() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

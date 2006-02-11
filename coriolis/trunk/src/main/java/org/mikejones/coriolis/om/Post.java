@@ -3,10 +3,18 @@
  */
 package org.mikejones.coriolis.om;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratorType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 /**
  * A class to respresent a post.

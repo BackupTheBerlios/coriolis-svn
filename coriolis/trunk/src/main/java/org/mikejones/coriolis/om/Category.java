@@ -7,10 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratorType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-
-import org.hibernate.annotations.Cascade;
 
 /***
  * Represents a category that a Post can belong to.

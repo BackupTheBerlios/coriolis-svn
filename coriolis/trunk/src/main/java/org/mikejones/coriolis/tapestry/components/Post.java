@@ -13,7 +13,6 @@ import org.mikejones.coriolis.managers.api.CategoryManager;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Category;
 import org.mikejones.coriolis.tapestry.pages.EditPost;
-import org.mikejones.coriolis.tapestry.pages.Home;
 import org.mikejones.coriolis.tapestry.pages.ViewPost;
 import org.mikejones.coriolis.tapestry.pages.ViewPosts;
 

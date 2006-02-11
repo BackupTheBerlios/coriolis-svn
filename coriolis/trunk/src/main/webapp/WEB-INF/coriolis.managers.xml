@@ -19,7 +19,7 @@
     <service-point id="BlogManager"
         interface="org.mikejones.coriolis.managers.api.BlogManager">
         <invoke-factory>
-            <construct class="org.mikejones.coriolis.managers.impl.HibernateBlogManager"/>
+            <construct class="org.mikejones.coriolis.managers.impl.MockBlogManager"/>
         </invoke-factory>
     </service-point>
 </module>

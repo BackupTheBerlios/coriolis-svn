@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.NullArgumentException;
+import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.mikejones.coriolis.managers.api.PostManager;
 import org.mikejones.coriolis.om.Category;
@@ -126,10 +127,15 @@ public class HibernatePostManager extends HibernateManager implements PostManage
 
     @SuppressWarnings("unchecked")
     protected List<Post> postsBetweenDates(Date dateStart, Date dateEnd) {
-        return session.createQuery(
+        Query query =  session.createQuery(
                 "from " + Post.class.getName()
-                        + " post where post.postDate between :firstDay and :lastDay order by post.postDate desc")
-                .setParameter("firstDay", dateStart).setParameter("lastDay", dateEnd).list();
+                        + " post where post.postDate between :firstDay and :lastDay order by post.postDate desc");
+        query.setParameter("firstDay", dateStart);
+        query.setParameter("lastDay", dateEnd);
+        
+        // TODO: for this the workt he dates have to be the same
+        query.setCacheable(true);
+        return query.list();
 
     }
 

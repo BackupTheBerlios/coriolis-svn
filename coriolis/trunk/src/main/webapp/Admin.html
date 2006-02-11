@@ -1,3 +1,12 @@
 <span jwcid="@Layout"  windowSubtitle="literal:Admin">
-	Here is the admin page
+	<form jwcid="@Form" listener="listener:submit">
+        
+        Style:		
+        <span jwcid="@PropertySelection" model="ognl:@org.mikejones.coriolis.tapestry.pages.Admin@SITESTYLE_MODEL" value="ognl:blog.style" validators="validators:required"/>
+               
+        Title:
+        <input jwcid="@TextField" value="ognl:blog.title" validators="validators:required" />
+        <input jwcid="@Submit" />    
+	</form>
+	
 </span>

@@ -16,6 +16,7 @@ import org.apache.tapestry.annotations.Parameter;
 import org.apache.tapestry.engine.state.ApplicationStateManager;
 import org.mikejones.coriolis.managers.api.BlogManager;
 import org.mikejones.coriolis.om.Blog;
+import org.mikejones.coriolis.om.SiteStyle;
 import org.mikejones.coriolis.tapestry.framework.aso.BlogVisit;
 
 public abstract class Layout extends BaseComponent {
@@ -29,19 +30,19 @@ public abstract class Layout extends BaseComponent {
 
     @InjectState("blogVisit")
     public abstract BlogVisit getBlogVisit();
-    
+
     @InjectObject("infrastructure:applicationStateManager")
     public abstract ApplicationStateManager getApplicationStateManager();
 
     @InjectObject("service:coriolis.managers.BlogManager")
     public abstract BlogManager getBlogManager();
 
-    @Asset("s/base.css")
-    public abstract IAsset getBaseStyle();
-//    
-//    @Asset("s/green.css")
-//    public abstract IAsset getGreenStyle();
+    @Asset("s/blue/base.css")
+    public abstract IAsset getBlueBaseStyle();
     
+    @Asset("s/green/base.css")
+    public abstract IAsset getGreenBaseStyle();
+
     @Asset("s/calendar.css")
     public abstract IAsset getCalendarStyle();
 
@@ -65,26 +66,19 @@ public abstract class Layout extends BaseComponent {
     protected void prepareForRender(IRequestCycle cycle) {
         setIsLoggedIn(getApplicationStateManager().exists("blogVisit"));
 
+        setBlog(getBlogManager().loadBlog());
+
         if (styles == null) {
             styles = new ArrayList<IAsset>();
-            styles.add(getBaseStyle());
-            //styles.add(getGreenStyle());
+
+            if (getBlog().getStyle().equals(SiteStyle.GREEN)) {
+                styles.add(getGreenBaseStyle());
+            } else {
+                styles.add(getBlueBaseStyle());
+            }
+
             styles.add(getCalendarStyle());
 
         }
-
-        if (getBlog() == null) {
-            Blog blog = new Blog();
-            blog.setTitle("[change this in admin]");
-            setBlog(blog);
-
-        }
     }
-    
-    @Override
-    protected void cleanupAfterRender(IRequestCycle cycle) {
-        // TODO Auto-generated method stub
-        super.cleanupAfterRender(cycle);
-    }
-
 }
