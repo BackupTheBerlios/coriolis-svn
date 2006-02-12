@@ -26,10 +26,10 @@ public abstract class Layout extends BaseComponent {
     @Parameter
     public abstract String getWindowSubtitle();
 
-    public abstract void setBlog(Blog blog);
-
     @InjectState("blogVisit")
     public abstract BlogVisit getBlogVisit();
+    
+    public abstract void setBlog(Blog blog);
 
     @InjectObject("infrastructure:applicationStateManager")
     public abstract ApplicationStateManager getApplicationStateManager();
@@ -45,6 +45,8 @@ public abstract class Layout extends BaseComponent {
 
     @Asset("s/calendar.css")
     public abstract IAsset getCalendarStyle();
+    
+    public abstract void setIsLoggedIn(boolean isLoggedIn);
 
     private List<IAsset> styles;
 
@@ -52,7 +54,7 @@ public abstract class Layout extends BaseComponent {
         return styles;
     }
 
-    public abstract void setIsLoggedIn(boolean isLoggedIn);
+   
 
     public String getWindowTitle() {
         String subTitle = getWindowSubtitle();
